@@ -1,6 +1,33 @@
+/* NavBars */
+@media (max-width: 575.98px) { 
+    .navbartop{
+        visibility: hidden;
+    }
+}
+@media (min-width: 576px) { 
+    .navbarbottom{
+        visibility: hidden;
+    }
+}
+/* Barre de recherche */
+.search_bar{
+    border-radius: 25px 0px 0px 25px;
+    padding: 0px;
+    padding-left: 15px;
+    height:auto;
+}
+.search_icon{
+    height: auto;
+    width: auto;
+}
+
+
 .recettes{
     margin-top: 60px;
 }
 .recettesRow{
     display: flex;    
 }
+
+
+
