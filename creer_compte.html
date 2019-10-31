@@ -9,27 +9,20 @@
   </head>
 
   <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">
-                <img src="./images/PaulBocuse.png" width="50" height="50" class="d-inline-block align-center" alt="Les Cordons Bleus">
-                Les Cordons Bleus
-            </a>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link2</a>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-                </form>
+    <!-- Navbar Top -->
+    <nav class="navbar navbartop navbar-expand-sm navbar-light bg-light">
+        <a href="index.html" class="navbar-brand">
+            <img src="./images/chef.png" height="30" alt="Les Cordons Bleus">Les Cordons Bleus
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>    
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ml-auto">
+                <a href="connexion.html" class="nav-item nav-link" title="Connexion"><img src="./images/nav_user.png" height="35" alt="login"></a>
             </div>
-        </nav>
+        </div>
+    </nav>
 
         <div id="panneauCreaCpte">
             <h1>Créer un compte</h1>
@@ -42,6 +35,14 @@
             <button>Valider</button>
         </div>
 
- 
+
+     <!-- Navbar bottom format mobile xs -->
+     <nav class="navbar navbarbottom fixed-bottom navbar-light bg-light">
+        <a href="index.html" class="nav-item nav-link"><img src="./images/nav_home.png" height="40" alt="login"></a>
+        <a href="#" class="nav-item nav-link"><img src="./images/nav_heart.png" height="40" alt="login"></a>
+        <a href="connexion.html" class="nav-item nav-link"><img src="./images/nav_user.png" height="40" alt="login"></a>
+        <a href="#" class="nav-item nav-link"><img src="./images/nav_engrenage.png" height="45" alt="login"></a>
+    </nav>
+
   </body>
 </html>
