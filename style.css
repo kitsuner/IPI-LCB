@@ -73,6 +73,31 @@ justify-content: space-between;
 }
 
 /* PAGE CREATION RECETTE */
-.creationR{
+.maCreationR{
+    margin:60px;
+}
+.cardR{
+    padding:50px;
+}
 
+.titreCardRecette{
+    margin-top:30px;
+    font-size: 2.5em;
+}
+.titreinfo1R{
+    margin-top:60px;
+    font-size: 1.5em;
+}
+.card-img_cuisiner{
+    opacity:0.2;
+}
+.poidsR{
+    margin-top:40px;
+}
+.recettePreparation{
+    margin-top:30px;
+}
+.validAjouR{
+    margin-top:40px;
+    margin-right: 50px;
 }

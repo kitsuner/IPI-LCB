@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Les Cordons Bleus</title>
-  </head>
+</head>
 
-  <body>
+<body>
 
     <!-- Navbar Top -->
     <nav class="navbar navbartop navbar-expand-sm navbar-light bg-light">
@@ -26,18 +26,91 @@
     </nav>
 
     <!-- Liste mes recettes -->
-    <div class="container creationR">
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown button
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
+<div class="maCreationR">
+
+    <!-- card -->
+    <div class="card shadow p-3 mb-5 bg-white rounded">
+        <img src="./images/fondRecette1.jpeg" 
+            class="img-fluid card-img_cuisiner img-responsive" alt="cuisiner">
+        <div class="card-img-overlay cardR">
+            <h1 class="card-title text-center titreCardRecette">Ajouter une recette</h1>
+            <p class="card-text titreinfo1R">Selectionnez vos ingrédients et la quantité :</p>
+
+            <form>
+                <div class="row">
+                    <div class="form-col-4">
+                        <div class="col-auto my-4">
+                            <select class="custom-select mr-sm-2" id="cat1">
+                                <option selected>faites votre choix...</option>
+                                <option value="1">fruits, légumes, légumineuses et oléagineux</option>
+                                <option value="2">produits céréaliers</option>
+                                <option value="3">viandes, oeufs, poissons</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-col-4">
+                        <div class="col-auto my-4">
+                            <select class="custom-select mr-sm-2" id="cat2">
+                                <option selected>faites votre choix...</option>
+                                <option value="1">légumes</option>
+                                <option value="2">pommes de terre et autres tubercules</option>
+                                <option value="3">légumineuses</option>
+                                <option value="4">fruits</option>
+                                <option value="5">fruits à coque</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-col-4">
+                        <div class="col-auto my-4">
+                            <select class="custom-select mr-sm-2" id="cat3">
+                                <option selected>faites votre choix...</option>
+                                <option value="1">crus</option>
+                                <option value="2">cuits</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Poids -->
+                <div class="row">
+                    <div class="col-4 poidsR">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="poidsRecette" aria-label="Text input with segmented dropdown button" placeholder="quantité">
+                            <select class="form-control">
+                                    <option selected>Unités...</option>
+                                    <option value="1">Grammes</option>
+                                    <option value="2">Litres</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row recetteIngredientsGeneree">
+                </div>
+
+                <div class="recettePreparation">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Préparation :</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                    </div>
+                </div>
+
+                <!-- Validation -->
+                <div class="row">
+                    <div class="col validAjouR text-right">
+                        <button type="submit" class="btn btn-success">Valider</button>
+                    </div>
+                </div>
+
+                
+
+            </form>
         </div>
     </div>
+</div>
+    
 
 
     <!-- Footer en mode Desktop-->
@@ -63,11 +136,6 @@
         <a href="connexion.html" class="nav-item nav-link"><img src="./images/nav_user.png" height="40" alt="login"></a>
         <a href="#" class="nav-item nav-link"><img src="./images/nav_engrenage.png" height="45" alt="login"></a>
     </nav>
-    
-    
-    
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
   </body>
 </html>
