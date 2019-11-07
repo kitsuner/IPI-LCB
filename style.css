@@ -12,49 +12,6 @@
         visibility: hidden;
     }
 }
-/* Barre de recherche */
-.search_bar{
-    border-radius: 25px 0px 0px 25px;
-    padding: 0px;
-    padding-left: 15px;
-    height:auto;
-}
-.search_icon{
-    height: auto;
-    width: auto;
-}
-
-
-.recettes{
-    margin-top: 60px;
-}
-.recettesRow{
-    display: flex;    
-}
-
-
-#panneauConnexion{
-    height: 400px;
-    width: 750px;
-    background-color: rgb(240, 240, 240);
-    margin: auto;
-    display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: space-between;
-}
-
-#panneauCreaCpte{
-    height: 400px;
-    width: 750px;
-    background-color: rgb(240, 240, 240);
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-}
-
 /* Footer Desktop */
 .footertext1{
     margin-top: 50px;
@@ -70,4 +27,52 @@ justify-content: space-between;
 .footertext-links a:link, a:visited, a:focus {
     text-decoration:none;
     color: black;
+}
+
+/* PAGE ACCUEIL */
+/* Barre de recherche */
+.search_bar{
+    border-radius: 25px 0px 0px 25px;
+    padding: 0px;
+    padding-left: 15px;
+    height:auto;
+}
+.search_icon{
+    height: auto;
+    width: auto;
+}
+
+.recettes{
+    margin-top: 60px;
+}
+.recettesRow{
+    display: flex;    
+}
+
+/* PAGE CONNEXION */
+/* Connexion */
+#panneauConnexion{
+    height: 400px;
+    width: 750px;
+    background-color: rgb(240, 240, 240);
+    margin: auto;
+    display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+}
+#panneauCreaCpte{
+    height: 400px;
+    width: 750px;
+    background-color: rgb(240, 240, 240);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* PAGE CREATION RECETTE */
+.creationR{
+
 }
