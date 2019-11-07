@@ -72,7 +72,7 @@ justify-content: space-between;
     justify-content: space-between;
 }
 
-/* PAGE D'ACCUEIL QUAND ON EST CONNECTE */
+/* MES RECETTES (QUAND L'UTILISATEUR SE CONNECTE */
 #conteneur_recettes_perso{
     background-color: rgb(240, 240, 240);
     display : flex;
@@ -92,4 +92,13 @@ justify-content: space-between;
 /* PAGE CREATION RECETTE */
 .creationR{
 
+}
+
+/* MES FAVORIS */
+#conteneur_favoris{
+    background-color: rgb(240, 240, 240);
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+    justify-content: flex-start;
 }
