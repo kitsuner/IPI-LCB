@@ -54,6 +54,7 @@
     padding-left: 15px;
     height:100%;
 }
+
 .search_icon{
     height: 100%;
     width: auto;
@@ -110,19 +111,32 @@ button{
     background-repeat: no-repeat; 
     background-position: 5px 3px;
     padding-left: 40px;
+    border-radius: 5px;
+    outline: none;
+    border: solid 1px rgb(163, 163, 163);
     }
 .user{ 
     background-image:url(https://img.icons8.com/ultraviolet/25/000000/user.png); 
     background-repeat: no-repeat; 
     background-position: 5px 3px;
     padding-left: 40px;
+    border-radius: 5px;
+    border: solid 1px rgb(163, 163, 163);
     }
 .email{ 
     background-image:url(https://img.icons8.com/ultraviolet/25/000000/email.png); 
     background-repeat: no-repeat; 
     background-position: 5px 3px;
     padding-left: 40px;
+    border-radius: 5px;
+    border: solid 1px rgb(163, 163, 163);
     }
+
+input:focus {
+        box-shadow: 0 0 2pt 2pt  rgb(126, 181, 206);
+        outline-color: rgb(126, 181, 206);
+    }
+
 /* MES RECETTES (QUAND L'UTILISATEUR SE CONNECTE */
 #conteneur_recettes_perso{
     background-color: rgb(240, 240, 240);
