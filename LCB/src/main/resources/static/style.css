@@ -157,9 +157,11 @@ input:focus {
 /* PAGE CREATION RECETTE */
 .maCreationR{
     margin:60px;
+    
 }
 .cardR{
     padding:50px;
+    /* background-color:rgb(228, 229, 231); */
 }
 
 .titreCardRecette{
