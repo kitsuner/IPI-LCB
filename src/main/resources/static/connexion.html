@@ -32,9 +32,9 @@
                 </div>
                 <div id="connexion" class="row mb-4">
                     <h1 class="text-warning">Connexion</h1>
-                    <input class="email col-10 offset-1 my-2" type="email" placeholder="Adresse mail">
-                    <input class="pswd col-10 offset-1 my-2" type="password" placeholder="Mot de passe">
-                    <button class="btn-success col-10 offset-1 border rounded my-3">Valider</button>
+                    <input class="email col-10 offset-1 my-2" id="idUtilisateur" type="email" placeholder="Adresse mail">
+                    <input class="pswd col-10 offset-1 my-2" id="motDePasse" type="password" placeholder="Mot de passe">
+                    <button class="btn-success col-10 offset-1 border rounded my-3" name="connecter">Valider</button>
                 </div>
             </div>
         
@@ -69,12 +69,15 @@
     
         <script>
             $(document).ready(function() {
-            $("#connexion_form>.statique").hide();
-            $("#cree_compte").hide();
+                $("#connexion_form>.statique").hide();
+                $("#cree_compte").hide();
+                
+
+                
             
             });
         
-    
+            
             $("#create_account").click(function( event ) {
                 event.preventDefault();
                 $("#connexion_form> .statique").toggle();
@@ -90,6 +93,30 @@
                 $("#connexion").slideDown();
                 $("#connexion_form> .statique").toggle();
             }); 
+
+
+            
+            
+            
+
+            $("button[name='connecter']").on("click",function(){
+
+                var idUtilisateur = $("#idUtilisateur").val();
+                var motDePasse = $("#motDePasse").val();
+                console.log(idUtilisateur);
+                $.ajax({ 
+                    url: "http://localhost:8080/utilisateur/connexion", 
+                    headers: { "mail" : idUtilisateur , "password" : motDePasse},
+                    type: 'GET',
+                    dataType:"json",
+                    timeout: 15000
+                }).done(
+                    function(data) { 
+                        console.log(data);
+                    }
+                )
+            })
+
         </script>
   </body>
 </html>
