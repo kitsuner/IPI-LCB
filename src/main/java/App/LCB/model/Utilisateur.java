@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -37,6 +38,12 @@ public class Utilisateur {
 	@OneToMany
 	@JoinColumn( name = "id_utilisateur")
 	List<Recette> recette;
+	
+	@OneToMany
+	@JoinTable(name = "Liste_Favoris",
+    joinColumns = @JoinColumn(name = "id_utilisateur"), 
+    inverseJoinColumns = @JoinColumn(name = "id_recette"))
+	List<Recette> recetteFavoris;
 	
 	public Long getIdUtilisateur() {
 		return idUtilisateur;
@@ -94,12 +101,21 @@ public class Utilisateur {
 		this.recette = recette;
 	}
 
+	
+	public List<Recette> getRecetteFavoris() {
+		return recetteFavoris;
+	}
+
+	public void setRecetteFavoris(List<Recette> recetteFavoris) {
+		this.recetteFavoris = recetteFavoris;
+	}
+
 	public Utilisateur() {
 		
 	}
 
 	public Utilisateur(Long idUtilisateur, String pseudo, String mail, String motDePasse, String prenom, String nom,
-			List<Recette> recette) {
+			List<Recette> recette, List<Recette> recetteFavoris) {
 		super();
 		this.idUtilisateur = idUtilisateur;
 		this.pseudo = pseudo;
@@ -108,7 +124,10 @@ public class Utilisateur {
 		this.prenom = prenom;
 		this.nom = nom;
 		this.recette = recette;
+		this.recetteFavoris = recetteFavoris;
 	}
+
+	
 	
 
 	
