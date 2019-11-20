@@ -40,9 +40,6 @@
                         <div class="col-auto my-4">
                             <select class="custom-select mr-sm-2" id="cat1">
                                 <option selected onclick="catOne()">faites votre choix...</option>
-                                <option value="1">fruits, légumes, légumineuses et oléagineux</option>
-                                <option value="2">produits céréaliers</option>
-                                <option value="3">viandes, oeufs, poissons</option>
                             </select>
                         </div>
                     </div>
@@ -145,12 +142,27 @@
 	<script>
 
 	function catOne(){
-			var nom = $("#cat1").val();
-			$.ajax({
-					url: "http://localhost:8080/recette/all"
-				}).done(function(d) {
-					$("#cat1").html(d);
-				});
+			var nom;
+			var dataEntier = [];
+			var dataGpLib = [];
+
+			$.ajax({				
+				type :'get',
+                contentType: "application/json; charset=utf-8",
+                url: "http://localhost:8080/groupe/all"
+                }).done(function(data) {
+                    dataEntier = data;
+                    dataGp = data.groupe;
+                });
+
+	            for (var i = 0; i < dataEntier.length; i++) {
+	            	var titre = dataEntier[i].lib;
+	                $(".catOne").append('<option value='i' onclick="selectGp1(event)" id="catOne'+ i +'>test</option>');
+	                i++;
+
+	            }
+	            //nom = $("#cat1").val();
+	        }
 		}
 
 	</script>
