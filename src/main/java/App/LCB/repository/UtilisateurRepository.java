@@ -8,5 +8,11 @@ import App.LCB.model.Utilisateur;
 
 @Repository
 public interface UtilisateurRepository extends CrudRepository<Utilisateur, Long>{
+  
+  @Query("SELECT u FROM Utilisateur u WHERE mail=?1 AND mot_de_passe=?2")
+  public Utilisateur connexion(String mail, String pass);
+	
+	
+	Utilisateur findByMail(String emailAdress);
 
 }
