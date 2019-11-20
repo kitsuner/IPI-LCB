@@ -23,4 +23,14 @@ public class UtilisateurController {
 		return (List<Utilisateur>) utilisateurRepository.findAll();
 	}
 	
+	@RequestMapping("/connexion")
+    	@ResponseBody
+    	public Utilisateur connexion(@RequestHeader("mail") String mail, @RequestHeader("password") String password){
+        Utilisateur u = utilisateurRepository.findByMail(mail);
+        if(u.getMotDePasse().equals(password)){
+            return u;
+        }
+        return null;
+    }
+	
 }
