@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
+   	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Les Cordons Bleus</title>
 </head>
 
@@ -36,33 +37,27 @@
             <p class="card-text titreinfo1R">Selectionnez vos ingrédients et la quantité :</p>
     
                 <div class="row">
+                
+                	<!-- liste groupe ingrédient -->
+                    <div class="form-col-4">
+                        <div class="col-auto my-4 form1" >
+                            <select class="custom-select mr-sm-2 select1" id="cat1">            
+                            </select>
+                        </div>
+                    </div>
+					
+					<!-- liste sous groupe ingrédient -->
                     <div class="form-col-4">
                         <div class="col-auto my-4">
-                            <select class="custom-select mr-sm-2" id="cat1">
-                                <option selected onclick="catOne()">faites votre choix...</option>
+                            <select class="custom-select mr-sm-2 select2" id="cat2">
                             </select>
                         </div>
                     </div>
 
+					<!-- liste sous sous groupe ingrédient -->
                     <div class="form-col-4">
                         <div class="col-auto my-4">
-                            <select class="custom-select mr-sm-2" id="cat2">
-                                <option selected>faites votre choix...</option>
-                                <option value="1">légumes</option>
-                                <option value="2">pommes de terre et autres tubercules</option>
-                                <option value="3">légumineuses</option>
-                                <option value="4">fruits</option>
-                                <option value="5">fruits à coque</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-col-4">
-                        <div class="col-auto my-4">
-                            <select class="custom-select mr-sm-2" id="cat3">
-                                <option selected>faites votre choix...</option>
-                                <option value="1">crus</option>
-                                <option value="2">cuits</option>
+                            <select class="custom-select mr-sm-2 select3" id="cat3">
                             </select>
                         </div>
                     </div>
@@ -99,8 +94,6 @@
                     </div>
                 </div>
 
-                
-
             </form>
         </div>
     </div>
@@ -124,11 +117,6 @@
         </div>
     </div>
     
-    
-    <div>
-    <span id="test1">
-    </span>
-    </div>
 
     <!-- Navbar bottom format mobile xs -->
     <nav class="navbar navbarbottom fixed-bottom navbar-light bg-light">
@@ -137,35 +125,82 @@
         <a href="connexion.html" class="nav-item nav-link"><img src="./images/nav_user.png" height="40" alt="login"></a>
         <a href="#" class="nav-item nav-link"><img src="./images/nav_engrenage.png" height="45" alt="login"></a>
     </nav>
-</body>
+
 
 	<script>
 
-	function catOne(){
-			var nom;
-			var dataEntier = [];
-			var dataGpLib = [];
-
-			$.ajax({				
-				type :'get',
-                contentType: "application/json; charset=utf-8",
-                url: "http://localhost:8080/groupe/all"
-                }).done(function(data) {
-                    dataEntier = data;
-                    dataGp = data.groupe;
-                });
-
-	            for (var i = 0; i < dataEntier.length; i++) {
-	            	var titre = dataEntier[i].lib;
-	                $(".catOne").append('<option value='i' onclick="selectGp1(event)" id="catOne'+ i +'>test</option>');
-	                i++;
-
+	    function recupListes(){
+	    	var liste;
+	    	var numListe;
+         	var numSelect1;
+         	var numSelect2;
+         	var numSelect3;
+         	
+	        $.ajax({
+	            type: 'get',
+	            contentType: "application/json",
+	            url: "http://localhost:8080/groupe/all/",
+	            }).done(function(data) {
+	            datas = data;
+	 			
+	            // liste groupe ingrédient 
+	            numListe = 1;
+	            for (var i = 0; i < datas.length; i++) {
+	                var titre1 = datas[i].lib;
+					numSelect1 = i;
+	                $(".select"+numListe).append("<option type=text name="+i+" onchange=selectListe1()>"+titre1+"</option>"); 
 	            }
-	            //nom = $("#cat1").val();
-	        }
-		}
+	            console.log("test1 : " + selectListe1());
 
+	            
+	         	// liste sous groupe ingrédient 
+	         	numListe = 2;
+	         	//en test en dur
+	         	i = 1;
+	            for (var j = 0; j < datas[i].sousGroupeIngredient.length; j++) {
+	                var titre2 = datas[i].sousGroupeIngredient[j].lib;
+					numSelect2 = j;
+	                $(".select"+numListe).append("<option type=text name="+j+" onchange=selectListe2()>"+titre2+"</option>"); 
+	            }
+	            console.log("test2 : " + selectListe2());
+	            
+	            
+	         	// liste sous sous groupe ingrédient 
+	         	numListe = 3;
+	         	//en test en dur
+	         	j = 1;
+	            for (var k = 0; k < datas[i].sousGroupeIngredient[j].sousSousGroupeIngredient.length; k++) {
+	                var titre3 = datas[i].sousGroupeIngredient[j].sousSousGroupeIngredient[k].lib;
+					numSelect3 = k;
+	                $(".select"+numListe).append("<option type=text name="+k+" onchange=selectListe3()>"+titre3+"</option>"); 
+	            }
+	         	
+	            console.log("test3 : " + selectListe3());
+	            
+	            
+	        })
+	        
+	        function selectListe1(){        	
+	        	var num1 = document.getElementById("cat1").options[numSelect1].getAttribute("name");
+	        	return num1;
+         	}
+	        
+	        function selectListe2(){  
+	        	var num2 = document.getElementById("cat2").options[numSelect2].getAttribute("name");
+	        	return num2;
+         	}
+	        
+	        function selectListe3(){   
+	        	var num3 = document.getElementById("cat3").options[numSelect3].getAttribute("name");
+	        	return num3;
+         	}
+         
+	        
+	    }
+		
+	    recupListes();
+	
 	</script>
-  
+  </body>
 </html>
 
