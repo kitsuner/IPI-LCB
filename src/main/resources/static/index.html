@@ -30,8 +30,8 @@
         <!-- Menu caché -->
         <div id="menu_navigation">
             <a href="">Accueil</a>
-            <a href="mes_recettes.html">Mes recettes</a>
-            <a href="mes_favoris.html">Mes favoris</a>
+            <a href="javascript:update('mes_recettes');">Mes recettes</a>
+            <a href="javascript:update('mes_favoris')">Mes favoris</a>
             <a href="connexion.html">Connexion</a>
             <a href="">Paramètres</a>
         </div>
@@ -154,6 +154,20 @@
         $("#open_menu_nav").click(function(){
             $("#menu_navigation").toggle();
         })
+        
+       function update(url){
+        let data = sessionStorage.getItem('login');
+        console.log(data);
+        connection(data, url);
+        }
+        function connection(login, url){
+            if (login == null){
+                document.location.href="connexion.html";
+            }
+            else{
+                document.location.href=""+url+".html";
+            }
+        }
     </script>
 
 
