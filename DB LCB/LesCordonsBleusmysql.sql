@@ -1,3 +1,7 @@
+SET autocommit=0;
+
+START TRANSACTION;
+
 CREATE DATABASE LCB;
 
 USE LCB;
@@ -131,3 +135,5 @@ REFERENCES ss_groupe_ingredients(id_ss_grp_ingredient)
 
 
 );
+
+COMMIT;
