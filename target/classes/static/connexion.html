@@ -44,17 +44,17 @@
                 </div>
                 <div id="cree_compte" class="row mb-4">
                     <h1 class="text-warning">Créer un compte</h1>
-                    <input class="user col-10 offset-1 my-2" type="text" placeholder="Prénom">
-                    <input class="user col-10 offset-1 my-2" type="text" placeholder="Nom">
-                    <input class="user col-10 offset-1 my-2" type="text" placeholder="Pseudonyme">
-                    <input class="email col-10 offset-1 my-2" type="email"  placeholder="Adresse mail">
-                    <input class="pswd col-10 offset-1 my-2" type="password" placeholder="Mot de passe">
+                    <input class="user col-10 offset-1 my-2" type="text" placeholder="Prénom" id="prenomNew">
+                    <input class="user col-10 offset-1 my-2" type="text" placeholder="Nom" id="nomNew">
+                    <input class="user col-10 offset-1 my-2" type="text" placeholder="Pseudonyme" id="pseudoNew">
+                    <input class="email col-10 offset-1 my-2" type="email"  placeholder="Adresse mail" id="mailNew">
+                    <input class="pswd col-10 offset-1 my-2" type="password" placeholder="Mot de passe"id="passwordNew">
                     <input class="pswd col-10 offset-1 my-2" type="password" placeholder="Confirmer le mot de passe">
                     <div class="custom-control custom-checkbox col-10 offset-1 my-2">
                         <input type="checkbox" class="custom-control-input " id="customCheck1">
                         <label class="custom-control-label" for="customCheck1">remember my password</label>
                     </div>
-                    <button class="btn-success col-10 offset-1 border rounded my-3">Valider</button>
+                    <button class="btn-success col-10 offset-1 border rounded my-3" name="creerUnCompte">Valider</button>
                 </div>
             </div>
         </div>
@@ -68,6 +68,8 @@
         </nav>
     
         <script>
+        	let tokenMail = null;
+        	let tokenPassword = null;
             $(document).ready(function() {
                 $("#connexion_form>.statique").hide();
                 $("#cree_compte").hide();
@@ -113,10 +115,41 @@
                 }).done(
                     function(data) { 
                         console.log(data);
+                        tokenMail = idUtilisateur;
+                        tokenPassword = motDePasse;
+                        saveConnexion();
+                        document.location.href="mes_recettes.html";
                     }
-                )
+                ).fail(function(jqXHR, textStatus, errorThrown){
+                    alert("Connexion impossible. Cause probable : erreur sur le pseudonyme ou sur le mot de passe");
+                });
             })
 
+            $("button[name='creerUnCompte']").on("click",function(){
+                var pseudoNew = $("#pseudoNew").val();
+                var prenomNew = $("#prenomNew").val();
+                var nomNew = $("#nomNew").val();
+                var mailNew = $("#mailNew").val();
+                var passwordNew = $("#passwordNew").val();
+                console.log(pseudoNew,prenomNew,nomNew,mailNew,passwordNew);
+                $.ajax({
+                    url: "http://localhost:8080/utilisateur",
+                    type: 'POST',
+                    headers: { "pseudo" : pseudoNew , "mail" : mailNew , "motDePasse" : passwordNew , "prenom" : prenomNew , "nom" : nomNew }
+                    
+                    
+                }).done(function(data){
+                    console.log(data);                    
+                    alert("Votre compte a bien été créé !")
+                }).fail(function(jqXHR, textStatus, errorThrown){
+                    alert("Nous n'avons pas pu créer votre compte. Cause probable : le pseudonyme est déjà utilisé");
+                });
+            })
+
+            function saveConnexion(){
+            	window.sessionStorage.setItem('Mail', tokenMail);
+            	window.sessionStorage.setItem('Password', tokenPassword);
+            }
         </script>
   </body>
 </html>
