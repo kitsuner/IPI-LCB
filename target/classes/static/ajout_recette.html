@@ -51,6 +51,7 @@
                     <div class="form-col-4">
                         <div class="col-auto my-4">
                             <select class="custom-select mr-sm-2 select2" id="cat2">
+                            	<option selected>Faites votre choix...</option>
                             </select>
                         </div>
                     </div>
@@ -59,6 +60,7 @@
                     <div class="form-col-4">
                         <div class="col-auto my-4">
                             <select class="custom-select mr-sm-2 select3" id="cat3">
+                            	<option selected>Faites votre choix...</option>
                             </select>
                         </div>
                     </div>
@@ -67,6 +69,7 @@
                     <div class="form-col-4">
                         <div class="col-auto my-4">
                             <select class="custom-select mr-sm-2 select4" id="cat4">
+                            	<option selected>Faites votre choix...</option>
                             </select>
                         </div>
                     </div>
@@ -217,11 +220,13 @@
 				                $(".select"+numListe).append("<option type=text id="+l+" value="+l+" onclick=selectListe3()>"+titre4+"</option>"); 
 				            }
 					         	
-				         	// Récupération valeur 3ème liste :
+				         	// Récupération valeur 4ème liste :
 				            $('.select4').on('change', function() {
 				            	value4 = $(this).val();
 					            var ingredientValue = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[value3].ingredients[value4].alimNom;
 					            console.log(ingredientValue);
+					            
+								return ingredientValue;
 				            })
 		            	  	
 	            		})
