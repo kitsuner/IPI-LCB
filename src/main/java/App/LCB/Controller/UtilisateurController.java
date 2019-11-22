@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import App.LCB.model.Utilisateur;
@@ -33,5 +35,19 @@ public class UtilisateurController {
         }
         return null;
     }
+	
+	
+	@RequestMapping(value = "", method = RequestMethod.POST)
+	@ResponseBody
+	public void nouvelUtilisateur (
+			@RequestHeader ("pseudo") String pseudo, 
+			@RequestHeader ("mail") String mail, 
+			@RequestHeader ("motDePasse") String motDePasse, 
+			@RequestHeader ("prenom") String prenom, 
+			@RequestHeader ("nom") String nom){
+    	Utilisateur nouvelUtilisateur = new Utilisateur(null, pseudo, mail, motDePasse, prenom, nom, null, null);
+    	utilisateurRepository.save(nouvelUtilisateur);
+		
+	}
 	
 }
