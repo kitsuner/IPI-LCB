@@ -115,14 +115,41 @@
                 }).done(
                     function(data) { 
                         console.log(data);
+<<<<<<< HEAD
                         tokenMail = idUtilisateur;
                         tokenPassword = motDePasse;
                         saveConnexion();
+=======
+>>>>>>> e958c545392c36a6eefb7796703c987cf5477abc
                         document.location.href="mes_recettes.html";
                     }
                 ).fail(function(jqXHR, textStatus, errorThrown){
                     alert("Connexion impossible. Cause probable : erreur sur le pseudonyme ou sur le mot de passe");
                 });
+<<<<<<< HEAD
+=======
+            })
+
+            $("button[name='creerUnCompte']").on("click",function(){
+                var pseudoNew = $("#pseudoNew").val();
+                var prenomNew = $("#prenomNew").val();
+                var nomNew = $("#nomNew").val();
+                var mailNew = $("#mailNew").val();
+                var passwordNew = $("#passwordNew").val();
+                console.log(pseudoNew,prenomNew,nomNew,mailNew,passwordNew);
+                $.ajax({
+                    url: "http://localhost:8080/utilisateur",
+                    type: 'POST',
+                    headers: { "pseudo" : pseudoNew , "mail" : mailNew , "motDePasse" : passwordNew , "prenom" : prenomNew , "nom" : nomNew }
+                    
+                    
+                }).done(function(data){
+                    console.log(data);
+                    alert("Votre compte a bien été créé !")
+                }).fail(function(jqXHR, textStatus, errorThrown){
+                    alert("Nous n'avons pas pu créer votre compte. Cause probable : le pseudonyme est déjà utilisé");
+                });
+>>>>>>> e958c545392c36a6eefb7796703c987cf5477abc
             })
 
             $("button[name='creerUnCompte']").on("click",function(){

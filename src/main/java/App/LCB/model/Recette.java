@@ -32,7 +32,7 @@ public class Recette {
 	@Column(name="instruction_recette")
 	private String instruction;		
 	
-	@Column(name="nbr_personnes")
+	@Column(name="nbr_personne")
 	private Integer nbrPersonnes;
 	
 	@Column(name="url_recette")
