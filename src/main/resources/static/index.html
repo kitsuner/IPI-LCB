@@ -156,12 +156,13 @@
         })
         
        function update(url){
-        let data = sessionStorage.getItem('login');
-        console.log(data);
-        connection(data, url);
+        let pseudo = sessionStorage.getItem('Mail');
+        let passe = sessionStorage.getItem('Password');
+        console.log(pseudo, passe);
+        connection(pseudo, url);
         }
-        function connection(login, url){
-            if (login == null){
+        function connection(pseudo, url){
+            if (pseudo == null){
                 document.location.href="connexion.html";
             }
             else{

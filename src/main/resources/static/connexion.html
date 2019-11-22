@@ -68,6 +68,8 @@
         </nav>
     
         <script>
+        	let tokenMail = null;
+        	let tokenPassword = null;
             $(document).ready(function() {
                 $("#connexion_form>.statique").hide();
                 $("#cree_compte").hide();
@@ -113,6 +115,9 @@
                 }).done(
                     function(data) { 
                         console.log(data);
+                        tokenMail = idUtilisateur;
+                        tokenPassword = motDePasse;
+                        saveConnexion();
                         document.location.href="mes_recettes.html";
                     }
                 ).fail(function(jqXHR, textStatus, errorThrown){
@@ -134,13 +139,17 @@
                     
                     
                 }).done(function(data){
-                    console.log(data);
+                    console.log(data);                    
                     alert("Votre compte a bien été créé !")
                 }).fail(function(jqXHR, textStatus, errorThrown){
                     alert("Nous n'avons pas pu créer votre compte. Cause probable : le pseudonyme est déjà utilisé");
                 });
             })
 
+            function saveConnexion(){
+            	window.sessionStorage.setItem('Mail', tokenMail);
+            	window.sessionStorage.setItem('Password', tokenPassword);
+            }
         </script>
   </body>
 </html>
