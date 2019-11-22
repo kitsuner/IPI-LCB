@@ -72,11 +72,7 @@
         	let tokenPassword = null;
             $(document).ready(function() {
                 $("#connexion_form>.statique").hide();
-                $("#cree_compte").hide();
-                
-
-                
-            
+                $("#cree_compte").hide();            
             });
         
             
@@ -135,9 +131,7 @@
                 $.ajax({
                     url: "http://localhost:8080/utilisateur",
                     type: 'POST',
-                    headers: { "pseudo" : pseudoNew , "mail" : mailNew , "motDePasse" : passwordNew , "prenom" : prenomNew , "nom" : nomNew }
-                    
-                    
+                    headers: { "pseudo" : pseudoNew , "mail" : mailNew , "motDePasse" : passwordNew , "prenom" : prenomNew , "nom" : nomNew }                    
                 }).done(function(data){
                     console.log(data);                    
                     alert("Votre compte a bien été créé !")

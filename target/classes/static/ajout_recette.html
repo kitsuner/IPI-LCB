@@ -171,11 +171,16 @@
 	            url: "http://localhost:8080/groupe/all/",
 	            }).done(function(data) {
 	            datas = data;
+<<<<<<< HEAD
 	
             		
+=======
+	 			console.log(data);
+>>>>>>> 057043a20067814f972edd9ae685008c35d7748a
 	            // liste 1 groupe ingrédient 
 	            numListe = 1;
 	            for (var i = 0; i < datas.length; i++) {
+	            	console.log(datas.length);
 	                var titre1 = datas[i].lib;
 	                $(".select"+numListe).append("<option type=text value="+i+" onclick=selectListe1()>"+titre1+"</option>"); 
 	            }

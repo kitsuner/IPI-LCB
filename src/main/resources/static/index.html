@@ -31,9 +31,10 @@
         <div id="menu_navigation">
             <a href="">Accueil</a>
             <a href="javascript:update('mes_recettes');">Mes recettes</a>
-            <a href="javascript:update('mes_favoris')">Mes favoris</a>
+            <a href="javascript:update('mes_favoris');">Mes favoris</a>
             <a href="connexion.html">Connexion</a>
             <a href="">Paramètres</a>
+            <a href="javascript:deconnexion()">Deconnexion</a>
         </div>
 
         <!-- Recherche -->
@@ -168,6 +169,9 @@
             else{
                 document.location.href=""+url+".html";
             }
+        }
+        function deconnexion(){
+        	sessionStorage.clear();
         }
     </script>
 
