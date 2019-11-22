@@ -51,7 +51,7 @@
                     <div class="form-col-4">
                         <div class="col-auto my-4">
                             <select class="custom-select mr-sm-2 select2" id="cat2">
-                            	<option selected>Faites votre choix...</option>
+                            	<option selected>Faites votre choix...</option> 
                             </select>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                     <div class="form-col-4">
                         <div class="col-auto my-4">
                             <select class="custom-select mr-sm-2 select3" id="cat3">
-                            	<option selected>Faites votre choix...</option>
+                            	<option selected>Faites votre choix...</option> 
                             </select>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                     <div class="form-col-4">
                         <div class="col-auto my-4">
                             <select class="custom-select mr-sm-2 select4" id="cat4">
-                            	<option selected>Faites votre choix...</option>
+                            	<option selected>Faites votre choix...</option> 
                             </select>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                 
                 <!-- Validation -->
                 <div class="row">
-                    <div class="col validAjouR text-right">
+                    <div class="col validIngredient text-right">
                         <button type="submit" class="btn btn-success">Valider</button>
                     </div>
                 </div>
@@ -152,14 +152,11 @@
 	    function recupListes(){
 	    	var liste;
 	    	var numListe;
-         	var numSelect1;
-         	var numSelect2;
-         	var numSelect3;
-         	var numSelect4;
          	var value1;
          	var value2;
          	var value3;
          	var value4;
+         	var ingredientValue;
          	
 	        $.ajax({
 	            type: 'get',
@@ -172,7 +169,6 @@
 	            numListe = 1;
 	            for (var i = 0; i < datas.length; i++) {
 	                var titre1 = datas[i].lib;
-					numSelect1 = i;
 	                $(".select"+numListe).append("<option type=text value="+i+" onclick=selectListe1()>"+titre1+"</option>"); 
 	            }
 	            
@@ -185,9 +181,9 @@
 	            	  
 	            	// liste 2 sous groupe ingrédient       	
 	  	         	numListe = 2;
+	  	         	$(".select"+numListe).append("<option selected>Faites votre choix...</option>");
 	  	            for (var j = 0; j < datas[value1].sousGroupeIngredient.length; j++) {
 	  	                var titre2 = datas[value1].sousGroupeIngredient[j].lib;
-	  					numSelect2 = j;
 	  	                $(".select"+numListe).append("<option type=text value="+j+" onclick=selectListe2()>"+titre2+"</option>"); 
 	  	            }
 	  	            
@@ -199,9 +195,9 @@
 	  	            
 		  	       		// liste 3 sous sous groupe ingrédient 
 			         	numListe = 3;
+			         	$(".select"+numListe).append("<option selected>Faites votre choix...</option>");
 			            for (var k = 0; k < datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient.length; k++) {
 			                var titre3 = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[k].lib;
-							numSelect3 = k;
 			                $(".select"+numListe).append("<option type=text value="+k+" onclick=selectListe3()>"+titre3+"</option>"); 
 			            }
 			         	
@@ -211,12 +207,11 @@
 			            	  $(".select4").empty();
 		            	  
 			            	// liste 4 ingrédient 
-				         	numListe = 4;
-			            	
+				         	numListe = 4;	
+				         	$(".select"+numListe).append("<option selected>Faites votre choix...</option>");
 				            for (var l = 0; l < datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[value3].ingredients.length; l++) {
 				            	console.log("select4")
 				                var titre4 = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[value3].ingredients[l].alimNom;
-								numSelect4 = l;
 				                $(".select"+numListe).append("<option type=text id="+l+" value="+l+" onclick=selectListe3()>"+titre4+"</option>"); 
 				            }
 					         	
@@ -233,10 +228,19 @@
 		        	})
 	        	})
 			})
+			
+			console.log(ingredientValue);
+		 	// Récupération de la valeur poids ingredient avec validation :
+	        $(".validIngredient").click(function() {
+	        	//value3 = $(this).val();
+	        	alert("hello ingredient"+ ingredientValue);
+	        });
 		}
 
 		
 	    recupListes();
+	    
+	    
 	
 	</script>
   </body>
