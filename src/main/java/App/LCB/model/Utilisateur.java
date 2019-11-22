@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class Utilisateur {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_utilisateur")
 	private Long idUtilisateur;
 	
@@ -41,8 +41,8 @@ public class Utilisateur {
 	
 	@OneToMany
 	@JoinTable(name = "Liste_Favoris",
-    joinColumns = @JoinColumn(name = "id_utilisateur"), 
-    inverseJoinColumns = @JoinColumn(name = "id_recette"))
+    	joinColumns = @JoinColumn(name = "id_utilisateur"), 
+    	inverseJoinColumns = @JoinColumn(name = "id_recette"))
 	List<Recette> recetteFavoris;
 	
 	public Long getIdUtilisateur() {
@@ -127,12 +127,5 @@ public class Utilisateur {
 		this.recetteFavoris = recetteFavoris;
 	}
 
-	
-	
-
-	
-
-	
-	
 	
 }
