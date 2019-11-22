@@ -113,8 +113,11 @@
                 }).done(
                     function(data) { 
                         console.log(data);
+                        document.location.href="mes_recettes.html";
                     }
-                )
+                ).fail(function(jqXHR, textStatus, errorThrown){
+                    alert("Connexion impossible. Cause probable : erreur sur le pseudonyme ou sur le mot de passe");
+                });
             })
 
             $("button[name='creerUnCompte']").on("click",function(){
@@ -131,8 +134,11 @@
                     
                     
                 }).done(function(data){
-                    console.log("ok");
-                })
+                    console.log(data);
+                    alert("Votre compte a bien été créé !")
+                }).fail(function(jqXHR, textStatus, errorThrown){
+                    alert("Nous n'avons pas pu créer votre compte. Cause probable : le pseudonyme est déjà utilisé");
+                });
             })
 
         </script>
