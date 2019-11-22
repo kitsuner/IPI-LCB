@@ -32,8 +32,15 @@ public class Recette {
 	@Column(name="instruction_recette")
 	private String instruction;		
 	
+	@Column(name="nbr_personnes")
+	private Integer nbrPersonnes;
+	
+	@Column(name="url_recette")
+	private String urlRecette;
+	
 	@OneToMany(mappedBy = "recette")
 	Set<listeIngredients> listeIngredient;
+	
 	
 	public Long getId() {
 		return id;
@@ -67,18 +74,39 @@ public class Recette {
 		this.listeIngredient = listeIngredient;
 	}
 
+	
+	public Integer getNbrPersonnes() {
+		return nbrPersonnes;
+	}
+
+	public void setNbrPersonnes(Integer nbrPersonnes) {
+		this.nbrPersonnes = nbrPersonnes;
+	}
+
+	public String getUrlRecette() {
+		return urlRecette;
+	}
+
+	public void setUrlRecette(String urlRecette) {
+		this.urlRecette = urlRecette;
+	}
+
 	public Recette() {
 		
 	}
 
-	public Recette(Long id, String lib, String instruction, Set<listeIngredients> listeIngredient,
-			Utilisateur utilisateur) {
+	public Recette(Long id, String lib, String instruction, Set<listeIngredients> listeIngredient, Integer nbrPersonnes,
+			String urlRecette) {
 		super();
 		this.id = id;
 		this.lib = lib;
 		this.instruction = instruction;
 		this.listeIngredient = listeIngredient;
+		this.nbrPersonnes = nbrPersonnes;
+		this.urlRecette = urlRecette;
 	}
+
+	
 
 
 }
