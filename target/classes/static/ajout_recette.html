@@ -76,11 +76,12 @@
                     
                 </div>
 
+<!--   --------------------------------- EN TRAVAUX !!!---------------------------------------------------------- -->
                 <!-- Poids -->
                 <div class="row">
                     <div class="col-4 poidsR">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="poidsRecette" aria-label="Text input with segmented dropdown button" placeholder="quantité">
+                            <input type="text" class="form-control poidsAlim" id="poidsAlim" aria-label="Text input with segmented dropdown button" placeholder="quantité">
                             <select class="form-control">
                                     <option selected>Unités...</option>
                                     <option value="1">Grammes</option>
@@ -92,13 +93,15 @@
                 
                 <!-- Validation -->
                 <div class="row">
-                    <div class="col validIngredient text-right">
-                        <button type="submit" class="btn btn-success">Valider</button>
+                    <div class="col text-right">
+                        <button type="submit" class="btn btn-success validIngredient">Valider</button>
                     </div>
                 </div>
 
                 <div class="row recetteIngredientsGeneree">
                 </div>
+
+<!--   --------------------------------- FIN TRAVAUX ---------------------------------------------------------- -->
 
                 <div class="recettePreparation">
                     <div class="form-group">
@@ -157,6 +160,10 @@
          	var value3;
          	var value4;
          	var ingredientValue;
+         // tableaux recupération ingredients
+         	var listeIngredients = [];
+    		var quantite = [];
+    		var compteur = 0;
          	
 	        $.ajax({
 	            type: 'get',
@@ -164,7 +171,8 @@
 	            url: "http://localhost:8080/groupe/all/",
 	            }).done(function(data) {
 	            datas = data;
-	 			
+	
+            		
 	            // liste 1 groupe ingrédient 
 	            numListe = 1;
 	            for (var i = 0; i < datas.length; i++) {
@@ -221,23 +229,45 @@
 					            var ingredientValue = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[value3].ingredients[value4].alimNom;
 					            console.log(ingredientValue);
 					            
-								return ingredientValue;
+
+// --------------------------------- EN TRAVAUX !!!----------------------------------------------------------
+
+								console.log("test1");
+						
+						         // Récupération de la valeur poids ingredient avec validation :
+							        $(".validIngredient").click(function() {
+							        	// Poids quantité aliment champ poidsRecette
+							            //var poids = $(".poidsAlim").val();
+				            	  		console.log($(".poidsAlim").val());
+				            	  		
+							        	//value3 = $(this).val();
+							        	console.log(ingredientValue);
+							        	console.log(poids);
+							        	
+							  
+							        	
+							        	
+// --------------------------------- FIN TRAVAUX !!!----------------------------------------------------------		
+							        	
+							        	/*
+							        	// tableaux recupération ingredients
+							            $("#validIngredient").click(function(){
+				                                compteur++;
+				                                listeIngredients[compteur] = $('.select4').val();
+				                                quantite[compteur] = $('#poidsRecette').val();
+				                                alert(listeIngredients[compteur],quantite[compteur]);
+				                         });
+						                  */         
+							       })
 				            })
-		            	  	
 	            		})
 		        	})
 	        	})
 			})
 			
-			console.log(ingredientValue);
-		 	// Récupération de la valeur poids ingredient avec validation :
-	        $(".validIngredient").click(function() {
-	        	//value3 = $(this).val();
-	        	alert("hello ingredient"+ ingredientValue);
-	        });
 		}
 
-		
+
 	    recupListes();
 	    
 	    
