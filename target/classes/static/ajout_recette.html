@@ -135,6 +135,9 @@
          	var numSelect1;
          	var numSelect2;
          	var numSelect3;
+         	var value1;
+         	var value2;
+         	var value3;
          	
 	        $.ajax({
 	            type: 'get',
@@ -148,55 +151,48 @@
 	            for (var i = 0; i < datas.length; i++) {
 	                var titre1 = datas[i].lib;
 					numSelect1 = i;
-	                $(".select"+numListe).append("<option type=text name="+i+" onchange=selectListe1()>"+titre1+"</option>"); 
+	                $(".select"+numListe).append("<option type=text value="+i+" onclick=selectListe1()>"+titre1+"</option>"); 
 	            }
-	            console.log("test1 : " + selectListe1());
+	            
+	            // Récupération valeur 1ère liste :
+	            $(".select1").on('change', function() {
+	            	  value1 = $(this).val();
+	            	  console.log(value1);
+	            	  $(".select2").empty();
+	            	  $(".select3").empty();
+	            	  
+	            	// liste sous groupe ingrédient       	
+	  	         	numListe = 2;
+	  	            for (var j = 0; j < datas[value1].sousGroupeIngredient.length; j++) {
+	  	                var titre2 = datas[value1].sousGroupeIngredient[j].lib;
+	  					numSelect2 = j;
+	  	                $(".select"+numListe).append("<option type=text value="+j+" onclick=selectListe2()>"+titre2+"</option>"); 
+	  	            }
+	  	            
+	  	       		// Récupération valeur 2ème liste :
+		            $('.select2').on('change', function() {
+		            	  value2 = $(this).val();
+		            	  console.log(value2);
+		            	  $('.select3').empty();
+	  	            
+	  	       		// liste sous sous groupe ingrédient 
+		         	numListe = 3;
+		            for (var k = 0; k < datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient.length; k++) {
+		                var titre3 = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[k].lib;
+						numSelect3 = k;
+		                $(".select"+numListe).append("<option type=text value="+k+" onclick=selectListe3()>"+titre3+"</option>"); 
+		            }
+		         	
+		         	// Récupération valeur 3ème liste :
+		            $('.select3').on('change', function() {
+		            	  value3 = $(this).val();
+		            	  console.log(value3);
+		            });
+			        })
+		        })
+			})
+		}
 
-	            
-	         	// liste sous groupe ingrédient 
-	         	numListe = 2;
-	         	//en test en dur
-	         	i = 1;
-	            for (var j = 0; j < datas[i].sousGroupeIngredient.length; j++) {
-	                var titre2 = datas[i].sousGroupeIngredient[j].lib;
-					numSelect2 = j;
-	                $(".select"+numListe).append("<option type=text name="+j+" onchange=selectListe2()>"+titre2+"</option>"); 
-	            }
-	            console.log("test2 : " + selectListe2());
-	            
-	            
-	         	// liste sous sous groupe ingrédient 
-	         	numListe = 3;
-	         	//en test en dur
-	         	j = 1;
-	            for (var k = 0; k < datas[i].sousGroupeIngredient[j].sousSousGroupeIngredient.length; k++) {
-	                var titre3 = datas[i].sousGroupeIngredient[j].sousSousGroupeIngredient[k].lib;
-					numSelect3 = k;
-	                $(".select"+numListe).append("<option type=text name="+k+" onchange=selectListe3()>"+titre3+"</option>"); 
-	            }
-	         	
-	            console.log("test3 : " + selectListe3());
-	            
-	            
-	        })
-	        
-	        function selectListe1(){        	
-	        	var num1 = document.getElementById("cat1").options[numSelect1].getAttribute("name");
-	        	return num1;
-         	}
-	        
-	        function selectListe2(){  
-	        	var num2 = document.getElementById("cat2").options[numSelect2].getAttribute("name");
-	        	return num2;
-         	}
-	        
-	        function selectListe3(){   
-	        	var num3 = document.getElementById("cat3").options[numSelect3].getAttribute("name");
-	        	return num3;
-         	}
-         
-	        
-	    }
 		
 	    recupListes();
 	
