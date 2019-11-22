@@ -41,7 +41,8 @@
                 	<!-- liste groupe ingrédient -->
                     <div class="form-col-4">
                         <div class="col-auto my-4 form1" >
-                            <select class="custom-select mr-sm-2 select1" id="cat1">            
+                            <select class="custom-select mr-sm-2 select1" id="cat1"> 
+                            	<option selected>Faites votre choix...</option>           
                             </select>
                         </div>
                     </div>
@@ -61,6 +62,15 @@
                             </select>
                         </div>
                     </div>
+                    
+                    <!-- liste ingrédient -->
+                    <div class="form-col-4">
+                        <div class="col-auto my-4">
+                            <select class="custom-select mr-sm-2 select4" id="cat4">
+                            </select>
+                        </div>
+                    </div>
+                    
                 </div>
 
                 <!-- Poids -->
@@ -74,6 +84,13 @@
                                     <option value="2">Litres</option>
                             </select>
                         </div>
+                    </div>
+                </div>
+                
+                <!-- Validation -->
+                <div class="row">
+                    <div class="col validAjouR text-right">
+                        <button type="submit" class="btn btn-success">Valider</button>
                     </div>
                 </div>
 
@@ -135,9 +152,11 @@
          	var numSelect1;
          	var numSelect2;
          	var numSelect3;
+         	var numSelect4;
          	var value1;
          	var value2;
          	var value3;
+         	var value4;
          	
 	        $.ajax({
 	            type: 'get',
@@ -146,7 +165,7 @@
 	            }).done(function(data) {
 	            datas = data;
 	 			
-	            // liste groupe ingrédient 
+	            // liste 1 groupe ingrédient 
 	            numListe = 1;
 	            for (var i = 0; i < datas.length; i++) {
 	                var titre1 = datas[i].lib;
@@ -157,11 +176,11 @@
 	            // Récupération valeur 1ère liste :
 	            $(".select1").on('change', function() {
 	            	  value1 = $(this).val();
-	            	  console.log(value1);
 	            	  $(".select2").empty();
 	            	  $(".select3").empty();
+	            	  $(".select4").empty();
 	            	  
-	            	// liste sous groupe ingrédient       	
+	            	// liste 2 sous groupe ingrédient       	
 	  	         	numListe = 2;
 	  	            for (var j = 0; j < datas[value1].sousGroupeIngredient.length; j++) {
 	  	                var titre2 = datas[value1].sousGroupeIngredient[j].lib;
@@ -172,24 +191,42 @@
 	  	       		// Récupération valeur 2ème liste :
 		            $('.select2').on('change', function() {
 		            	  value2 = $(this).val();
-		            	  console.log(value2);
-		            	  $('.select3').empty();
+		            	  $(".select3").empty();
+		            	  $(".select4").empty();
 	  	            
-	  	       		// liste sous sous groupe ingrédient 
-		         	numListe = 3;
-		            for (var k = 0; k < datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient.length; k++) {
-		                var titre3 = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[k].lib;
-						numSelect3 = k;
-		                $(".select"+numListe).append("<option type=text value="+k+" onclick=selectListe3()>"+titre3+"</option>"); 
-		            }
-		         	
-		         	// Récupération valeur 3ème liste :
-		            $('.select3').on('change', function() {
-		            	  value3 = $(this).val();
-		            	  console.log(value3);
-		            });
-			        })
-		        })
+		  	       		// liste 3 sous sous groupe ingrédient 
+			         	numListe = 3;
+			            for (var k = 0; k < datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient.length; k++) {
+			                var titre3 = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[k].lib;
+							numSelect3 = k;
+			                $(".select"+numListe).append("<option type=text value="+k+" onclick=selectListe3()>"+titre3+"</option>"); 
+			            }
+			         	
+			         	// Récupération valeur 3ème liste :
+			            $('.select3').on('change', function() {
+			            	  value3 = $(this).val();
+			            	  $(".select4").empty();
+		            	  
+			            	// liste 4 ingrédient 
+				         	numListe = 4;
+			            	
+				            for (var l = 0; l < datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[value3].ingredients.length; l++) {
+				            	console.log("select4")
+				                var titre4 = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[value3].ingredients[l].alimNom;
+								numSelect4 = l;
+				                $(".select"+numListe).append("<option type=text id="+l+" value="+l+" onclick=selectListe3()>"+titre4+"</option>"); 
+				            }
+					         	
+				         	// Récupération valeur 3ème liste :
+				            $('.select4').on('change', function() {
+				            	value4 = $(this).val();
+					            var ingredientValue = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[value3].ingredients[value4].alimNom;
+					            console.log(ingredientValue);
+				            })
+		            	  	
+	            		})
+		        	})
+	        	})
 			})
 		}
 
