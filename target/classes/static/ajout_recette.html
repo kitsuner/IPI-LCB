@@ -82,7 +82,7 @@
                     <div class="col-4 poidsR">
                         <div class="input-group">
                             <input type="text" class="form-control poidsAlim" id="poidsAlim" aria-label="Text input with segmented dropdown button" placeholder="quantité">
-                            <select class="form-control">
+                            <select class="form-control select5">
                                     <option selected>Unités...</option>
                                     <option value="1">Grammes</option>
                                     <option value="2">Litres</option>
@@ -103,6 +103,31 @@
 
 <!--   --------------------------------- FIN TRAVAUX ---------------------------------------------------------- -->
 
+                <div class="conteneurListeIngredients" id="conteneurListeIngredients"></div>
+
+                <div>
+                    <h2>Tableau nutritionnel</h2>
+                    <div class="nut" id="amidon">Amidon : </div>
+                    <div class="nut" id="betaCarotene">Beta Carotène : </div>
+                    <div class="nut" id="calcium">Calcium : </div>
+                    <div class="nut" id="cholesterol">Cholesterol : </div>
+                    <div class="nut" id="eau">Eau : </div>
+                    <div class="nut" id="energie">Energie : </div>
+                    <div class="nut" id="fer">Fer : </div>
+                    <div class="nut" id="fibresAlimentaires">Fibres Alimentaires : </div>
+                    <div class="nut" id="glucides">Glucides : </div>
+                    <div class="nut" id="iode">Iode : </div>
+                    <div class="nut" id="lipides">Lipides : </div>
+                    <div class="nut" id="proteines">Protéines : </div>
+                    <div class="nut" id="sel">Sel : </div>
+                    <div class="nut" id="sucres">Sucres : </div>
+                    <div class="nut" id="vitamineB1">Vitamines B1 : </div>
+                    <div class="nut" id="vitamineB12">Vitamines B12 : </div>
+                    <div class="nut" id="vitamineC">Vitamines C : </div>
+                    <div class="nut" id="vitamineD">Vitamines D : </div>
+                    <div class="nut" id="vitamineE">Vitamines E : </div>
+                </div>
+
                 <div class="recettePreparation">
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Préparation :</label>
@@ -113,7 +138,7 @@
                 <!-- Validation -->
                 <div class="row">
                     <div class="col validAjouR text-right">
-                        <button type="submit" class="btn btn-success">Valider</button>
+                        <button id="validRecette" type="submit" class="btn btn-success">Valider</button>
                     </div>
                 </div>
 
@@ -152,6 +177,13 @@
 
 	<script>
 
+        var poids;
+        var ingredientValue;
+        var unite;
+        var proprietesIngredient;
+        
+        recupListes();
+        
 	    function recupListes(){
 	    	var liste;
 	    	var numListe;
@@ -159,11 +191,9 @@
          	var value2;
          	var value3;
          	var value4;
-         	var ingredientValue;
+         	
          // tableaux recupération ingredients
-         	var listeIngredients = [];
-    		var quantite = [];
-    		var compteur = 0;
+         	
          	
 	        $.ajax({
 	            type: 'get',
@@ -171,12 +201,12 @@
 	            url: "http://localhost:8080/groupe/all/",
 	            }).done(function(data) {
 	            datas = data;
-<<<<<<< HEAD
+
 	
             		
-=======
+
 	 			console.log(data);
->>>>>>> 057043a20067814f972edd9ae685008c35d7748a
+
 	            // liste 1 groupe ingrédient 
 	            numListe = 1;
 	            for (var i = 0; i < datas.length; i++) {
@@ -231,53 +261,183 @@
 				         	// Récupération valeur 4ème liste :
 				            $('.select4').on('change', function() {
 				            	value4 = $(this).val();
-					            var ingredientValue = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[value3].ingredients[value4].alimNom;
-					            console.log(ingredientValue);
+                                ingredientValue = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[value3].ingredients[value4].alimNom;
+                                proprietesIngredient = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[value3].ingredients[value4];
+
+					            console.log(ingredientValue,proprietesIngredient);
 					            
-
 // --------------------------------- EN TRAVAUX !!!----------------------------------------------------------
-
-								console.log("test1");
+								
 						
 						         // Récupération de la valeur poids ingredient avec validation :
-							        $(".validIngredient").click(function() {
-							        	// Poids quantité aliment champ poidsRecette
-							            //var poids = $(".poidsAlim").val();
-				            	  		console.log($(".poidsAlim").val());
-				            	  		
-							        	//value3 = $(this).val();
-							        	console.log(ingredientValue);
-							        	console.log(poids);
-							        	
-							  
+							        $(".validIngredient").click(function(event) {
+                                        // Poids quantité aliment champ poidsRecette
+                                        console.log(proprietesIngredient.amidon);
+                                        
+                                        event.preventDefault();
+										
+                                        
+                                        
+                                        $("#validRecette").click(function(event){
+                                            
+                                            calculTotalNutriments();
+                                            /*
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: "http://localhost:8080/recette",
+                                                //headers:
+                                                }).done(function(data) {
+                                                    
+                                            })
+                                            */
+                                            event.preventDefault();
+                                        })
+
+                                    })
 							        	
 							        	
 // --------------------------------- FIN TRAVAUX !!!----------------------------------------------------------		
 							        	
-							        	/*
-							        	// tableaux recupération ingredients
-							            $("#validIngredient").click(function(){
-				                                compteur++;
-				                                listeIngredients[compteur] = $('.select4').val();
-				                                quantite[compteur] = $('#poidsRecette').val();
-				                                alert(listeIngredients[compteur],quantite[compteur]);
-				                         });
-						                  */         
-							       })
+							       
+							       
 				            })
 	            		})
 		        	})
 	        	})
 			})
 			
-		}
+        }
+        
+        // AFFICHAGE DE LA LISTE DES INGREDIENTS
+	    $(".validIngredient").click(function(event) {
+	    	poids = $(".poidsAlim").val();
+            unite = $(".select5").val();
+            if(unite == 1){
+                unite = "grammes";
+            } else if (unite == 2){
+                unite = "litres";
+            } else {
+                unite = "";
+                poids = "";
+            }
 
 
-	    recupListes();
-	    
+
+            afficheIngredient();
+            afficheTableauNutritionnel();
+	    })
+        
+        
+        
+		// AFFICHAGE DE LA LISTE DES INGREDIENTS 
+        function afficheIngredient(){
+            if (unite == ""){
+            	$(".conteneurListeIngredients").append("<div>"+ingredientValue+"</div>");
+            } else {
+            	$(".conteneurListeIngredients").append("<div>"+poids+" "+unite+" de "+ingredientValue+"</div>");
+            }
+            
+            
+        }
+
+        // REMPLISSAGE DU TABLEAU CONTENANT TOUTES LES VALEURS NUTRITIONNELLES PAR INGREDIENT ET EN FONCTION DE LA QUANTITE 
+        function afficheTableauNutritionnel(){
+            $("#amidon").append("<div class='nutri amidon'>"+proprietesIngredient.amidon/100*poids+"</div>");
+            $("#betaCarotene").append("<div class='nutri betaCarotene'>"+proprietesIngredient.betaCarotene/100*poids+"</div>");
+            $("#calcium").append("<div class='nutri calcium'>"+proprietesIngredient.calcium/100*poids+"</div>");
+            $("#cholesterol").append("<div class='nutri cholesterol'>"+proprietesIngredient.cholosterol/100*poids+"</div>");
+            $("#eau").append("<div class='nutri eau'>"+proprietesIngredient.eau/100*poids+"</div>");
+            $("#energie").append("<div class='nutri energie'>"+proprietesIngredient.energie/100*poids+"</div>");
+            $("#fer").append("<div class='nutri fer'>"+proprietesIngredient.fer/100*poids+"</div>");
+            $("#fibresAlimentaires").append("<div class='nutri fibresAlimentaires'>"+proprietesIngredient.fibresAlimentaires/100*poids+"</div>");
+            $("#glucides").append("<div class='nutri glucides'>"+proprietesIngredient.glucides/100*poids+"</div>");
+            $("#iode").append("<div class='nutri iode'>"+proprietesIngredient.iode/100*poids+"</div>");
+            $("#lipides").append("<div class='nutri lipides'>"+proprietesIngredient.lipides/100*poids+"</div>");
+            $("#proteines").append("<div class='nutri proteines'>"+proprietesIngredient.proteines/100*poids+"</div>");
+            $("#sel").append("<div class='nutri sel'>"+proprietesIngredient.sel/100*poids+"</div>");
+            $("#sucres").append("<div class='nutri sucres'>"+proprietesIngredient.sucres/100*poids+"</div>");
+            $("#vitamineB1").append("<div class='nutri vitamineB1'>"+proprietesIngredient.vitamineB1/100*poids+"</div>");
+            $("#vitamineB12").append("<div class='nutri vitamineB12'>"+proprietesIngredient.vitamineB12/100*poids+"</div>");
+            $("#vitamineC").append("<div class='nutri vitamineC'>"+proprietesIngredient.vitamineC/100*poids+"</div>");
+            $("#vitamineD").append("<div class='nutri vitamineD'>"+proprietesIngredient.vitamineD/100*poids+"</div>");
+            $("#vitamineE").append("<div class='nutri vitamineE'>"+proprietesIngredient.vitamineE/100*poids+"</div>");
+        }
+        
+
+        // CALCUL DU TOTAL PAR NUTRIMENT DE LA RECETTE
+        function calculTotalNutriments(){
+            
+            var totalAmidon = 0;
+            var totalBetaCarotene = 0;
+            var totalCalcium = 0;
+            var totalCholesterol = 0;
+            var totalEau = 0;
+            var totalEnergie =0;
+            var totalFer=0;
+            var totalFibresAlimentaires=0;
+            var totalGlucides=0;
+            var totalIode=0;
+            var totalLipides=0;
+            var totalProteines=0;
+            var totalSel=0;
+            var totalSucres=0;
+            var totalVitamineB1=0;
+            var totalVitamineB12=0;
+            var totalVitamineC=0;
+            var totalVitamineD=0;
+            var totalVitamineE=0;
+
+            var amidon = $(".amidon");
+            var betaCarotene = $(".betaCarotene");
+            var calcium = $(".calcium");
+            var cholesterol= $(".cholesterol");
+            var eau= $(".eau");
+            var energie= $(".energie");
+            var fer= $(".fer");
+            var fibresAlimentaires= $(".fibresAlimentaires");
+            var glucides= $(".glucides");
+            var iode= $(".iode");
+            var lipides= $(".lipides");
+            var proteines= $(".proteines");
+            var sel= $(".sel");
+            var sucres= $(".sucres");
+            var vitamineB1= $(".vitamineB1");
+            var vitamineB12= $(".vitamineB12");
+            var vitamineC= $(".vitamineC");
+            var vitamineD= $(".vitamineD");
+            var vitamineE= $(".vitamineE");
+
+            for(var i = 0 ; i < amidon.length; i++){
+                totalAmidon = totalAmidon + parseFloat(amidon[i].childNodes[0].data);
+                totalBetaCarotene = totalBetaCarotene + parseFloat(betaCarotene[i].childNodes[0].data);
+                totalCalcium = totalCalcium + parseFloat(calcium[i].childNodes[0].data);
+                totalCholesterol = totalCholesterol + parseFloat(cholesterol[i].childNodes[0].data);
+                totalEau = totalEau + parseFloat(eau[i].childNodes[0].data);
+                totalEnergie = totalEnergie + parseFloat(energie[i].childNodes[0].data);
+                totalFer = totalFer + parseFloat(fer[i].childNodes[0].data);
+                totalFibresAlimentaires = totalFibresAlimentaires + parseFloat(fibresAlimentaires[i].childNodes[0].data);
+                totalGlucides = totalGlucides + parseFloat(glucides[i].childNodes[0].data);
+                totalIode = totalIode + parseFloat(iode[i].childNodes[0].data);
+                totalLipides = totalLipides + parseFloat(lipides[i].childNodes[0].data);
+                totalProteines = totalProteines + parseFloat(proteines[i].childNodes[0].data);
+                totalSel = totalSel + parseFloat(sel[i].childNodes[0].data);
+                totalSucres = totalSucres + parseFloat(sucres[i].childNodes[0].data);
+                totalVitamineB1 = totalVitamineB1 + parseFloat(vitamineB1[i].childNodes[0].data);
+                totalVitamineB12 = totalVitamineB12 + parseFloat(vitamineB12[i].childNodes[0].data);
+                totalVitamineC = totalVitamineC + parseFloat(vitamineC[i].childNodes[0].data);
+                totalVitamineD = totalVitamineD + parseFloat(vitamineD[i].childNodes[0].data);
+                totalVitamineE = totalVitamineE + parseFloat(vitamineE[i].childNodes[0].data);
+                console.log(totalAmidon,totalBetaCarotene,totalCalcium,totalCholesterol,totalEau,totalEnergie,totalFer,totalFibresAlimentaires,totalGlucides,totalIode,totalLipides,totalProteines,totalSel,totalSucres,totalVitamineB1,totalVitamineB12,totalVitamineC,totalVitamineD,totalVitamineE);
+
+            }
+           
+
+            
+            
+        }
+	
 	    
 	
 	</script>
   </body>
 </html>
-

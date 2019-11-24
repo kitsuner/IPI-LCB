@@ -1,7 +1,7 @@
 package App.LCB.model;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
@@ -31,16 +32,19 @@ public class Recette {
 	
 	@Column(name="instruction_recette")
 	private String instruction;		
-	
+		
 	@Column(name="nbr_personne")
-	private Integer nbrPersonnes;
+	private Integer nbrPersonne;
 	
 	@Column(name="url_recette")
 	private String urlRecette;
 	
 	@OneToMany(mappedBy = "recette")
-	Set<listeIngredients> listeIngredient;
+	List<listeIngredients> listeIngredient;
 	
+	@Lob
+	@Column(name="image")
+	private byte[] image;
 	
 	public Long getId() {
 		return id;
@@ -65,22 +69,12 @@ public class Recette {
 	public void setInstruction(String instruction) {
 		this.instruction = instruction;
 	}
+	public Integer getNbrPersonne() {
+		return nbrPersonne;
+	} 
 
-	public Set<listeIngredients> getListeIngredient() {
-		return listeIngredient;
-	}
-
-	public void setListeIngredient(Set<listeIngredients> listeIngredient) {
-		this.listeIngredient = listeIngredient;
-	}
-
-	
-	public Integer getNbrPersonnes() {
-		return nbrPersonnes;
-	}
-
-	public void setNbrPersonnes(Integer nbrPersonnes) {
-		this.nbrPersonnes = nbrPersonnes;
+	public void setNbrPersonne(Integer nbrPersonne) {
+		this.nbrPersonne = nbrPersonne;
 	}
 
 	public String getUrlRecette() {
@@ -90,24 +84,40 @@ public class Recette {
 	public void setUrlRecette(String urlRecette) {
 		this.urlRecette = urlRecette;
 	}
+	
+
+	public List<listeIngredients> getListeIngredient() {
+		return listeIngredient;
+	}
+
+	public void setListeIngredient(List<listeIngredients> listeIngredient) {
+		this.listeIngredient = listeIngredient;
+	}
+
+	
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
 
 	public Recette() {
 		
 	}
 
-	public Recette(Long id, String lib, String instruction, Set<listeIngredients> listeIngredient, Integer nbrPersonnes,
-			String urlRecette) {
+	public Recette(Long id, String lib, String instruction, Integer nbrPersonne, String urlRecette,
+			List<listeIngredients> listeIngredient, byte[] image) {
 		super();
 		this.id = id;
 		this.lib = lib;
 		this.instruction = instruction;
-		this.listeIngredient = listeIngredient;
-		this.nbrPersonnes = nbrPersonnes;
+		this.nbrPersonne = nbrPersonne;
 		this.urlRecette = urlRecette;
+		this.listeIngredient = listeIngredient;
+		this.image = image;
 	}
-
-	
-
 
 }
 
