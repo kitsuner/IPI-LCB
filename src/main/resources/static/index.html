@@ -32,7 +32,7 @@
 
         <!-- Menu caché -->
         <div id="menu_navigation">
-            <a href="">Accueil</a>
+            <a href="" id="accueil">Accueil</a>
             <a href="javascript:update('mes_recettes');">Mes recettes</a>
             <a href="javascript:update('mes_favoris');">Mes favoris</a>
             <a href="connexion.html" id="bouton_connexion">Connexion</a>
@@ -54,12 +54,12 @@
             <div class="row recettesRow">
 
                 <div class="card-deck">
-                    <div class="card">
-                        <img class="card-img-top"
+                    <div class="card" id="card0">
+                        <img class="card-img-top" id="image0"
                             src="https://cdn.pixabay.com/photo/2018/02/05/19/12/strawberry-3132973_960_720.jpg"
                             alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
+                            <h5 class="card-title" id="title0">Card title</h5>
                             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
                                 additional content. This content is a little bit longer.</p>
                         </div>
@@ -73,12 +73,12 @@
                         </div>
                     </div>
 
-                    <div class="card">
-                        <img class="card-img-top"
+                    <div class="card" id="card1">
+                        <img class="card-img-top" id="image1"
                             src="https://cdn.pixabay.com/photo/2015/09/16/20/10/pancakes-943246_960_720.jpg"
                             alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
+                            <h5 class="card-title" id="title1">Card title</h5>
                             <p class="card-text">This card has supporting text below as a natural lead-in to additional
                                 content.</p>
                         </div>
@@ -92,12 +92,12 @@
                         </div>
                     </div>
 
-                    <div class="card">
-                        <img class="card-img-top"
+                    <div class="card" id="card2">
+                        <img class="card-img-top" id="image2"
                             src="https://cdn.pixabay.com/photo/2017/03/19/18/22/italian-food-2157246_960_720.jpg"
                             alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
+                            <h5 class="card-title" id="title2">Card title</h5>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
                                 additional content. This card has even longer content than the first to show that equal
                                 height action.</p>
@@ -149,16 +149,20 @@
     </body>
 
     <script>
+    	image();
         $("#menu_navigation").hide();
         $("#open_menu_nav").click(function(){
             $("#menu_navigation").toggle();
             $("#bouton_connexion").show();
             let user = sessionStorage.getItem('Mail')
             if ( user == null){
-            $("#bouton_deconnexion").hide();
+                $("#bouton_deconnexion").hide();
+                
+                
             }
             else {
             	$("#bouton_connexion").hide();
+            	getPseudo();
             }
         })
         
@@ -177,6 +181,7 @@
         function deconnexion(){
             sessionStorage.clear();
             $("#menu_navigation").hide();
+            $("#pseudo").remove();
             }
 
     function search() {
@@ -188,13 +193,51 @@
             dataType: "json",
             timeout: 15000
         }).done(
+            function (data) {              
+                let i = 0;
+                while (i < 3) {
+                    if (i < data.length) {
+                        document.getElementById("image" + i + "").src = "data:image/png;base64," + data[i].image + "";
+                        document.getElementById("title" + i + "").textContent = "" + data[i].lib + "";
+                    }
+                    else {
+                        document.getElementById("card" + i + "").remove();
+                    }
+                    i++;
+                }
+            });                    
+            }
+    function image() {
+         $.ajax({
+            url: "http://localhost:8080/recette/homePageRecette",
+            type: 'GET',
+            dataType: "json",
+            timeout: 15000
+        }).done(
             function (data) {
-                console.log(data);
-            });
-       
-        
-        
-    }
+                for (let i = 0; i < data.length; i++) {
+                    document.getElementById("image"+i+"").src="data:image/png;base64,"+data[i].image+"";
+                    document.getElementById("title"+i+"").textContent=""+data[i].lib+"";
+                }
+            });     
+            
+        }
+        function getPseudo() {
+        	let tempMail = sessionStorage.getItem('Mail');
+        	let tempPassword = sessionStorage.getItem('Password');
+        	console.log(tempMail, tempPassword);
+            $.ajax({ 
+                    url: "http://localhost:8080/utilisateur/connexion", 
+                    headers: { "mail" : tempMail , "password" : tempPassword},
+                    type: 'GET',
+                    dataType:"json",
+                    timeout: 15000
+                }).done(
+                    function(data) { 
+                    	console.log(data.pseudo);
+                        $("#menu_navigation").prepend("<p id='pseudo'>Bienvenue "+data.pseudo+"");
+                    });
+        }
     </script>
 
 

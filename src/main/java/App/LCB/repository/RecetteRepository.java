@@ -16,4 +16,7 @@ public interface RecetteRepository extends CrudRepository<Recette, Long>{
 	
 	List<Recette> findByLibContaining(String lib);
 	
+	
+	List<Recette> findByIdBefore(Long id);
+	
 }

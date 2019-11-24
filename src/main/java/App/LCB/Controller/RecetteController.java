@@ -3,7 +3,6 @@ package App.LCB.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,5 +46,11 @@ public class RecetteController {
 	@ResponseBody
 	private List<Recette> SearchRecette(@RequestHeader("lib") String lib){		
 		return recetteRepository.findByLibContaining(lib);	
+	}
+	
+	@RequestMapping("/homePageRecette")
+	@ResponseBody
+	private List<Recette> homePageRecette(){
+		return recetteRepository.findByIdBefore(4l);
 	}
 }
