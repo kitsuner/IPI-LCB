@@ -184,6 +184,18 @@ input:focus {
     margin-right: 50px;
 }
 
+.nut{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	border: solid black 1px;
+}
+.nutri{
+	width : 50px;
+	margin-left: 30px;
+	
+}
+
 /* MES FAVORIS */
 #conteneur_favoris{
     background-color: rgb(240, 240, 240);
