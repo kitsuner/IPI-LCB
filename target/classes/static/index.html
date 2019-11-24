@@ -1,14 +1,17 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="fr">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <title>Les Cordons Bleus</title>
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+    <title>Les Cordons Bleus</title>
+</head>
 
     <body>
 
@@ -32,16 +35,16 @@
             <a href="">Accueil</a>
             <a href="javascript:update('mes_recettes');">Mes recettes</a>
             <a href="javascript:update('mes_favoris');">Mes favoris</a>
-            <a href="connexion.html">Connexion</a>
+            <a href="connexion.html" id="bouton_connexion">Connexion</a>
             <a href="">Paramètres</a>
-            <a href="javascript:deconnexion()">Deconnexion</a>
+            <a href="javascript:deconnexion()" id="bouton_deconnexion">Deconnexion</a>
         </div>
 
         <!-- Recherche -->
         <div class="input-group col-md-8 col-sm-10 row border border-secondary rounded-pill mx-auto my-3 p-0" style="height: 8vh">
             <input type="search" placeholder="nom de recette ou ...." aria-describedby="button-addon1"
-                class="search_bar form-control border-0 m-0 bg-light" style="height:100%">
-            <button id="button-addon1" type="submit" class="btn btn-link text-primary m-0">
+                class="search_bar form-control border-0 m-0 bg-light" style="height:100%" id="search">
+            <button id="button-addon1" type="submit" class="btn btn-link text-primary m-0" onclick="search()">
                 <img class="search_icon p-0 m-0" src="https://img.icons8.com/cotton/25/000000/search--v5.png">
             </button>
         </div>
@@ -139,12 +142,7 @@
 
 
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
+        
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
@@ -154,12 +152,18 @@
         $("#menu_navigation").hide();
         $("#open_menu_nav").click(function(){
             $("#menu_navigation").toggle();
+            $("#bouton_connexion").show();
+            let user = sessionStorage.getItem('Mail')
+            if ( user == null){
+            $("#bouton_deconnexion").hide();
+            }
+            else {
+            	$("#bouton_connexion").hide();
+            }
         })
         
        function update(url){
         let pseudo = sessionStorage.getItem('Mail');
-        let passe = sessionStorage.getItem('Password');
-        console.log(pseudo, passe);
         connection(pseudo, url);
         }
         function connection(pseudo, url){
@@ -171,8 +175,26 @@
             }
         }
         function deconnexion(){
-        	sessionStorage.clear();
-        }
+            sessionStorage.clear();
+            $("#menu_navigation").hide();
+            }
+
+    function search() {
+        let recherche = $("#search").val();
+        $.ajax({
+            url: "http://localhost:8080/recette/search",
+            headers: { "lib": recherche },
+            type: 'GET',
+            dataType: "json",
+            timeout: 15000
+        }).done(
+            function (data) {
+                console.log(data);
+            });
+       
+        
+        
+    }
     </script>
 
 

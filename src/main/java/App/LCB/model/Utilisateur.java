@@ -37,13 +37,16 @@ public class Utilisateur {
 
 	@OneToMany
 	@JoinColumn( name = "id_utilisateur")
-	List<Recette> recette;
+	List<Recette> recette; 
 	
 	@OneToMany
 	@JoinTable(name = "Liste_Favoris",
     	joinColumns = @JoinColumn(name = "id_utilisateur"), 
     	inverseJoinColumns = @JoinColumn(name = "id_recette"))
 	List<Recette> recetteFavoris;
+	
+	
+	
 	
 	public Long getIdUtilisateur() {
 		return idUtilisateur;
@@ -110,6 +113,8 @@ public class Utilisateur {
 		this.recetteFavoris = recetteFavoris;
 	}
 
+	
+
 	public Utilisateur() {
 		
 	}
@@ -126,6 +131,12 @@ public class Utilisateur {
 		this.recette = recette;
 		this.recetteFavoris = recetteFavoris;
 	}
+
+	
+
+	
+
+	
 
 	
 }
