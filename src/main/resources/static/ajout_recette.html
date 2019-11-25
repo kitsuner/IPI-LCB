@@ -422,29 +422,14 @@
 					            
 					           
 								
-						         // Récupération de la valeur poids ingredient avec validation :
+						         
 							        $(".validIngredient").click(function(event) {
-                                        // Poids quantité aliment champ poidsRecette
+                                        
                                         
                                         
                                         event.preventDefault();
 										
-
-                                     $("#validRecette").click(function(event){  
-                                    	event.preventDefault();
-                                         
-                                        regroupeAttributs();
-
-                                        /*
-                                        $.ajax({
-                                            type: 'POST',
-                                            url: "http://localhost:8080/recette",
-                                            //headers: 
-                                            }).done(function(data) {  
-                                        })
-                                        */
-                                         
-                                     })
+									
                                  })
 				            })
 	            		})
@@ -454,6 +439,28 @@
 			
         }
         
+		// VALIDATION DE LA RECETTE : RECUPERATION DES DONNEES ET ENVOIE DE LA REQUETE AJAX
+        $("#validRecette").click(function(event){  
+        	event.preventDefault();
+             
+            regroupeAttributs();
+			console.log(titreRecette, prepaRecette, nbPersonnes, listIngredients);
+            
+            $.ajax({
+                type: 'POST',
+                url: "http://localhost:8080/recette",
+                headers: { "lib_recette" : titreRecette , "instruction_recette" : prepaRecette , "nbr_personne" : nbPersonnes , "liste_ingredient" : listIngredients }
+                }).done(function(data) {  
+                	console.log(data);
+                	alert("Votre recette a été enregistrée avec succès !");
+            	}).fail(function(jqXHR, textStatus, errorThrown){
+                    alert("Nous n'avons pas pu enregistrer votre recette. Réessayez ultérieurement");
+                });
+            
+             
+         })
+		
+		
 
         // REGROUPE LES ATTRIBUTS NECESSAIRES POUR LA REQUETE AJAX
         function regroupeAttributs(){
