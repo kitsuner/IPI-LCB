@@ -194,17 +194,41 @@ input:focus {
     margin-top:40px;
     margin-right: 50px;
 }
-/*
-.nut{
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
+.titrePpl{
+    width : 50%;
+    display : inline-block;
 }
+.titre{
+    width : 20%;
+    display : inline-block;
+}
+.ctnr{
+    border-top : solid grey 1px;
+}
+.nomNut{
+    width : 100px;
+    display: inline-block;
+    
+}
+.nut1{
+    width:40%;
+    display: inline-block;
+	flex-direction: row;
+    justify-content: flex-start;
+    
+}
+.nut2{
+    width:20%;
+    display: inline-block;
+    
+}
+
 .nutri{
 	width : 50px;
-	margin-left: 30px;
+    margin-left: 30px;
+    display : inline-block;
 }
-*/
+
 .total{
 	
 	margin-left: 30px;
