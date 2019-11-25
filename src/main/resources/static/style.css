@@ -1,547 +1,270 @@
-<!doctype html>
-<html lang="fr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="style.css">
-   	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <title>Les Cordons Bleus</title>
-</head>
+/* NavBars */
+@media (max-width: 575.98px) { 
+    .navbartop{
+        visibility: hidden;
+    }
+    .footerDesktop{
+        visibility: hidden;
+    }
+}
+@media (min-width: 576px) { 
+    .navbarbottom{
+        visibility: hidden;
+    }
+}
+/* Footer Desktop */
+.footertext1{
+    margin-top: 50px;
+    font-size: 0.8em;
+    text-align: center;
+}
+.footertext-links{
+    margin-top: 10px;
+    font-size: 0.8em;
+    text-align: center;
+    
+}
+.footertext-links a:link, a:visited, a:focus {
+    text-decoration:none;
+    color: black;
+}
 
-<body>
+/* PAGE ACCUEIL */
 
-    <!-- Navbar Top -->
-    <nav class="navbar navbartop navbar-expand-sm navbar-light bg-light">
-        <a href="index.html" class="navbar-brand">
-            <img src="./images/chef.png" height="30" alt="Les Cordons Bleus">Les Cordons Bleus
-        </a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>    
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ml-auto">
-                <a href="connexion.html" class="nav-item nav-link" title="Connexion"><img src="./images/nav_user.png" height="35" alt="login"></a>
-            </div>
-        </div>
-    </nav>
+/* Menu de navigation */
+/*
+#menu_navigation{
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+    width : 100px;
+    padding-bottom: 5px;
+    border-radius : 4%;
+    box-shadow: lightgrey 3px 3px 3px;
+    background-color: rgb(247, 247, 247);
+    position : absolute;
+    right : 0px;
+    top : 50px
+    z-index = 10;
+}
+*/
+/* Barre de recherche */
+.search_bar{
+    border-radius: 25px 0px 0px 25px;
+    padding: 0px;
+    padding-left: 15px;
+    height:100%;
+}
 
-    <!-- Liste mes recettes -->
-<div class="maCreationR">
+.search_icon{
+    height: 100%;
+    width: auto;
+}
 
-    <!-- card -->
-    <div class="card shadow p-3 mb-5 bg-white rounded">
-        <div class="card-body cardR">
-        	<form id="formulaire">
-            <h1 class="text-center titreCardRecette">Ajouter une recette</h1>
-            
-            <!-- partie Titre et nombre de personnes de la recette -->
-			<!-- Titre de la recette -->
-               <div class="form-group recetteTitre mt-5">
-			    <label for="recetteTitre">Titre de la recette :</label>
-			    <input type="text" class="form-control" id="recetteTitre" placeholder="titre">
-			</div>
-			<div class="row">
-				<div class="form-group col-md-8">
-				      <label for="inputState">Nombre de personnes : </label>
-				      <select id="nbPers" class="form-control">
-					        <option selected>Faites votre choix...</option>
-					        <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-					        <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
-				      </select>
-		    	</div>
-           	</div>
-                
-                
-            <p class="card-text titreinfo1R">Selectionnez vos ingrédients et la quantité :</p>
-                <div class="row">              
-                	<!-- liste groupe ingrédient -->
-                    <div class="form-col-4">
-                        <div class="col-auto my-4 form1" >
-                            <select class="custom-select mr-sm-2 select1" id="cat1"> 
-                            	<option selected>Faites votre choix...</option>           
-                            </select>
-                        </div>
-                    </div>
-					<!-- liste sous groupe ingrédient -->
-                    <div class="form-col-4">
-                        <div class="col-auto my-4">
-                            <select class="custom-select mr-sm-2 select2" id="cat2">
-                            	<option selected>Faites votre choix...</option> 
-                            </select>
-                        </div>
-                    </div>
-					<!-- liste sous sous groupe ingrédient -->
-                    <div class="form-col-4">
-                        <div class="col-auto my-4">
-                            <select class="custom-select mr-sm-2 select3" id="cat3">
-                            	<option selected>Faites votre choix...</option> 
-                            </select>
-                        </div>
-                    </div>               
-                    <!-- liste ingrédient -->
-                    <div class="form-col-4">
-                        <div class="col-auto my-4">
-                            <select class="custom-select mr-sm-2 select4" id="cat4">
-                            	<option selected>Faites votre choix...</option> 
-                            </select>
-                        </div>
-                    </div>     
-                </div>
+.recettes{
+    margin-top: 60px;
+}
+.recettesRow{
+    display: flex; 
+    justify-content: center;   
+}
 
-                <!-- Poids -->
-                <div class="row">
-                    <div class="col-4 poidsR">
-                        <div class="input-group">
-                            <input type="text" class="form-control poidsAlim" id="poidsAlim" aria-label="Text input with segmented dropdown button" placeholder="quantité">
-                            <select class="form-control select5">
-                                    <option value="1" selected>Grammes</option>
-                                    <option value="2">Litres</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Validation -->
-                <div class="row">
-                    <div class="col text-right">
-                        <button type="submit" class="btn btn-success validIngredient">Valider</button>
-                    </div>
-                </div>
-		
-				<!-- Liste des ingrédients sélectionnés avec leur quantité -->
-                <div class="mt-5" id="conteneurListeIngredients">
-	                <ul class="list-group list-group-flush conteneurListeIngredients">
-	                </ul>
-                </div>
+/* Card */
+.cardRecette{
+	padding: 0px;
+	margin: 10px;
+}
+.card-link{
 	
-				<div>
-                    <h2>Tableau nutritionnel</h2>
-                    <div class="ctnr">
-                        <div class="titrePpl">Nutriments par ingredients</div>
-                        <div class="titre">Total des nutriments</div>
-                        <div class="titre">Nutriments par personne</div>
-                    </div>
-                    <div class="ctnr">
-                        <div class="nomNut">Energie</div>
-                        <div class="nut1" id="ener"></div>
-                        <div class="nut2" id="totalEnergie"></div>
-                        <div class="nut2" id="pPEner"></div>
-                    </div>
-                    <div class="ctnr"> 
-                        <div class="nomNut">Eau</div>
-                        <div class="nut1" id="ea"></div>
-                        <div class="nut2" id="totalEau"></div>
-                        <div class="nut2"id="pPEa"></div>
-                    </div>
-                    <div class="ctnr">
-                        <div class="nomNut">Protéines</div>
-                        <div class="nut1" id="prot"></div>
-                        <div class="nut2" id="totalProteines"></div>
-                        <div class="nut2"id="pPProt"></div>
-                    </div>
-                    <div class="ctnr">
-                        <div class="nomNut">Glucides</div>
-                        <div class="nut1" id="gluc"></div>
-                        <div class="nut2" id="totalGlucides"></div>
-                        <div class="nut2"id="pPGluc"></div>
-                    </div>
-                    <div class="ctnr">
-                        <div class="nomNut">Lipides</div>
-                        <div class="nut1" id="lipi"></div>
-                        <div class="nut2" id="totalLipides"></div>
-                        <div class="nut2"id="pPLipi"></div>
-                    </div>
-                    <div class="ctnr">
-                        <div class="nomNut">Sucres</div>
-                        <div class="nut1" id="sucr"></div>
-                        <div class="nut2" id="totalSucres"></div>
-                        <div class="nut2"id="pPSucr"></div>
-                    </div>
-                    <div class="ctnr">
-                        <div class="nomNut">Amidon</div>
-                        <div class="nut1" id="amid"></div>
-                        <div class="nut2" id="totalAmidon"></div>
-                        <div class="nut2" id="pPAmid"></div>
-                    </div>
-                    <div class="ctnr">
-                        <div class="nomNut">Fibres alimentaires</div>
-                        <div class="nut1" id="fibr"></div>
-                        <div class="nut2" id="totalFibresAlimentaires"></div>
-                        <div class="nut2"id="pPFibr"></div>
-                    </div>
-                    <div class="ctnr">
-                        <div class="nomNut">Cholesterol</div>
-                        <div class="nut1" id="chol"></div>
-                        <div class="nut2" id="totalCholesterol"></div>
-                        <div class="nut2" id="pPChol"></div>
-                    </div>
-                    <div class="ctnr">
-                        <div class="nomNut">Sel</div>
-                        <div class="nut1" id="se"></div>
-                        <div class="nut2" id="totalSel"></div>
-                        <div class="nut2" id="pPSe"></div>
-                    </div>
-                    <div class="ctnr">
-                        <div class="nomNut">Calcium</div>
-                        <div class="nut1" id="calc"></div>
-                        <div class="nut2" id="totalCalcium"></div>
-                        <div class="nut2" id="pPCalc"></div>
-                    </div>
-                    <div class="ctnr">
-                        <div class="nomNut">Fer</div>
-                        <div class="nut1" id="fe"></div>
-                        <div class="nut2" id="totalFer"></div>
-                        <div class="nut2" id="pPFe"></div>
-                    </div>
-                    <div class="ctnr">
-                        <div class="nomNut">Iode</div>
-                        <div class="nut1" id="iod"></div>
-                        <div class="nut2" id="totalIode"></div>
-                        <div class="nut2" id="pPIod"></div>
-                    </div>
-                    <div class="ctnr">
-                        <div class="nomNut">Béta Carotène</div>
-                        <div class="nut1" id="beta"></div>
-                        <div class="nut2" id="totalBetaCarotene"></div>
-                        <div class="nut2" id="pPBeta"></div>
-                    </div>
-                    <div class="ctnr">
-                        <div class="nomNut">Vitamine D</div>
-                        <div class="nut1" id="vitD"></div>
-                        <div class="nut2" id="totalVitamineD"></div>
-                        <div class="nut2" id="pPVitD"></div>
-                    </div>
-                    <div class="ctnr">
-                        <div class="nomNut">Vitamine E</div>
-                        <div class="nut1" id="vitE"></div>
-                        <div class="nut2" id="totalVitamineE"></div>
-                        <div class="nut2" id="pPVitE"></div>
-                    </div>
-                    <div class="ctnr">
-                        <div class="nomNut">Vitamine C</div>
-                        <div class="nut1" id="vitC"></div>
-                        <div class="nut2" id="totalVitamineC"></div>
-                        <div class="nut2" id="pPVitC"></div>
-                    </div>
-                    <div class="ctnr">
-                        <div class="nomNut">Vitamine B1</div>
-                        <div class="nut1" id="vitB1"></div>
-                        <div class="nut2" id="totalVitamineB1"></div>
-                        <div class="nut2" id="pPVitB1"></div>
-                    </div>
-                    <div class="ctnr">
-                        <div class="nomNut">Vitamine B12</div>
-                        <div class="nut1" id="vitB12"></div>
-                        <div class="nut2" id="totalVitamineB12"></div>
-                        <div class="nut2" id="pPVitB12"></div>
-                    </div>
-                </div>
+}
 
-                <div class="recettePreparation">
-                    <div class="form-group">
-                        <label class="titreinfo1R" for="exampleFormControlTextarea1">Préparation :</label>
-                        <textarea class="form-control" id="prepaRecette" rows="5" placeholder="instructions..."></textarea>
-                    </div>
-                </div>
-              	
+/* PAGE CONNEXION */
+/* Connexion */
+.main_connexion{
+    flex-direction: column;
+}
 
+input {
+    height: 35px;
+    background-color:rgb(232,240,254);
+}
 
-                <!-- Validation Recette -->
-                <div class="row mt-5">
-                    <div class="col validAjouR text-right">
-                        <button type="submit" id="validRecette" class="btn btn-success btn-lg btn-block">Valider votre recette</button>
-                    </div>
-                </div>
-                
-                <!--  
-                Validation et annulation preparation
-               	<div class="d-flex justify-content-end align-items-center">
-                	<input class="btn btn-danger resetPrepa" type="reset" value="Annuler">
-					<input class="btn btn-success validPrepa" type="submit" value=" Valider ">
-               	</div>
-               	-->
-               	
-            </form>
-        </div>
-    </div>
-</div>
+#connexion_form{
+    border: 1px solid rgb(199, 199, 199);
+    border-radius: 3%;
+
+}
+#cree_compte_form {
+    border: 1px solid rgb(199, 199, 199);
+    border-radius: 3%;
+}
+
+.statique{
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding:1rem;
+    margin: 1rem;
+    text-shadow: 1px 1px 4px black, -1px -1px 4px black;
+    width: 100%;
+}
+button{
+    padding:0.5rem;
+    margin: 1rem;
+    font-weight: bold;
+}
+.pswd{ 
+    background-image:url(https://img.icons8.com/office/25/000000/lock-2.png); 
+    background-repeat: no-repeat; 
+    background-position: 5px 3px;
+    padding-left: 40px;
+    border-radius: 5px;
+    outline: none;
+    border: solid 1px rgb(163, 163, 163);
+    }
+.user{ 
+    background-image:url(https://img.icons8.com/ultraviolet/25/000000/user.png); 
+    background-repeat: no-repeat; 
+    background-position: 5px 3px;
+    padding-left: 40px;
+    border-radius: 5px;
+    border: solid 1px rgb(163, 163, 163);
+    }
+.email{ 
+    background-image:url(https://img.icons8.com/ultraviolet/25/000000/email.png); 
+    background-repeat: no-repeat; 
+    background-position: 5px 3px;
+    padding-left: 40px;
+    border-radius: 5px;
+    border: solid 1px rgb(163, 163, 163);
+    }
+
+input:focus {
+        box-shadow: 0 0 2pt 2pt  rgb(126, 181, 206);
+        outline-color: rgb(126, 181, 206);
+    }
+
+/* MES RECETTES (QUAND L'UTILISATEUR SE CONNECTE */
+#conteneur_recettes_perso{
+    background-color: rgb(240, 240, 240);
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+    justify-content: flex-start;
+}
+
+#creer_recette{
+    width : 30%;
+    height : 100px;
+    font-size: 2em;
+    margin-top : 30px;
+    margin-bottom : 30px;
+}
+
+/* PAGE CREATION RECETTE */
+.maCreationR{
+    margin:60px;
+}
+.cardR{
+    padding:50px;
+}
+
+.titreCardRecette{
+    margin-top:30px;
+    font-size: 2.5em;
+}
+.titreinfo1R{
+    margin-top:60px;
+    font-size: 1.5em;
+}
+.card-img_cuisiner{
+    opacity:0.2;
+}
+.poidsR{
+    margin-top:40px;
+}
+.recettePreparation{
+    margin-top:30px;
+}
+.validAjouR{
+    margin-top:40px;
+    margin-right: 50px;
+}
+.titrePpl{
+    width : 50%;
+    display : inline-block;
+}
+.titre{
+    width : 20%;
+    display : inline-block;
+}
+.ctnr{
+    border-top : solid grey 1px;
+}
+.nomNut{
+    width : 100px;
+    display: inline-block;
     
-
-
-    <!-- Footer en mode Desktop-->
-    <div class="footerDesktop">
-        <div class="footertext1">made with ♥ by LCB
-        </div>
-        <div class="footertext-links">
-            <p>Tous droits réservés Les Cordons Bleus - 2019</br>
-                Vous avez une question ? <a href="">nous contacter</a> ∗ 
-                <a href="">Mentions légales</a> ∗ 
-                <a href="">Conditions Générales d'Utilisation</a> ∗ 
-                <a href="">Contact</a> ∗ 
-                <a href="">Politique de protection des données personnelles</a> ∗ 
-                <a href="">Politique de confidentialité</a> 
-            </p>
-        </div>
-    </div>
+}
+.nut1{
+    width:40%;
+    display: inline-block;
+	flex-direction: row;
+    justify-content: flex-start;
     
+}
+.nut2{
+    width:20%;
+    display: inline-block;
+    
+}
 
-    <!-- Navbar bottom format mobile xs -->
-    <nav class="navbar navbarbottom fixed-bottom navbar-light bg-light">
-        <a href="index.html" class="nav-item nav-link"><img src="./images/nav_home.png" height="40" alt="login"></a>
-        <a href="#" class="nav-item nav-link"><img src="./images/nav_heart.png" height="40" alt="login"></a>
-        <a href="connexion.html" class="nav-item nav-link"><img src="./images/nav_user.png" height="40" alt="login"></a>
-        <a href="#" class="nav-item nav-link"><img src="./images/nav_engrenage.png" height="45" alt="login"></a>
-    </nav>
+.nutri{
+	width : 50px;
+    margin-left: 30px;
+    display : inline-block;
+}
 
+.total{
+	
+	margin-left: 30px;
+}
+.ingredients{
+	display : inline-block;
+}
 
-	<script>
+/* MES FAVORIS */
+#conteneur_favoris{
+    background-color: rgb(240, 240, 240);
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+    justify-content: flex-start;
+}
 
-        var poids;
-        var ingredientValue;
-        var unite;
-        var proprietesIngredient;
-        var titreRecette;
-		var prepaRecette;
-        var ingredients;
-        var listIngredients = [];
-        
-        
-        recupListes();
-        
-		// Validation Recette
-        // Validation Titre et nombre de personnes / Récupération des valeurs
-        $("#validRecette").on('click', function() {
-        	
-        	//$("#formulaire")[0].reset();
-        	//$(".conteneurListeIngredients").children().remove();
-        	
-        	recupListes();
-        })
+/* MENU */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
 
-     	// Annulation 
-        //$(".resetPrepa").on('click', function() {
-        	//prepaRecette = $("#prepaRecette").val(""); 
-		//})
-
-        
-	    function recupListes(){
-	    	var liste;
-	    	var numListe;
-         	var value1;
-         	var value2;
-         	var value3;
-         	var value4;
-         	
-         // tableaux recupération ingredients
-
-	        $.ajax({
-	            type: 'get',
-	            contentType: "application/json",
-	            url: "http://localhost:8080/groupe/all/",
-	            }).done(function(data) {
-	            datas = data;
-
-	 			
-
-	            // liste 1 groupe ingrédient 
-	            numListe = 1;
-	            for (var i = 0; i < datas.length; i++) {
-	            	
-	                var titre1 = datas[i].lib;
-	                $(".select"+numListe).append("<option type=text value="+i+" onclick=selectListe1()>"+titre1+"</option>"); 
-	            }
-	            
-	            // Récupération valeur 1ère liste :
-	            $(".select1").on('change', function() {
-	            	  value1 = $(this).val();
-	            	  $(".select2").empty();
-	            	  $(".select3").empty();
-	            	  $(".select4").empty();
-	            	  
-	            	// liste 2 sous groupe ingrédient       	
-	  	         	numListe = 2;
-	  	         	$(".select"+numListe).append("<option selected>Faites votre choix...</option>");
-	  	            for (var j = 0; j < datas[value1].sousGroupeIngredient.length; j++) {
-	  	                var titre2 = datas[value1].sousGroupeIngredient[j].lib;
-	  	                $(".select"+numListe).append("<option type=text value="+j+" onclick=selectListe2()>"+titre2+"</option>"); 
-	  	            }
-	  	            
-	  	       		// Récupération valeur 2ème liste :
-		            $('.select2').on('change', function() {
-		            	  value2 = $(this).val();
-		            	  $(".select3").empty();
-		            	  $(".select4").empty();
-	  	            
-		  	       		// liste 3 sous sous groupe ingrédient 
-			         	numListe = 3;
-			         	$(".select"+numListe).append("<option selected>Faites votre choix...</option>");
-			            for (var k = 0; k < datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient.length; k++) {
-			                var titre3 = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[k].lib;
-			                $(".select"+numListe).append("<option type=text value="+k+" onclick=selectListe3()>"+titre3+"</option>"); 
-			            }
-			         	
-			         	// Récupération valeur 3ème liste :
-			            $('.select3').on('change', function() {
-			            	  value3 = $(this).val();
-			            	  $(".select4").empty();
-		            	  
-			            	// liste 4 ingrédient 
-				         	numListe = 4;	
-				         	$(".select"+numListe).append("<option selected>Faites votre choix...</option>");
-				            for (var l = 0; l < datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[value3].ingredients.length; l++) {
-				            	
-				                var titre4 = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[value3].ingredients[l].alimNom;
-				                $(".select"+numListe).append("<option type=text id="+l+" value="+l+" onclick=selectListe3()>"+titre4+"</option>"); 
-				            }
-					         	
-				         	// Récupération valeur 4ème liste :
-				            $('.select4').on('change', function() {
-				            	value4 = $(this).val();
-                                ingredientValue = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[value3].ingredients[value4].alimNom;
-                                proprietesIngredient = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[value3].ingredients[value4];
-
-					            
-					           
-								
-						         
-							        $(".validIngredient").click(function(event) {
-                                        
-                                        
-                                        
-                                        event.preventDefault();
-										
-									
-                                 })
-				            })
-	            		})
-		        	})
-	        	})
-			})
-			
-        }
-        
-		// VALIDATION DE LA RECETTE : RECUPERATION DES DONNEES ET ENVOIE DE LA REQUETE AJAX
-        $("#validRecette").click(function(event){  
-        	event.preventDefault();
-             
-            regroupeAttributs();
-			console.log(titreRecette, prepaRecette, nbPersonnes, listIngredients);
-            
-            $.ajax({
-                type: 'POST',
-                url: "http://localhost:8080/recette",
-                headers: { "lib_recette" : titreRecette , "instruction_recette" : prepaRecette , "nbr_personne" : nbPersonnes , "liste_ingredient" : listIngredients }
-                }).done(function(data) {  
-                	console.log(data);
-                	alert("Votre recette a été enregistrée avec succès !");
-            	}).fail(function(jqXHR, textStatus, errorThrown){
-                    alert("Nous n'avons pas pu enregistrer votre recette. Réessayez ultérieurement");
-                });
-            
-             
-         })
-		
-		
-
-        // REGROUPE LES ATTRIBUTS NECESSAIRES POUR LA REQUETE AJAX
-        function regroupeAttributs(){
-            titreRecette = $("#recetteTitre").val();
-            nbPersonnes = parseInt($("#nbPers").val());
-            prepaRecette = $("#prepaRecette").val();
-            ingredients = $(".ingredients");
-            
-            for (var i = 0 ; i < ingredients.length ; i++){
-                listIngredients[i] = ingredients[i].childNodes[0].data;
-            }
-            
-        }
-
-
-        // AFFICHAGE DE LA LISTE DES INGREDIENTS
-	    $(".validIngredient").click(function(event) {
-	    	poids = $(".poidsAlim").val();
-            unite = $(".select5").val();
-            nbPersonnes = $("#nbPers").val();
-            if(nbPersonnes == "Faites votre choix..."){
-            	nbPersonnes = 1;
-            } else {
-            	nbPersonnes = parseInt(nbPersonnes);
-            }
-            
-            if(unite == 1){
-                unite = "grammes";
-            } else if (unite == 2){
-                unite = "litres";
-            } else {
-                unite = "";
-                poids = "";
-            }
-
-            
-
-            afficheIngredient();
-            afficheTableauNutritionnel();
-            calculTotalNutriments();
-            
-	    })
-        
-
-        
-        
-		// AFFICHAGE DE LA LISTE DES INGREDIENTS 
-        function afficheIngredient(){
-            if (unite == ""){
-            	$(".conteneurListeIngredients").append('<li class="list-group-item"><div class="ingredients">'+ingredientValue+'</di></li>');
-            } else {
-            	$(".conteneurListeIngredients").append('<li class="list-group-item">'+poids+" "+unite+" de <div class='ingredients'>"+ingredientValue+'</div></li>');
-            }
-        }
-
-        // REMPLISSAGE DU TABLEAU CONTENANT TOUTES LES VALEURS NUTRITIONNELLES PAR INGREDIENT ET EN FONCTION DE LA QUANTITE 
-        function afficheTableauNutritionnel(){
-   		$("#amid").append("<div class='nutri amidon'>"+proprietesIngredient.amidon/100*poids+"</div>");
-	    $("#beta").append("<div class='nutri betaCarotene'>"+proprietesIngredient.betaCarotene/100*poids+"</div>");
-	    $("#calc").append("<div class='nutri calcium'>"+proprietesIngredient.calcium/100*poids+"</div>");
-	    $("#chol").append("<div class='nutri cholesterol'>"+proprietesIngredient.cholosterol/100*poids+"</div>");
-	    $("#ea").append("<div class='nutri eau'>"+proprietesIngredient.eau/100*poids+"</div>");
-	    $("#ener").append("<div class='nutri energie'>"+proprietesIngredient.energie/100*poids+"</div>");
-	    $("#fe").append("<div class='nutri fer'>"+proprietesIngredient.fer/100*poids+"</div>");
-	    $("#fibr").append("<div class='nutri fibresAlimentaires'>"+proprietesIngredient.fibresAlimentaires/100*poids+"</div>");
-	    $("#gluc").append("<div class='nutri glucides'>"+proprietesIngredient.glucides/100*poids+"</div>");
-	    $("#iod").append("<div class='nutri iode'>"+proprietesIngredient.iode/100*poids+"</div>");
-	    $("#lipi").append("<div class='nutri lipides'>"+proprietesIngredient.lipides/100*poids+"</div>");
-	    $("#prot").append("<div class='nutri proteines'>"+proprietesIngredient.proteines/100*poids+"</div>");
-	    $("#se").append("<div class='nutri sel'>"+proprietesIngredient.sel/100*poids+"</div>");
-	    $("#sucr").append("<div class='nutri sucres'>"+proprietesIngredient.sucres/100*poids+"</div>");
-	    $("#vitB1").append("<div class='nutri vitamineB1'>"+proprietesIngredient.vitamineB1/100*poids+"</div>");
-	    $("#vitB12").append("<div class='nutri vitamineB12'>"+proprietesIngredient.vitamineB12/100*poids+"</div>");
-	    $("#vitC").append("<div class='nutri vitamineC'>"+proprietesIngredient.vitamineC/100*poids+"</div>");
-	    $("#vitD").append("<div class='nutri vitamineD'>"+proprietesIngredient.vitamineD/100*poids+"</div>");
-	    $("#vitE").append("<div class='nutri vitamineE'>"+proprietesIngredient.vitamineE/100*poids+"</div>");
-            
-        }
-        
-
-.sidenav a, .sidenav p {
+.sidenav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
@@ -549,123 +272,15 @@
   display: block;
   transition: 0.3s;
 }
-        // CALCUL DU TOTAL PAR NUTRIMENT DE LA RECETTE
-        function calculTotalNutriments(){
-            
-            var totalAmidon = 0;
-            var totalBetaCarotene = 0;
-            var totalCalcium = 0;
-            var totalCholesterol = 0;
-            var totalEau = 0;
-            var totalEnergie =0;
-            var totalFer=0;
-            var totalFibresAlimentaires=0;
-            var totalGlucides=0;
-            var totalIode=0;
-            var totalLipides=0;
-            var totalProteines=0;
-            var totalSel=0;
-            var totalSucres=0;
-            var totalVitamineB1=0;
-            var totalVitamineB12=0;
-            var totalVitamineC=0;
-            var totalVitamineD=0;
-            var totalVitamineE=0;
 
-            var amidon = $(".amidon");
-            var betaCarotene = $(".betaCarotene");
-            var calcium = $(".calcium");
-            var cholesterol= $(".cholesterol");
-            var eau= $(".eau");
-            var energie= $(".energie");
-            var fer= $(".fer");
-            var fibresAlimentaires= $(".fibresAlimentaires");
-            var glucides= $(".glucides");
-            var iode= $(".iode");
-            var lipides= $(".lipides");
-            var proteines= $(".proteines");
-            var sel= $(".sel");
-            var sucres= $(".sucres");
-            var vitamineB1= $(".vitamineB1");
-            var vitamineB12= $(".vitamineB12");
-            var vitamineC= $(".vitamineC");
-            var vitamineD= $(".vitamineD");
-            var vitamineE= $(".vitamineE");
-			
-            
-            
-            
-            for(var i = 0 ; i < amidon.length; i++){
-                totalAmidon = totalAmidon + parseFloat(amidon[i].childNodes[0].data);
-                totalBetaCarotene = totalBetaCarotene + parseFloat(betaCarotene[i].childNodes[0].data);
-                totalCalcium = totalCalcium + parseFloat(calcium[i].childNodes[0].data);
-                totalCholesterol = totalCholesterol + parseFloat(cholesterol[i].childNodes[0].data);
-                totalEau = totalEau + parseFloat(eau[i].childNodes[0].data);
-                totalEnergie = totalEnergie + parseFloat(energie[i].childNodes[0].data);
-                totalFer = totalFer + parseFloat(fer[i].childNodes[0].data);
-                totalFibresAlimentaires = totalFibresAlimentaires + parseFloat(fibresAlimentaires[i].childNodes[0].data);
-                totalGlucides = totalGlucides + parseFloat(glucides[i].childNodes[0].data);
-                totalIode = totalIode + parseFloat(iode[i].childNodes[0].data);
-                totalLipides = totalLipides + parseFloat(lipides[i].childNodes[0].data);
-                totalProteines = totalProteines + parseFloat(proteines[i].childNodes[0].data);
-                totalSel = totalSel + parseFloat(sel[i].childNodes[0].data);
-                totalSucres = totalSucres + parseFloat(sucres[i].childNodes[0].data);
-                totalVitamineB1 = totalVitamineB1 + parseFloat(vitamineB1[i].childNodes[0].data);
-                totalVitamineB12 = totalVitamineB12 + parseFloat(vitamineB12[i].childNodes[0].data);
-                totalVitamineC = totalVitamineC + parseFloat(vitamineC[i].childNodes[0].data);
-                totalVitamineD = totalVitamineD + parseFloat(vitamineD[i].childNodes[0].data);
-                totalVitamineE = totalVitamineE + parseFloat(vitamineE[i].childNodes[0].data);
-                
+.sidenav a:hover {
+  color: #f1f1f1;
+}
 
-            }
-            
-            
-            $(".total").remove();
-            $("#totalAmidon").append("<div class='total'>"+totalAmidon+"</div>");
-            $("#totalBetaCarotene").append("<div class='total'>"+totalBetaCarotene+"</div>");
-            $("#totalCalcium").append("<div class='total'>"+totalCalcium+"</div>");
-            $("#totalCholesterol").append("<div class='total'>"+totalCholesterol+"</div>");
-            $("#totalEau").append("<div class='total'>"+totalEau+"</div>");
-            $("#totalEnergie").append("<div class='total'>"+totalEnergie+"</div>");
-            $("#totalFer").append("<div class='total'>"+totalFer+"</div>");
-            $("#totalFibresAlimentaires").append("<div class='total'>"+totalFibresAlimentaires+"</div>");
-            $("#totalGlucides").append("<div class='total'>"+totalGlucides+"</div>");
-            $("#totalIode").append("<div class='total'>"+totalIode+"</div>");
-            $("#totalLipides").append("<div class='total'>"+totalLipides+"</div>");
-            $("#totalProteines").append("<div class='total'>"+totalProteines+"</div>");
-            $("#totalSel").append("<div class='total'>"+totalSel+"</div>");
-            $("#totalSucres").append("<div class='total'>"+totalSucres+"</div>");
-            $("#totalVitamineB1").append("<div class='total'>"+totalVitamineB1+"</div>");
-            $("#totalVitamineB12").append("<div class='total'>"+totalVitamineB12+"</div>");
-            $("#totalVitamineC").append("<div class='total'>"+totalVitamineC+"</div>");
-            $("#totalVitamineD").append("<div class='total'>"+totalVitamineD+"</div>");
-            $("#totalVitamineE").append("<div class='total'>"+totalVitamineE+"</div>");
-			
-            $(".pP").remove();
-			$("#pPEner").append("<div class='pP'>"+totalEnergie/nbPersonnes+"</div>");
-			$("#pPEa").append("<div class='pP'>"+totalEau/nbPersonnes+"</div>");
-			$("#pPProt").append("<div class='pP'>"+totalProteines/nbPersonnes+"</div>");
-			$("#pPGluc").append("<div class='pP'>"+totalGlucides/nbPersonnes+"</div>");
-			$("#pPLipi").append("<div class='pP'>"+totalLipides/nbPersonnes+"</div>");
-			$("#pPSucr").append("<div class='pP'>"+totalSucres/nbPersonnes+"</div>");
-			$("#pPAmid").append("<div class='pP'>"+totalAmidon/nbPersonnes+"</div>");
-			$("#pPFibr").append("<div class='pP'>"+totalFibresAlimentaires/nbPersonnes+"</div>");
-			$("#pPChol").append("<div class='pP'>"+totalCholesterol/nbPersonnes+"</div>");
-			$("#pPSe").append("<div class='pP'>"+totalSel/nbPersonnes+"</div>");
-			$("#pPCalc").append("<div class='pP'>"+totalCalcium/nbPersonnes+"</div>");
-			$("#pPFe").append("<div class='pP'>"+totalFer/nbPersonnes+"</div>");
-			$("#pPIod").append("<div class='pP'>"+totalIode/nbPersonnes+"</div>");
-			$("#pPBeta").append("<div class='pP'>"+totalBetaCarotene/nbPersonnes+"</div>");
-			$("#pPVitD").append("<div class='pP'>"+totalVitamineD/nbPersonnes+"</div>");
-			$("#pPVitE").append("<div class='pP'>"+totalVitamineE/nbPersonnes+"</div>");
-			$("#pPVitC").append("<div class='pP'>"+totalVitamineC/nbPersonnes+"</div>");
-			$("#pPVitB1").append("<div class='pP'>"+totalVitamineB1/nbPersonnes+"</div>");
-			$("#pPVitB12").append("<div class='pP'>"+totalVitamineB12/nbPersonnes+"</div>");
-			
-			
-            
-        }
-        
-	</script>
-  </body>
-</html>
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
