@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import App.LCB.model.Recette;
 import App.LCB.model.Utilisateur;
@@ -39,6 +40,7 @@ public class RecetteController {
 	@ResponseBody
 	private List<Recette> SearchByUserFavoris(@RequestHeader("mail") String mail, @RequestHeader("password") String password){		
 		Utilisateur u = utilisateurRepository.findByMail(mail);
+		System.out.println(u);
 		return u.getRecetteFavoris();
 	}
 	
@@ -53,4 +55,18 @@ public class RecetteController {
 	private List<Recette> homePageRecette(){
 		return recetteRepository.findByIdBefore(4l);
 	}
+	
+	
+	
+	@RequestMapping("")
+	private String DisplayRecette(@RequestParam(value= "id", required=true)String id) {
+		return "recette.html";
+	}
+	
+	@RequestMapping("/geturl")
+	@ResponseBody
+	private Recette SearchRecetteByUrl(@RequestHeader("adresse")String adresse) {
+		return recetteRepository.findByUrlRecetteEquals(adresse);
+	}
+	
 }

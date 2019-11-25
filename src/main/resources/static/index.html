@@ -35,7 +35,7 @@
             <!-- Menu caché -->
             <div id="mySidenav" class="sidenav">
 			  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			  	<a href="" id="accueil">Accueil</a>
+			  	<a href="index.html" id="accueil">Accueil</a>
 	            <a href="javascript:update('mes_recettes');">Mes recettes</a>
 	            <a href="javascript:update('mes_favoris');">Mes favoris</a>
 	            <a href="">Paramètres</a>
@@ -56,14 +56,14 @@
 
         <!-- Liste des recettes -->
         <div class="container recettes containerRecettes">
-            <div class="row recettesRow">
+            <div class="row recettesRow" id="card-deck">
 				
 				
 				<div class="card cardRecette col-3 shadow p-3 mb-5 bg-white rounded" style="width: 20rem;">
-				  <img class="card-img-top" src="https://cdn.pixabay.com/photo/2018/02/05/19/12/strawberry-3132973_960_720.jpg" alt="Card image cap">
+				  <img class="card-img-top" src="https://cdn.pixabay.com/photo/2018/02/05/19/12/strawberry-3132973_960_720.jpg" alt="Card image cap" id="image0">
 				  <div class="card-body">
-				    <h5 class="card-title text-center">Le titre de la recette</h5>
-				    <p class="card-text text-justify " style="max-heigth: 10ch; "> Les instructions de la recette va apparaitre ici : Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				    <h5 class="card-title text-center" id="title0"></h5>
+				    <p class="card-text text-justify " style="max-heigth: 10ch; " id="text0"></p>
 				  </div>
 				  <div class="card-body">
 				    <a href="#" class="card-link text-center text-primary font-italic">Voir la recette</a>
@@ -71,10 +71,10 @@
 				</div>
 				
 				<div class="card cardRecette col-3 shadow p-3 mb-5 bg-white rounded" style="width: 20rem;">
-				  <img class="card-img-top" src="https://cdn.pixabay.com/photo/2018/02/05/19/12/strawberry-3132973_960_720.jpg" alt="Card image cap">
+				  <img class="card-img-top" src="https://cdn.pixabay.com/photo/2018/02/05/19/12/strawberry-3132973_960_720.jpg" alt="Card image cap" id="image1">
 				  <div class="card-body">
-				    <h5 class="card-title text-center">Le titre de la recette</h5>
-				    <p class="card-text text-justify " style="max-heigth: 10ch; "> Les instructions de la recette va apparaitre ici : Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				    <h5 class="card-title text-center" id="title1"></h5>
+				    <p class="card-text text-justify " style="max-heigth: 10ch; " id="text1"> </p>
 				  </div>
 				  <div class="card-body">
 				    <a href="#" class="card-link text-center text-primary font-italic">Voir la recette</a>
@@ -82,16 +82,16 @@
 				</div>
 				
 				<div class="card cardRecette col-3 shadow p-3 mb-5 bg-white rounded" style="width: 20rem;">
-				  <img class="card-img-top" src="https://cdn.pixabay.com/photo/2018/02/05/19/12/strawberry-3132973_960_720.jpg" alt="Card image cap">
+				  <img class="card-img-top" src="https://cdn.pixabay.com/photo/2018/02/05/19/12/strawberry-3132973_960_720.jpg" alt="Card image cap" id="image2">
 				  <div class="card-body">
-				    <h5 class="card-title text-center">Le titre de la recette</h5>
-				    <p class="card-text text-justify " style="max-heigth: 10ch; "> Les instructions de la recette va apparaitre ici : Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				    <h5 class="card-title text-center" id="title2"></h5>
+				    <p class="card-text text-justify " style="max-heigth: 10ch; " id="text2"></p>
 				  </div>
 				  <div class="card-body">
 				    <a href="#" class="card-link text-center text-primary font-italic">Voir la recette</a>
 				  </div>
 				</div>
-
+				
   
             </div>
         </div>

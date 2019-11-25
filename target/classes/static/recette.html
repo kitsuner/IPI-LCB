@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+            <script src="javascriptLCB.js"></script> 
+<title></title>
+</head>
+<body>
+    
+</body>
+<script>
+var pathname = window.location.href; 
+console.log(pathname);
+onloadRecetteByUrl();
+
+    function onloadRecetteByUrl() {
+        $.ajax({
+            url: "http://localhost:8080/recette/geturl",
+            headers: { "adresse": pathname },
+            type: 'GET',
+            dataType: "json",
+            timeout: 15000
+        }).done(
+            function (data) {             
+                console.log(data);
+                
+            }).fail(function () {
+                console.log("duh");
+            });
+    }
+
+</script>
+</html>

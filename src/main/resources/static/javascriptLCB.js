@@ -1,6 +1,18 @@
 // Menu caché
 function openNav() {
 	  document.getElementById("mySidenav").style.width = "250px";
+	  $("#bouton_connexion").show();
+	  // sert a aller récuperer en cache l'info de connexion //
+	    let user = sessionStorage.getItem('Mail')
+	    if ( user == null){
+	        $("#bouton_deconnexion").hide();               
+	    }
+	    else {
+	        $("#bouton_connexion").hide();
+	        if ($("#pseudo").length == 0){
+	            getPseudo();
+	        }
+	    }
 	}
 	function closeNav() {
 	  document.getElementById("mySidenav").style.width = "0";
@@ -43,8 +55,9 @@ function connection(pseudo, url){
 // Supprime les informations de connexion du cache //
 function deconnexion(){
     sessionStorage.clear();
-    $("#menu_navigation").hide();
+    closeNav();
     $("#pseudo").remove();
+    location.href = 'index.html';
     }
 
     // Fonction barre de recherche //
@@ -97,7 +110,7 @@ function getPseudo() {
         timeout: 15000
             }).done(
                     function(data) { 
-                        $("#menu_navigation").prepend("<p id='pseudo'>Bienvenue "+data.pseudo+"");
+                        $("#mySidenav").prepend("<p id='pseudo'>Bienvenue "+data.pseudo+"");
                     });
 }
 
@@ -130,7 +143,6 @@ function onloadUserFavoris() {
             function (data) {
               $("#card-deck").empty();
                   for (let i=0; i < data.length;i++){
-                      console.log(data[i].image);
                       $("#card-deck").append('<div class="card" style="width: 20rem;"><img class="card-img-top" id="image'+i+'" alt="Card image cap"><div class="card-body"><h5 class="card-title text-center">'+data[i].lib+'</h5><p class="card-text text-justify">'+data[i].instruction+'</p></div><div class="card-body"><a href="#" class="card-link text-center">Voir la recette</a></div></div>');
                       $("#image"+i).attr("src", "data:image/png;base64,"+data[i].image+"");
                   }

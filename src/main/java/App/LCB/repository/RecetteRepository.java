@@ -4,6 +4,7 @@ package App.LCB.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -18,5 +19,9 @@ public interface RecetteRepository extends CrudRepository<Recette, Long>{
 	
 	
 	List<Recette> findByIdBefore(Long id);
+	
+	
+	
+	Recette findByUrlRecetteEquals(String url);
 	
 }
