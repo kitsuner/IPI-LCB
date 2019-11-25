@@ -320,19 +320,19 @@
         var unite;
         var proprietesIngredient;
         var titreRecette;
-        var nbPers;
-		var prepaRecette
+		var prepaRecette;
+        var ingredients;
+        var listIngredients = [];
+        
         
         recupListes();
         
 		// Validation Recette
         // Validation Titre et nombre de personnes / Récupération des valeurs
         $("#validRecette").on('click', function() {
-        	titreRecette = $("#recetteTitre").val(); 
-        	nbPers = $("#nbPers").val();
-        	prepaRecette = $("#prepaRecette").val();
-        	$("#formulaire")[0].reset();
-        	$(".conteneurListeIngredients").children().remove();
+        	
+        	//$("#formulaire")[0].reset();
+        	//$(".conteneurListeIngredients").children().remove();
         	
         	recupListes();
         })
@@ -430,17 +430,20 @@
                                         event.preventDefault();
 										
 
-                                     $("#validRecette").click(function(event){    
+                                     $("#validRecette").click(function(event){  
+                                    	event.preventDefault();
                                          
-                                         /*
-                                         $.ajax({
-                                             type: 'POST',
-                                             url: "http://localhost:8080/recette",
-                                             //headers:
-                                             }).done(function(data) {  
-                                         })
-                                         */
-                                         event.preventDefault();
+                                        regroupeAttributs();
+
+                                        /*
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: "http://localhost:8080/recette",
+                                            //headers: 
+                                            }).done(function(data) {  
+                                        })
+                                        */
+                                         
                                      })
                                  })
 				            })
@@ -451,6 +454,21 @@
 			
         }
         
+
+        // REGROUPE LES ATTRIBUTS NECESSAIRES POUR LA REQUETE AJAX
+        function regroupeAttributs(){
+            titreRecette = $("#recetteTitre").val();
+            nbPersonnes = parseInt($("#nbPers").val());
+            prepaRecette = $("#prepaRecette").val();
+            ingredients = $(".ingredients");
+            
+            for (var i = 0 ; i < ingredients.length ; i++){
+                listIngredients[i] = ingredients[i].childNodes[0].data;
+            }
+            
+        }
+
+
         // AFFICHAGE DE LA LISTE DES INGREDIENTS
 	    $(".validIngredient").click(function(event) {
 	    	poids = $(".poidsAlim").val();
@@ -471,7 +489,7 @@
                 poids = "";
             }
 
-
+            
 
             afficheIngredient();
             afficheTableauNutritionnel();
@@ -479,14 +497,15 @@
             
 	    })
         
+
         
         
 		// AFFICHAGE DE LA LISTE DES INGREDIENTS 
         function afficheIngredient(){
             if (unite == ""){
-            	$(".conteneurListeIngredients").append('<li class="list-group-item">'+ingredientValue+'</li>');
+            	$(".conteneurListeIngredients").append('<li class="list-group-item"><div class="ingredients">'+ingredientValue+'</di></li>');
             } else {
-            	$(".conteneurListeIngredients").append('<li class="list-group-item">'+poids+" "+unite+" de "+ingredientValue+'</li>');
+            	$(".conteneurListeIngredients").append('<li class="list-group-item">'+poids+" "+unite+" de <div class='ingredients'>"+ingredientValue+'</div></li>');
             }
         }
 
@@ -608,25 +627,25 @@
             $("#totalVitamineE").append("<div class='total'>"+totalVitamineE+"</div>");
 			
             $(".pP").remove();
-		$("#pPEner").append("<div class='pP'>"+totalEnergie/nbPersonnes+"</div>");
-		$("#pPEa").append("<div class='pP'>"+totalEau/nbPersonnes+"</div>");
-		$("#pPProt").append("<div class='pP'>"+totalProteines/nbPersonnes+"</div>");
-		$("#pPGluc").append("<div class='pP'>"+totalGlucides/nbPersonnes+"</div>");
-		$("#pPLipi").append("<div class='pP'>"+totalLipides/nbPersonnes+"</div>");
-		$("#pPSucr").append("<div class='pP'>"+totalSucres/nbPersonnes+"</div>");
-		$("#pPAmid").append("<div class='pP'>"+totalAmidon/nbPersonnes+"</div>");
-		$("#pPFibr").append("<div class='pP'>"+totalFibresAlimentaires/nbPersonnes+"</div>");
-		$("#pPChol").append("<div class='pP'>"+totalCholesterol/nbPersonnes+"</div>");
-		$("#pPSe").append("<div class='pP'>"+totalSel/nbPersonnes+"</div>");
-		$("#pPCalc").append("<div class='pP'>"+totalCalcium/nbPersonnes+"</div>");
-		$("#pPFe").append("<div class='pP'>"+totalFer/nbPersonnes+"</div>");
-		$("#pPIod").append("<div class='pP'>"+totalIode/nbPersonnes+"</div>");
-		$("#pPBeta").append("<div class='pP'>"+totalBetaCarotene/nbPersonnes+"</div>");
-		$("#pPVitD").append("<div class='pP'>"+totalVitamineD/nbPersonnes+"</div>");
-		$("#pPVitE").append("<div class='pP'>"+totalVitamineE/nbPersonnes+"</div>");
-		$("#pPVitC").append("<div class='pP'>"+totalVitamineC/nbPersonnes+"</div>");
-		$("#pPVitB1").append("<div class='pP'>"+totalVitamineB1/nbPersonnes+"</div>");
-		$("#pPVitB12").append("<div class='pP'>"+totalVitamineB12/nbPersonnes+"</div>");
+			$("#pPEner").append("<div class='pP'>"+totalEnergie/nbPersonnes+"</div>");
+			$("#pPEa").append("<div class='pP'>"+totalEau/nbPersonnes+"</div>");
+			$("#pPProt").append("<div class='pP'>"+totalProteines/nbPersonnes+"</div>");
+			$("#pPGluc").append("<div class='pP'>"+totalGlucides/nbPersonnes+"</div>");
+			$("#pPLipi").append("<div class='pP'>"+totalLipides/nbPersonnes+"</div>");
+			$("#pPSucr").append("<div class='pP'>"+totalSucres/nbPersonnes+"</div>");
+			$("#pPAmid").append("<div class='pP'>"+totalAmidon/nbPersonnes+"</div>");
+			$("#pPFibr").append("<div class='pP'>"+totalFibresAlimentaires/nbPersonnes+"</div>");
+			$("#pPChol").append("<div class='pP'>"+totalCholesterol/nbPersonnes+"</div>");
+			$("#pPSe").append("<div class='pP'>"+totalSel/nbPersonnes+"</div>");
+			$("#pPCalc").append("<div class='pP'>"+totalCalcium/nbPersonnes+"</div>");
+			$("#pPFe").append("<div class='pP'>"+totalFer/nbPersonnes+"</div>");
+			$("#pPIod").append("<div class='pP'>"+totalIode/nbPersonnes+"</div>");
+			$("#pPBeta").append("<div class='pP'>"+totalBetaCarotene/nbPersonnes+"</div>");
+			$("#pPVitD").append("<div class='pP'>"+totalVitamineD/nbPersonnes+"</div>");
+			$("#pPVitE").append("<div class='pP'>"+totalVitamineE/nbPersonnes+"</div>");
+			$("#pPVitC").append("<div class='pP'>"+totalVitamineC/nbPersonnes+"</div>");
+			$("#pPVitB1").append("<div class='pP'>"+totalVitamineB1/nbPersonnes+"</div>");
+			$("#pPVitB12").append("<div class='pP'>"+totalVitamineB12/nbPersonnes+"</div>");
 			
 			
             
