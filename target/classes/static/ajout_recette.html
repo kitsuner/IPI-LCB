@@ -141,7 +141,6 @@
 						  <thead>
 						    <tr>
 						      <th scope="col">Nutriments</th>
-						      <th scope="col">par ingrédient</th>
 						      <th scope="col">total ingrédients</th>
 						      <th scope="col">par personne</th>
 						    </tr>
@@ -151,11 +150,9 @@
 						      <th scope="row" class="nut" id="lipides">Lipides : </th>
 						      <td></td>
 						      <td></td>
-						      <td></td>
 						    </tr>
 						    <tr>
 						      <th scope="row" class="nut" id="proteines">Protéines : </th>
-						      <td></td>
 						      <td></td>
 						      <td></td>
 						    </tr>
@@ -163,11 +160,9 @@
 						      <th scope="row" class="nut" id="glucides">Glucides : </th>
 						      <td></td>
 						      <td></td>
-						      <td></td>
 						    </tr>
 						    <tr>
 						      <th scope="row" class="nut" id="fer">Fer : </th>
-						      <td></td>
 						      <td></td>
 						      <td></td>
 						    </tr>
@@ -175,11 +170,9 @@
 						      <th scope="row" class="nut" id="calcium">Calcium : </th>
 						      <td></td>
 						      <td></td>
-						      <td></td>
 						    </tr>					    
 						    <tr>
 						      <th scope="row" class="nut" id="energie">Energie : </th>
-						      <td></td>
 						      <td></td>
 						      <td></td>
 						    </tr>					    
@@ -187,11 +180,9 @@
 						      <th scope="row" class="nut" id="cholesterol">Cholesterol : </th>
 						      <td></td>
 						      <td></td>
-						      <td></td>
 						    </tr>
 						    <tr>
 						      <th scope="row" class="nut" id="sucres">Sucres : </th>
-						      <td></td>
 						      <td></td>
 						      <td></td>
 						    </tr>					    					    
@@ -199,11 +190,9 @@
 						      <th scope="row" class="nut" id="amidon">Amidon : </th>
 						      <td></td>
 						      <td></td>
-						      <td></td>
 						    </tr>
 						    <tr>
 						      <th scope="row" class="nut" id="energie">Energie : </th>
-						      <td></td>
 						      <td></td>
 						      <td></td>
 						    </tr>					    
@@ -211,11 +200,9 @@
 						      <th scope="row" class="nut" id="sel">Sel : </th>
 						      <td></td>
 						      <td></td>
-						      <td></td>
 						    </tr>					    
 						    <tr>
 						      <th scope="row" class="nut" id="iode">Iode : </th>
-						      <td></td>
 						      <td></td>
 						      <td></td>
 						    </tr>
@@ -223,11 +210,9 @@
 						      <th scope="row" class="nut" id="eau">Eau : </th>
 						      <td></td>
 						      <td></td>
-						      <td></td>
 						    </tr>					    
 						    <tr>
 						      <th scope="row" class="nut" id="betaCarotene">Beta Carotène : </th>
-						      <td></td>
 						      <td></td>
 						      <td></td>
 						    </tr>					    
@@ -235,11 +220,9 @@
 						      <th scope="row" class="nut" id="vitamineC">Vitamines C : </th>
 						      <td></td>
 						      <td></td>
-						      <td></td>
 						    </tr>					    
 						    <tr>
 						      <th scope="row" class="nut" id="vitamineE">Vitamines E : </th>
-						      <td></td>
 						      <td></td>
 						      <td></td>
 						    </tr>
@@ -247,11 +230,9 @@
 						      <th scope="row" class="nut" id="vitamineB1">Vitamines B1 : </th>
 						      <td></td>
 						      <td></td>
-						      <td></td>
 						    </tr>					    
 						    <tr>
 						      <th scope="row" class="nut" id="vitamineB12">Vitamines B12 : </th>
-						      <td></td>
 						      <td></td>
 						      <td></td>
 						    </tr>					    
@@ -259,11 +240,9 @@
 						      <th scope="row" class="nut" id="vitamineD">Vitamines D : </th>
 						      <td></td>
 						      <td></td>
-						      <td></td>
 						    </tr>
 						    <tr>
 						      <th scope="row" class="nut" id="fibresAlimentaires">Fibres Alimentaires : </th>
-						      <td></td>
 						      <td></td>
 						      <td></td>
 						    </tr>					    					    					    					    					    
@@ -498,25 +477,25 @@
 
         // REMPLISSAGE DU TABLEAU CONTENANT TOUTES LES VALEURS NUTRITIONNELLES PAR INGREDIENT ET EN FONCTION DE LA QUANTITE 
         function afficheTableauNutritionnel(){
-        	$("#amidon").append("<span class='nutri amidon'>"+proprietesIngredient.amidon/100*poids+" </span>");
-            $("#betaCarotene").append("<span class='nutri betaCarotene'>"+proprietesIngredient.betaCarotene/100*poids+" </span>");
-            $("#calcium").append("<span class='nutri calcium'>"+proprietesIngredient.calcium/100*poids+" </span>");
-            $("#cholesterol").append("<span class='nutri cholesterol'>"+proprietesIngredient.cholosterol/100*poids+" </span>");
-            $("#eau").append("<span class='nutri eau'>"+proprietesIngredient.eau/100*poids+" </span>");
-            $("#energie").append("<span class='nutri energie'>"+proprietesIngredient.energie/100*poids+" </span>");
-            $("#fer").append("<span class='nutri fer'>"+proprietesIngredient.fer/100*poids+" </span>");
-            $("#fibresAlimentaires").append("<span class='nutri fibresAlimentaires'>"+proprietesIngredient.fibresAlimentaires/100*poids+" </span>");
-            $("#glucides").append("<span class='nutri glucides'>"+proprietesIngredient.glucides/100*poids+" </span>");
-            $("#iode").append("<span class='nutri iode'>"+proprietesIngredient.iode/100*poids+" </span>");
-            $("#lipides").append("<span class='nutri lipides'>"+proprietesIngredient.lipides/100*poids+" </span>");
-            $("#proteines").append("<span class='nutri proteines'>"+proprietesIngredient.proteines/100*poids+" </span>");
-            $("#sel").append("<span class='nutri sel'>"+proprietesIngredient.sel/100*poids+" </span>");
-            $("#sucres").append("<span class='nutri sucres'>"+proprietesIngredient.sucres/100*poids+" </span>");
-            $("#vitamineB1").append("<span class='nutri vitamineB1'>"+proprietesIngredient.vitamineB1/100*poids+" </span>");
-            $("#vitamineB12").append("<span class='nutri vitamineB12'>"+proprietesIngredient.vitamineB12/100*poids+" </span>");
-            $("#vitamineC").append("<span class='nutri vitamineC'>"+proprietesIngredient.vitamineC/100*poids+" </span>");
-            $("#vitamineD").append("<span class='nutri vitamineD'>"+proprietesIngredient.vitamineD/100*poids+" </span>");
-            $("#vitamineE").append("<span class='nutri vitamineE'>"+proprietesIngredient.vitamineE/100*poids+" </span>");
+        	$("#amidon").children().append("<td class='nutri amidon'>"+proprietesIngredient.amidon/100*poids+" </td>");
+            $("#betaCarotene").children().append("<td class='nutri betaCarotene'>"+proprietesIngredient.betaCarotene/100*poids+" </td>");
+            $("#calcium").append("<td class='nutri calcium'>"+proprietesIngredient.calcium/100*poids+" </td>");
+            $("#cholesterol").append("<td class='nutri cholesterol'>"+proprietesIngredient.cholosterol/100*poids+" </td>");
+            $("#eau").append("<td class='nutri eau'>"+proprietesIngredient.eau/100*poids+" </td>");
+            $("#energie").append("<td class='nutri energie'>"+proprietesIngredient.energie/100*poids+" </td>");
+            $("#fer").append("<td class='nutri fer'>"+proprietesIngredient.fer/100*poids+" </td>");
+            $("#fibresAlimentaires").append("<td class='nutri fibresAlimentaires'>"+proprietesIngredient.fibresAlimentaires/100*poids+" </td>");
+            $("#glucides").append("<td class='nutri glucides'>"+proprietesIngredient.glucides/100*poids+" </td>");
+            $("#iode").append("<td class='nutri iode'>"+proprietesIngredient.iode/100*poids+" </td>");
+            $("#lipides").append("<td class='nutri lipides'>"+proprietesIngredient.lipides/100*poids+" </td>");
+            $("#proteines").append("<td class='nutri proteines'>"+proprietesIngredient.proteines/100*poids+" </td>");
+            $("#sel").append("<td class='nutri sel'>"+proprietesIngredient.sel/100*poids+" </td>");
+            $("#sucres").append("<td class='nutri sucres'>"+proprietesIngredient.sucres/100*poids+" </td>");
+            $("#vitamineB1").append("<td class='nutri vitamineB1'>"+proprietesIngredient.vitamineB1/100*poids+" </td>");
+            $("#vitamineB12").append("<td class='nutri vitamineB12'>"+proprietesIngredient.vitamineB12/100*poids+" </td>");
+            $("#vitamineC").append("<td class='nutri vitamineC'>"+proprietesIngredient.vitamineC/100*poids+" </td>");
+            $("#vitamineD").append("<td class='nutri vitamineD'>"+proprietesIngredient.vitamineD/100*poids+" </td>");
+            $("#vitamineE").append("<td class='nutri vitamineE'>"+proprietesIngredient.vitamineE/100*poids+" </td>");
         }
         
 
@@ -589,25 +568,25 @@
            
             console.log(totalAmidon,totalBetaCarotene,totalCalcium,totalCholesterol,totalEau,totalEnergie,totalFer,totalFibresAlimentaires,totalGlucides,totalIode,totalLipides,totalProteines,totalSel,totalSucres,totalVitamineB1,totalVitamineB12,totalVitamineC,totalVitamineD,totalVitamineE);
             
-            $("#amidon").append("<span class='total'>"+totalAmidon+"</span>");
-            $("#betaCarotene").append("<span class='total'>"+totalBetaCarotene+"</span>");
-            $("#calcium").append("<span class='total'>"+totalCalcium+"</span>");
-            $("#cholesterol").append("<span class='total'>"+totalCholesterol+"</span>");
-            $("#eau").append("<span class='total'>"+totalEau+"</span>");
-            $("#energie").append("<span class='total'>"+totalEnergie+"</span>");
-            $("#fer").append("<span class='total'>"+totalFer+"</span>");
-            $("#fibresAlimentaires").append("<span class='total'>"+totalFibresAlimentaires+"</span>");
-            $("#glucides").append("<span class='total'>"+totalGlucides+"</span>");
-            $("#iode").append("<span class='total'>"+totalIode+"</span>");
-            $("#lipides").append("<span class='total'>"+totalLipides+"</span>");
-            $("#proteines").append("<span class='total'>"+totalProteines+"</span>");
-            $("#sel").append("<span class='total'>"+totalSel+"</span>");
-            $("#sucres").append("<span class='total'>"+totalSucres+"</span>");
-            $("#vitamineB1").append("<span class='total'>"+totalVitamineB1+"</span>");
-            $("#vitamineB12").append("<span class='total'>"+totalVitamineB12+"</span>");
-            $("#vitamineC").append("<span class='total'>"+totalVitamineC+"</span>");
-            $("#vitamineD").append("<span class='total'>"+totalVitamineD+"</span>");
-            $("#vitamineE").append("<span class='total'>"+totalVitamineE+"</span>");
+            $("#amidon").append("<td class='total'>"+totalAmidon+"</td>");
+            $("#betaCarotene").append("<td class='total'>"+totalBetaCarotene+"</td>");
+            $("#calcium").append("<td class='total'>"+totalCalcium+"</td>");
+            $("#cholesterol").append("<td class='total'>"+totalCholesterol+"</td>");
+            $("#eau").append("<td class='total'>"+totalEau+"</td>");
+            $("#energie").append("<td class='total'>"+totalEnergie+"</td>");
+            $("#fer").append("<td class='total'>"+totalFer+"</td>");
+            $("#fibresAlimentaires").append("<td class='total'>"+totalFibresAlimentaires+"</td>");
+            $("#glucides").append("<td class='total'>"+totalGlucides+"</td>");
+            $("#iode").append("<td class='total'>"+totalIode+"</td>");
+            $("#lipides").append("<td class='total'>"+totalLipides+"</td>");
+            $("#proteines").append("<td class='total'>"+totalProteines+"</td>");
+            $("#sel").append("<td class='total'>"+totalSel+"</td>");
+            $("#sucres").append("<td class='total'>"+totalSucres+"</td>");
+            $("#vitamineB1").append("<td class='total'>"+totalVitamineB1+"</td>");
+            $("#vitamineB12").append("<td class='total'>"+totalVitamineB12+"</td>");
+            $("#vitamineC").append("<td class='total'>"+totalVitamineC+"</td>");
+            $("#vitamineD").append("<td class='total'>"+totalVitamineD+"</td>");
+            $("#vitamineE").append("<td class='total'>"+totalVitamineE+"</td>");
             $(".nutri").remove();
 
         }
