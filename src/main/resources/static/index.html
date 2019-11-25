@@ -25,20 +25,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ml-auto" id="open_menu_nav">
-                    <img src="./images/nav_user.png" height="35" alt="login">
+                    <img src="./images/nav_user.png" height="35" alt="login" style="font-size:30px;cursor:pointer" onclick="openNav()">
                 </div>
             </div>
+            <!-- Menu caché -->
+            <div id="mySidenav" class="sidenav">
+			  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			  	<a href="" id="accueil">Accueil</a>
+	            <a href="javascript:update('mes_recettes');">Mes recettes</a>
+	            <a href="javascript:update('mes_favoris');">Mes favoris</a>
+	            <a href="connexion.html" id="bouton_connexion">Connexion</a>
+	            <a href="">Paramètres</a>
+	            <a href="javascript:deconnexion()" id="bouton_deconnexion">Deconnexion</a>
+			</div>
         </nav>
 
-        <!-- Menu caché -->
-        <div id="menu_navigation">
-            <a href="" id="accueil">Accueil</a>
-            <a href="javascript:update('mes_recettes');">Mes recettes</a>
-            <a href="javascript:update('mes_favoris');">Mes favoris</a>
-            <a href="connexion.html" id="bouton_connexion">Connexion</a>
-            <a href="">Paramètres</a>
-            <a href="javascript:deconnexion()" id="bouton_deconnexion">Deconnexion</a>
-        </div>
 
         <!-- Recherche -->
         <div class="input-group col-md-8 col-sm-10 row border border-secondary rounded-pill mx-auto my-3 p-0" style="height: 8vh">
@@ -65,74 +66,7 @@
 				  </div>
 				</div>
 				
-				
-				
-				
-				<!--  
-                <div class="card-deck">
-                
-                    <div class="card" id="card0">
-                        <img class="card-img-top" id="image0"
-                            src="https://cdn.pixabay.com/photo/2018/02/05/19/12/strawberry-3132973_960_720.jpg"
-                            alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title" id="title0">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="card-link lienIcone col"><img src="./images/card_heart.png" width="30"
-                                    height="30" class="imgIcone" alt="Liker">
-                            </a>
-                            <a href="#" class="card-link lienIcone col"><img src="./images/card_share.png" width="30"
-                                    height="30" class="imgIcone" alt="Partager">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="card" id="card1">
-                        <img class="card-img-top" id="image1"
-                            src="https://cdn.pixabay.com/photo/2015/09/16/20/10/pancakes-943246_960_720.jpg"
-                            alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title" id="title1">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional
-                                content.</p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="card-link lienIcone col"><img src="./images/card_heart.png" width="30"
-                                    height="30" class="imgIcone" alt="Liker">
-                            </a>
-                            <a href="#" class="card-link lienIcone col"><img src="./images/card_share.png" width="30"
-                                    height="30" class="imgIcone" alt="Partager">
-                            </a>
-                        </div>
-                    </div>
-                    -->
-<!--  
-                    <div class="card" id="card2">
-                        <img class="card-img-top" id="image2"
-                            src="https://cdn.pixabay.com/photo/2017/03/19/18/22/italian-food-2157246_960_720.jpg"
-                            alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title" id="title2">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This card has even longer content than the first to show that equal
-                                height action.</p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="card-link lienIcone col"><img src="./images/card_heart.png" width="30"
-                                    height="30" class="imgIcone" alt="Liker">
-                            </a>
-                            <a href="#" class="card-link lienIcone col"><img src="./images/card_share.png" width="30"
-                                    height="30" class="imgIcone" alt="Partager">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
--->
-            	
+		
             </div>
         </div>
 
@@ -169,6 +103,15 @@
     </body>
 
     <script>
+    
+    function openNav() {
+    	  document.getElementById("mySidenav").style.width = "250px";
+    	}
+
+    	function closeNav() {
+    	  document.getElementById("mySidenav").style.width = "0";
+    	}
+    /*
     	image();
         $("#menu_navigation").hide();
         $("#open_menu_nav").click(function(){
@@ -185,7 +128,7 @@
             	getPseudo();
             }
         })
-        
+       */ 
        function update(url){
         let pseudo = sessionStorage.getItem('Mail');
         connection(pseudo, url);
