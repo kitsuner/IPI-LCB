@@ -1,4 +1,11 @@
-
+// Menu caché
+function openNav() {
+	  document.getElementById("mySidenav").style.width = "250px";
+	}
+	function closeNav() {
+	  document.getElementById("mySidenav").style.width = "0";
+	}
+    	
 // Affiche onclick le menu deroulant connexion/favoris/etc
 function displayMenu(){
     $("#menu_navigation").toggle();
