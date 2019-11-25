@@ -65,7 +65,17 @@
     margin-top: 60px;
 }
 .recettesRow{
-    display: flex;    
+    display: flex; 
+    justify-content: center;   
+}
+
+/* Card */
+.cardRecette{
+	padding: 0px;
+	margin: 10px;
+}
+.card-link{
+	
 }
 
 /* PAGE CONNEXION */

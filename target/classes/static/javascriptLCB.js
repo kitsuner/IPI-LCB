@@ -5,7 +5,8 @@ function openNav() {
 	function closeNav() {
 	  document.getElementById("mySidenav").style.width = "0";
 	}
-    	
+
+/*  	
 // Affiche onclick le menu deroulant connexion/favoris/etc
 function displayMenu(){
     $("#menu_navigation").toggle();
@@ -22,6 +23,7 @@ function displayMenu(){
         }
     }
 };
+*/
 
 // fonction vérifiant la connexion en cas de click sur le menu favori et recette. 
 //Si l'user n'est pas connecté, une redirection vers la page de connexion se produit //
