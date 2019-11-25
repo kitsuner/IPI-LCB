@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import App.LCB.model.Recette;
 import App.LCB.model.Utilisateur;
@@ -53,4 +54,21 @@ public class RecetteController {
 	private List<Recette> homePageRecette(){
 		return recetteRepository.findByIdBefore(4l);
 	}
+	
+	@RequestMapping(value = "", method = RequestMethod.POST)
+	@ResponseBody
+	public void nouvelleRecette (
+			@RequestHeader ("lib_recette") String lib_recette, 
+			@RequestHeader ("instruction_recette") String instruction_recette, 
+			@RequestHeader ("nbr_personne") Integer nbr_personne, 
+			@RequestHeader ("liste_ingredient") String liste_ingredient) { 
+		
+		//CREER UN URL
+		//CREER LA LISTE D'INGREDIENTS
+    	Recette nouvelleRecette = new Recette(null, lib_recette, instruction_recette, nbr_personne,null,null,null);
+    	recetteRepository.save(nouvelleRecette);
+		
+	}
+	
+	
 }
