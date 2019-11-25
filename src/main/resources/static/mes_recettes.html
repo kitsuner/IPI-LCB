@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Mes recettes</title>
     <script
-			  src="https://code.jquery.com/jquery-3.4.1.js"
-			  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-			  crossorigin="anonymous"></script>
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+    <script src="javascriptLCB.js"></script>
+    <title>Mes recettes</title>
+ 
   </head>
 
   <body>
@@ -19,14 +21,26 @@
             <img src="./images/chef.png" height="30" alt="Les Cordons Bleus">Les Cordons Bleus
         </a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>    
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ml-auto">
-                <a href="connexion.html" class="nav-item nav-link" title="Connexion"><img src="./images/nav_user.png" height="35" alt="login"></a>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ml-auto" id="open_menu_nav">
+                    <img src="./images/nav_user.png" height="35" alt="login" onclick="displayMenu()">
+                </div>
             </div>
+        </nav>
+    
+        <!-- Menu caché -->
+        <div id="menu_navigation">
+            <a href="index.html" id="accueil">Accueil</a>
+            <a href="javascript:update('mes_recettes');">Mes recettes</a>
+            <a href="javascript:update('mes_favoris');">Mes favoris</a>
+            <a href="connexion.html" id="bouton_connexion">Connexion</a>
+            <a href="">Paramètres</a>
+            <a href="javascript:deconnexion()" id="bouton_deconnexion">Deconnexion</a>
         </div>
-    </nav>
+            </div>
+        </nav>
     
     
     <!-- Recherche -->
@@ -87,24 +101,7 @@
 
   </body>
   <script>
-    function onload() {
-        $.ajax({
-            url: "http://localhost:8080/recette/userRecette",
-            headers: { "mail": sessionStorage.getItem('Mail'), "password": sessionStorage.getItem('Password') },
-            type: 'GET',
-            dataType: "json",
-            timeout: 15000
-        }).done(
-            function (data) {
-            	$("#card-deck").empty();
-                for (let i=0; i < data.length;i++){
-                	console.log(data[i].image);
-                	$("#card-deck").append('<div class="card" style="width: 20rem;"><img class="card-img-top" id="image'+i+'" alt="Card image cap"><div class="card-body"><h5 class="card-title text-center">'+data[i].lib+'</h5><p class="card-text text-justify">'+data[i].instruction+'</p></div><div class="card-body"><a href="#" class="card-link text-center">Voir la recette</a></div></div>');
-                	$("#image"+i).attr("src", "data:image/png;base64,"+data[i].image+"");
-                }
-                }
-            );
-          }
-    onload();
+   
+    onloadUserRecette();
   </script>
 </html>

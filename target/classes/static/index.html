@@ -10,6 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
             crossorigin="anonymous"></script>
+            <script src="javascriptLCB.js"></script> 
     <title>Les Cordons Bleus</title>
 </head>
 
@@ -25,7 +26,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ml-auto" id="open_menu_nav">
+<<<<<<< HEAD
                     <img src="./images/nav_user.png" height="35" alt="login" style="font-size:30px;cursor:pointer" onclick="openNav()">
+=======
+                    <img src="./images/nav_user.png" height="35" alt="login" onclick="displayMenu()">
+>>>>>>> d36ac46379bec152d03920848d93af6d5f8f5433
                 </div>
             </div>
             <!-- Menu caché -->
@@ -108,7 +113,35 @@
                             </a>
                         </div>
                     </div>
+<<<<<<< HEAD
 
+=======
+                    
+
+                    <div class="card" id="card2">
+                        <img class="card-img-top" id="image2"
+                            src="https://cdn.pixabay.com/photo/2017/03/19/18/22/italian-food-2157246_960_720.jpg"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title" id="title2">Card title</h5>
+                            <p class="card-text" id="text2">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This card has even longer content than the first to show that equal
+                                height action.</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="#" class="card-link lienIcone col"><img src="./images/card_heart.png" width="30"
+                                    height="30" class="imgIcone" alt="Liker">
+                            </a>
+                            <a href="#" class="card-link lienIcone col"><img src="./images/card_share.png" width="30"
+                                    height="30" class="imgIcone" alt="Partager">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+            	
+>>>>>>> d36ac46379bec152d03920848d93af6d5f8f5433
             </div>
         </div>
 
@@ -154,6 +187,7 @@
     	}
     /*
     	image();
+<<<<<<< HEAD
         $("#menu_navigation").hide();
         $("#open_menu_nav").click(function(){
             $("#menu_navigation").toggle();
@@ -236,6 +270,9 @@
                         $("#menu_navigation").prepend("<p id='pseudo'>Bienvenue "+data.pseudo+"");
                     });
         }
+=======
+        $("#menu_navigation").hide();   
+>>>>>>> d36ac46379bec152d03920848d93af6d5f8f5433
     </script>
 
 
