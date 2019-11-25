@@ -39,64 +39,11 @@
 <div class="container recettes">
             <div class="row recettesRow">
 
-                <div class="card-deck">
-                    <div class="card" id="card0">
-                        <img class="card-img-top" id="image0"
-                            src="https://cdn.pixabay.com/photo/2018/02/05/19/12/strawberry-3132973_960_720.jpg"
-                            alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title" id="title0">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="card-link lienIcone col"><img src="./images/card_heart.png" width="30"
-                                    height="30" class="imgIcone" alt="Liker">
-                            </a>
-                            <a href="#" class="card-link lienIcone col"><img src="./images/card_share.png" width="30"
-                                    height="30" class="imgIcone" alt="Partager">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="card" id="card1">
-                        <img class="card-img-top" id="image1"
-                            src="https://cdn.pixabay.com/photo/2015/09/16/20/10/pancakes-943246_960_720.jpg"
-                            alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title" id="title1">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional
-                                content.</p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="card-link lienIcone col"><img src="./images/card_heart.png" width="30"
-                                    height="30" class="imgIcone" alt="Liker">
-                            </a>
-                            <a href="#" class="card-link lienIcone col"><img src="./images/card_share.png" width="30"
-                                    height="30" class="imgIcone" alt="Partager">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="card" id="card2">
-                        <img class="card-img-top" id="image2"
-                            src="https://cdn.pixabay.com/photo/2017/03/19/18/22/italian-food-2157246_960_720.jpg"
-                            alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title" id="title2">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This card has even longer content than the first to show that equal
-                                height action.</p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="card-link lienIcone col"><img src="./images/card_heart.png" width="30"
-                                    height="30" class="imgIcone" alt="Liker">
-                            </a>
-                            <a href="#" class="card-link lienIcone col"><img src="./images/card_share.png" width="30"
-                                    height="30" class="imgIcone" alt="Partager">
-                            </a>
-                        </div>
-                    </div>
+                <div class="card-deck" id="card-deck">
+                   
+                        
+                       
+                      
                 </div>
 
             </div>
@@ -149,18 +96,14 @@
             timeout: 15000
         }).done(
             function (data) {
-            	let i = 0;
-                while (i < 3) {
-                    if (i < data.length) {
-                        document.getElementById("image" + i + "").src = "data:image/png;base64," + data[i].image + "";
-                        document.getElementById("title" + i + "").textContent = "" + data[i].lib + "";
-                    }
-                    else {
-                        document.getElementById("card" + i + "").remove();
-                    }
-                    i++;
+            	$("#card-deck").empty();
+                for (let i=0; i < data.length;i++){
+                	console.log(data[i].image);
+                	$("#card-deck").append('<div class="card" style="width: 20rem;"><img class="card-img-top" id="image'+i+'" alt="Card image cap"><div class="card-body"><h5 class="card-title text-center">'+data[i].lib+'</h5><p class="card-text text-justify">'+data[i].instruction+'</p></div><div class="card-body"><a href="#" class="card-link text-center">Voir la recette</a></div></div>');
+                	$("#image"+i).attr("src", "data:image/png;base64,"+data[i].image+"");
                 }
-            });
+                }
+            );
           }
     onload();
   </script>

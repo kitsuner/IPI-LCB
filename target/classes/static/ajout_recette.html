@@ -169,31 +169,6 @@
                     <div class="nut" id="vitamineE">Vitamines E : </div>
                 </div>
 
-                <div class="conteneurListeIngredients" id="conteneurListeIngredients"></div>
-
-                <div>
-                    <h2>Tableau nutritionnel</h2>
-                    <div class="nut" id="amidon">Amidon : </div>
-                    <div class="nut" id="betaCarotene">Beta Carotène : </div>
-                    <div class="nut" id="calcium">Calcium : </div>
-                    <div class="nut" id="cholesterol">Cholesterol : </div>
-                    <div class="nut" id="eau">Eau : </div>
-                    <div class="nut" id="energie">Energie : </div>
-                    <div class="nut" id="fer">Fer : </div>
-                    <div class="nut" id="fibresAlimentaires">Fibres Alimentaires : </div>
-                    <div class="nut" id="glucides">Glucides : </div>
-                    <div class="nut" id="iode">Iode : </div>
-                    <div class="nut" id="lipides">Lipides : </div>
-                    <div class="nut" id="proteines">Protéines : </div>
-                    <div class="nut" id="sel">Sel : </div>
-                    <div class="nut" id="sucres">Sucres : </div>
-                    <div class="nut" id="vitamineB1">Vitamines B1 : </div>
-                    <div class="nut" id="vitamineB12">Vitamines B12 : </div>
-                    <div class="nut" id="vitamineC">Vitamines C : </div>
-                    <div class="nut" id="vitamineD">Vitamines D : </div>
-                    <div class="nut" id="vitamineE">Vitamines E : </div>
-                </div>
-
                 <div class="recettePreparation">
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Préparation :</label>
@@ -346,6 +321,8 @@
                                         
                                         $("#validRecette").click(function(event){
                                             
+                                        	
+                                        	
                                             calculTotalNutriments();
                                             /*
                                             $.ajax({
@@ -493,13 +470,32 @@
                 totalVitamineC = totalVitamineC + parseFloat(vitamineC[i].childNodes[0].data);
                 totalVitamineD = totalVitamineD + parseFloat(vitamineD[i].childNodes[0].data);
                 totalVitamineE = totalVitamineE + parseFloat(vitamineE[i].childNodes[0].data);
-                console.log(totalAmidon,totalBetaCarotene,totalCalcium,totalCholesterol,totalEau,totalEnergie,totalFer,totalFibresAlimentaires,totalGlucides,totalIode,totalLipides,totalProteines,totalSel,totalSucres,totalVitamineB1,totalVitamineB12,totalVitamineC,totalVitamineD,totalVitamineE);
+                
 
             }
            
-
+            console.log(totalAmidon,totalBetaCarotene,totalCalcium,totalCholesterol,totalEau,totalEnergie,totalFer,totalFibresAlimentaires,totalGlucides,totalIode,totalLipides,totalProteines,totalSel,totalSucres,totalVitamineB1,totalVitamineB12,totalVitamineC,totalVitamineD,totalVitamineE);
             
-            
+            $("#amidon").append("<div class='total'>"+totalAmidon+"</div>");
+            $("#betaCarotene").append("<div class='total'>"+totalBetaCarotene+"</div>");
+            $("#calcium").append("<div class='total'>"+totalCalcium+"</div>");
+            $("#cholesterol").append("<div class='total'>"+totalCholesterol+"</div>");
+            $("#eau").append("<div class='total'>"+totalEau+"</div>");
+            $("#energie").append("<div class='total'>"+totalEnergie+"</div>");
+            $("#fer").append("<div class='total'>"+totalFer+"</div>");
+            $("#fibresAlimentaires").append("<div class='total'>"+totalFibresAlimentaires+"</div>");
+            $("#glucides").append("<div class='total'>"+totalGlucides+"</div>");
+            $("#iode").append("<div class='total'>"+totalIode+"</div>");
+            $("#lipides").append("<div class='total'>"+totalLipides+"</div>");
+            $("#proteines").append("<div class='total'>"+totalProteines+"</div>");
+            $("#sel").append("<div class='total'>"+totalSel+"</div>");
+            $("#sucres").append("<div class='total'>"+totalSucres+"</div>");
+            $("#vitamineB1").append("<div class='total'>"+totalVitamineB1+"</div>");
+            $("#vitamineB12").append("<div class='total'>"+totalVitamineB12+"</div>");
+            $("#vitamineC").append("<div class='total'>"+totalVitamineC+"</div>");
+            $("#vitamineD").append("<div class='total'>"+totalVitamineD+"</div>");
+            $("#vitamineE").append("<div class='total'>"+totalVitamineE+"</div>");
+            $(".nutri").remove();
         }
 	
 	    
