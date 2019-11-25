@@ -32,83 +32,19 @@
     <!-- card -->
     <div class="card shadow p-3 mb-5 bg-white rounded">
         <div class="card-body cardR">
-        	<form>
+        	<form id="formulaire">
             <h1 class="text-center titreCardRecette">Ajouter une recette</h1>
-            <p class="card-text titreinfo1R">Selectionnez vos ingrédients et la quantité :</p>
-    
-                <div class="row">
-                
-                	<!-- liste groupe ingrédient -->
-                    <div class="form-col-4">
-                        <div class="col-auto my-4 form1" >
-                            <select class="custom-select mr-sm-2 select1" id="cat1"> 
-                            	<option selected>Faites votre choix...</option>           
-                            </select>
-                        </div>
-                    </div>
-					
-					<!-- liste sous groupe ingrédient -->
-                    <div class="form-col-4">
-                        <div class="col-auto my-4">
-                            <select class="custom-select mr-sm-2 select2" id="cat2">
-                            	<option selected>Faites votre choix...</option> 
-                            </select>
-                        </div>
-                    </div>
-
-					<!-- liste sous sous groupe ingrédient -->
-                    <div class="form-col-4">
-                        <div class="col-auto my-4">
-                            <select class="custom-select mr-sm-2 select3" id="cat3">
-                            	<option selected>Faites votre choix...</option> 
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <!-- liste ingrédient -->
-                    <div class="form-col-4">
-                        <div class="col-auto my-4">
-                            <select class="custom-select mr-sm-2 select4" id="cat4">
-                            	<option selected>Faites votre choix...</option> 
-                            </select>
-                        </div>
-                    </div>
-                    
-                </div>
-
-                <!-- Poids -->
-                <div class="row">
-                    <div class="col-4 poidsR">
-                        <div class="input-group">
-                            <input type="text" class="form-control poidsAlim" id="poidsAlim" aria-label="Text input with segmented dropdown button" placeholder="quantité">
-                            <select class="form-control select5">
-                                    <option selected>Unités...</option>
-                                    <option value="1">Grammes</option>
-                                    <option value="2">Litres</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Validation -->
-                <div class="row">
-                    <div class="col text-right">
-                        <button type="submit" class="btn btn-success validIngredient">Valider</button>
-                    </div>
-                </div>
-				
-				<!-- Titre et nombre de personnes de la recette -->
-				<div class="card">
-  					<div class="card-body">
-					<!-- Titre de la recette -->
-	                <div class="form-group recetteTitre">
-					    <label for="formGroupExampleInput">Titre de la recette :</label>
-					    <input type="text" class="form-control" id="recetteTitre" placeholder="titre">
-					</div>
-					<div class="row">
-					<div class="form-group col-md-8">
+            
+            <!-- partie Titre et nombre de personnes de la recette -->
+			<!-- Titre de la recette -->
+               <div class="form-group recetteTitre mt-5">
+			    <label for="recetteTitre">Titre de la recette :</label>
+			    <input type="text" class="form-control" id="recetteTitre" placeholder="titre">
+			</div>
+			<div class="row">
+				<div class="form-group col-md-8">
 				      <label for="inputState">Nombre de personnes : </label>
-				      <select id="inputState" class="form-control">
+				      <select id="nbPers" class="form-control">
 					        <option selected>Faites votre choix...</option>
 					        <option value="1">1</option>
                             <option value="2">2</option>
@@ -131,58 +67,141 @@
                             <option value="19">19</option>
                             <option value="20">20</option>
 				      </select>
-			    	</div>
-					    <!-- Validation -->
-		                	<div class="col-md-4 d-flex justify-content-end align-items-center">
-			                	<input class="btn btn-danger" type="reset" value="Annuler">
-								<input class="btn btn-success" type="submit" value="Valider">
-		                	</div>
-		                </div>
-		                
-                	</div>
+		    	</div>
+           	</div>
+                
+                
+            <p class="card-text titreinfo1R">Selectionnez vos ingrédients et la quantité :</p>
+                <div class="row">              
+                	<!-- liste groupe ingrédient -->
+                    <div class="form-col-4">
+                        <div class="col-auto my-4 form1" >
+                            <select class="custom-select mr-sm-2 select1" id="cat1"> 
+                            	<option selected>Faites votre choix...</option>           
+                            </select>
+                        </div>
+                    </div>
+					<!-- liste sous groupe ingrédient -->
+                    <div class="form-col-4">
+                        <div class="col-auto my-4">
+                            <select class="custom-select mr-sm-2 select2" id="cat2">
+                            	<option selected>Faites votre choix...</option> 
+                            </select>
+                        </div>
+                    </div>
+					<!-- liste sous sous groupe ingrédient -->
+                    <div class="form-col-4">
+                        <div class="col-auto my-4">
+                            <select class="custom-select mr-sm-2 select3" id="cat3">
+                            	<option selected>Faites votre choix...</option> 
+                            </select>
+                        </div>
+                    </div>               
+                    <!-- liste ingrédient -->
+                    <div class="form-col-4">
+                        <div class="col-auto my-4">
+                            <select class="custom-select mr-sm-2 select4" id="cat4">
+                            	<option selected>Faites votre choix...</option> 
+                            </select>
+                        </div>
+                    </div>     
                 </div>
-                
-                
-				<!-- Liste ingrédients sélectionnés -->
-                <div class="conteneurListeIngredients" id="conteneurListeIngredients"></div>
 
-                <div>
-                    <h2>Tableau nutritionnel</h2>
-                    <div class="nut" id="amidon">Amidon : </div>
-                    <div class="nut" id="betaCarotene">Beta Carotène : </div>
-                    <div class="nut" id="calcium">Calcium : </div>
-                    <div class="nut" id="cholesterol">Cholesterol : </div>
-                    <div class="nut" id="eau">Eau : </div>
-                    <div class="nut" id="energie">Energie : </div>
-                    <div class="nut" id="fer">Fer : </div>
-                    <div class="nut" id="fibresAlimentaires">Fibres Alimentaires : </div>
-                    <div class="nut" id="glucides">Glucides : </div>
-                    <div class="nut" id="iode">Iode : </div>
-                    <div class="nut" id="lipides">Lipides : </div>
-                    <div class="nut" id="proteines">Protéines : </div>
-                    <div class="nut" id="sel">Sel : </div>
-                    <div class="nut" id="sucres">Sucres : </div>
-                    <div class="nut" id="vitamineB1">Vitamines B1 : </div>
-                    <div class="nut" id="vitamineB12">Vitamines B12 : </div>
-                    <div class="nut" id="vitamineC">Vitamines C : </div>
-                    <div class="nut" id="vitamineD">Vitamines D : </div>
-                    <div class="nut" id="vitamineE">Vitamines E : </div>
+                <!-- Poids -->
+                <div class="row">
+                    <div class="col-4 poidsR">
+                        <div class="input-group">
+                            <input type="text" class="form-control poidsAlim" id="poidsAlim" aria-label="Text input with segmented dropdown button" placeholder="quantité">
+                            <select class="form-control select5">
+                                    <option value="1" selected>Grammes</option>
+                                    <option value="2">Litres</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
+                
+                <!-- Validation -->
+                <div class="row">
+                    <div class="col text-right">
+                        <button type="submit" class="btn btn-success validIngredient">Valider</button>
+                    </div>
+                </div>
+		
+				<!-- Liste des ingrédients sélectionnés avec leur quantité -->
+                <div class="mt-5" id="conteneurListeIngredients">
+	                <ul class="list-group list-group-flush conteneurListeIngredients">
+	                </ul>
+                </div>
+	
+				<div class="card mt-5">
+  					<div class="card-body">
+                    	<h2 class="d-flex justify-content-center">Tableau nutritionnel</h2>
+                    
+						<table class="table table-striped table-bordered mt-4 tableauNutri">
+							<tbody>
+							  <tr>
+							  	<td class="nut" id="lipides">Lipides : </td>
+								<td class="nut" id="proteines">Protéines : </td>
+								<td class="nut" id="glucides">Glucides : </td>
+							  </tr>
+							  <tr>
+							  	<td class="nut" id="fer">Fer : </td>
+								<td class="nut" id="calcium">Calcium : </td>							
+								<td class="nut" id="energie">Energie : </td>
+							  </tr>
+							  <tr>
+								<td class="nut" id="cholesterol">Cholesterol : </td>
+								<td class="nut" id="sucres">Sucres : </td>
+								<td class="nut" id="amidon">Amidon : </td>							
+							  </tr>
+							  <tr>
+							  	<td class="nut" id="sel">Sel : </td>
+								<td class="nut" id="iode">Iode : </td>
+								<td class="nut" id="eau">Eau : </td>	
+							  </tr>
+							  <tr>
+								<td class="nut" id="betaCarotene">Beta Carotène : </td>
+								<td class="nut" id="vitamineC">Vitamines C : </td>
+								<td class="nut" id="vitamineE">Vitamines E : </td>
+							  </tr>
+							  <tr>
+								<td class="nut" id="vitamineB1">Vitamines B1 : </td>
+								<td class="nut" id="vitamineB12">Vitamines B12 : </td>
+								<td class="nut" id="vitamineD">Vitamines D : </td>
+							  </tr>
+							  <tr>					
+								<td class="nut" id="fibresAlimentaires">Fibres Alimentaires : </td>
+							  </tr>
+							</tbody>
+						 </table>
+				
+                	</div>
+				</div>
 
                 <div class="recettePreparation">
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Préparation :</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                        <label class="titreinfo1R" for="exampleFormControlTextarea1">Préparation :</label>
+                        <textarea class="form-control" id="prepaRecette" rows="5" placeholder="instructions..."></textarea>
                     </div>
                 </div>
+              	
 
-                <!-- Validation -->
-                <div class="row">
+
+                <!-- Validation Recette -->
+                <div class="row mt-5">
                     <div class="col validAjouR text-right">
-                        <button id="validRecette" type="submit" class="btn btn-success">Valider</button>
+                        <button type="submit" id="validRecette" class="btn btn-success btn-lg btn-block">Valider votre recette</button>
                     </div>
                 </div>
-
+                
+                <!--  
+                Validation et annulation preparation
+               	<div class="d-flex justify-content-end align-items-center">
+                	<input class="btn btn-danger resetPrepa" type="reset" value="Annuler">
+					<input class="btn btn-success validPrepa" type="submit" value=" Valider ">
+               	</div>
+               	-->
+               	
             </form>
         </div>
     </div>
@@ -222,8 +241,30 @@
         var ingredientValue;
         var unite;
         var proprietesIngredient;
+        var titreRecette;
+        var nbPers;
+		var prepaRecette
         
         recupListes();
+        
+		// Validation Recette
+        // Validation Titre et nombre de personnes / Récupération des valeurs
+        $("#validRecette").on('click', function() {
+        	titreRecette = $("#recetteTitre").val(); 
+        	nbPers = $("#nbPers").val();
+        	prepaRecette = $("#prepaRecette").val();
+        	$("#formulaire")[0].reset();
+        	$(".nut").children().remove();
+        	$(".conteneurListeIngredients").children().remove();
+        	console.log("titre : " + titreRecette + ", Nb pers : " + nbPers + ", Prépa : " + prepaRecette);
+        	recupListes();
+        })
+
+     	// Annulation 
+        //$(".resetPrepa").on('click', function() {
+        	//prepaRecette = $("#prepaRecette").val(""); 
+		//})
+
         
 	    function recupListes(){
 	    	var liste;
@@ -234,17 +275,13 @@
          	var value4;
          	
          // tableaux recupération ingredients
-         	
-         	
+
 	        $.ajax({
 	            type: 'get',
 	            contentType: "application/json",
 	            url: "http://localhost:8080/groupe/all/",
 	            }).done(function(data) {
 	            datas = data;
-
-	
-            		
 
 	 			console.log(data);
 
@@ -306,10 +343,8 @@
                                 proprietesIngredient = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[value3].ingredients[value4];
 
 					            console.log(ingredientValue,proprietesIngredient);
-					            
-// --------------------------------- EN TRAVAUX !!!----------------------------------------------------------
+					           
 								
-						
 						         // Récupération de la valeur poids ingredient avec validation :
 							        $(".validIngredient").click(function(event) {
                                         // Poids quantité aliment champ poidsRecette
@@ -319,6 +354,7 @@
 										
                                         
                                         
+<<<<<<< Updated upstream
                                         $("#validRecette").click(function(event){
                                             
                                         	
@@ -335,14 +371,22 @@
                                             */
                                             event.preventDefault();
                                         })
+=======
+                                     $("#validRecette").click(function(event){    
+                                         calculTotalNutriments();
+                                         /*
+                                         $.ajax({
+                                             type: 'POST',
+                                             url: "http://localhost:8080/recette",
+                                             //headers:
+                                             }).done(function(data) {  
+                                         })
+                                         */
+                                         event.preventDefault();
+                                     })
+>>>>>>> Stashed changes
 
-                                    })
-							        	
-							        	
-// --------------------------------- FIN TRAVAUX !!!----------------------------------------------------------		
-							        	
-							       
-							       
+                                 })
 				            })
 	            		})
 		        	})
@@ -375,35 +419,33 @@
 		// AFFICHAGE DE LA LISTE DES INGREDIENTS 
         function afficheIngredient(){
             if (unite == ""){
-            	$(".conteneurListeIngredients").append("<div>"+ingredientValue+"</div>");
+            	$(".conteneurListeIngredients").append('<li class="list-group-item">'+ingredientValue+'</li>');
             } else {
-            	$(".conteneurListeIngredients").append("<div>"+poids+" "+unite+" de "+ingredientValue+"</div>");
+            	$(".conteneurListeIngredients").append('<li class="list-group-item">'+poids+" "+unite+" de "+ingredientValue+'</li>');
             }
-            
-            
         }
 
         // REMPLISSAGE DU TABLEAU CONTENANT TOUTES LES VALEURS NUTRITIONNELLES PAR INGREDIENT ET EN FONCTION DE LA QUANTITE 
         function afficheTableauNutritionnel(){
-            $("#amidon").append("<div class='nutri amidon'>"+proprietesIngredient.amidon/100*poids+"</div>");
-            $("#betaCarotene").append("<div class='nutri betaCarotene'>"+proprietesIngredient.betaCarotene/100*poids+"</div>");
-            $("#calcium").append("<div class='nutri calcium'>"+proprietesIngredient.calcium/100*poids+"</div>");
-            $("#cholesterol").append("<div class='nutri cholesterol'>"+proprietesIngredient.cholosterol/100*poids+"</div>");
-            $("#eau").append("<div class='nutri eau'>"+proprietesIngredient.eau/100*poids+"</div>");
-            $("#energie").append("<div class='nutri energie'>"+proprietesIngredient.energie/100*poids+"</div>");
-            $("#fer").append("<div class='nutri fer'>"+proprietesIngredient.fer/100*poids+"</div>");
-            $("#fibresAlimentaires").append("<div class='nutri fibresAlimentaires'>"+proprietesIngredient.fibresAlimentaires/100*poids+"</div>");
-            $("#glucides").append("<div class='nutri glucides'>"+proprietesIngredient.glucides/100*poids+"</div>");
-            $("#iode").append("<div class='nutri iode'>"+proprietesIngredient.iode/100*poids+"</div>");
-            $("#lipides").append("<div class='nutri lipides'>"+proprietesIngredient.lipides/100*poids+"</div>");
-            $("#proteines").append("<div class='nutri proteines'>"+proprietesIngredient.proteines/100*poids+"</div>");
-            $("#sel").append("<div class='nutri sel'>"+proprietesIngredient.sel/100*poids+"</div>");
-            $("#sucres").append("<div class='nutri sucres'>"+proprietesIngredient.sucres/100*poids+"</div>");
-            $("#vitamineB1").append("<div class='nutri vitamineB1'>"+proprietesIngredient.vitamineB1/100*poids+"</div>");
-            $("#vitamineB12").append("<div class='nutri vitamineB12'>"+proprietesIngredient.vitamineB12/100*poids+"</div>");
-            $("#vitamineC").append("<div class='nutri vitamineC'>"+proprietesIngredient.vitamineC/100*poids+"</div>");
-            $("#vitamineD").append("<div class='nutri vitamineD'>"+proprietesIngredient.vitamineD/100*poids+"</div>");
-            $("#vitamineE").append("<div class='nutri vitamineE'>"+proprietesIngredient.vitamineE/100*poids+"</div>");
+        	$("#amidon").append("<span class='nutri amidon'>"+proprietesIngredient.amidon/100*poids+" </span>");
+            $("#betaCarotene").append("<span class='nutri betaCarotene'>"+proprietesIngredient.betaCarotene/100*poids+" </span>");
+            $("#calcium").append("<span class='nutri calcium'>"+proprietesIngredient.calcium/100*poids+" </span>");
+            $("#cholesterol").append("<span class='nutri cholesterol'>"+proprietesIngredient.cholosterol/100*poids+" </span>");
+            $("#eau").append("<span class='nutri eau'>"+proprietesIngredient.eau/100*poids+" </span>");
+            $("#energie").append("<span class='nutri energie'>"+proprietesIngredient.energie/100*poids+" </span>");
+            $("#fer").append("<span class='nutri fer'>"+proprietesIngredient.fer/100*poids+" </span>");
+            $("#fibresAlimentaires").append("<span class='nutri fibresAlimentaires'>"+proprietesIngredient.fibresAlimentaires/100*poids+" </span>");
+            $("#glucides").append("<span class='nutri glucides'>"+proprietesIngredient.glucides/100*poids+" </span>");
+            $("#iode").append("<span class='nutri iode'>"+proprietesIngredient.iode/100*poids+" </span>");
+            $("#lipides").append("<span class='nutri lipides'>"+proprietesIngredient.lipides/100*poids+" </span>");
+            $("#proteines").append("<span class='nutri proteines'>"+proprietesIngredient.proteines/100*poids+" </span>");
+            $("#sel").append("<span class='nutri sel'>"+proprietesIngredient.sel/100*poids+" </span>");
+            $("#sucres").append("<span class='nutri sucres'>"+proprietesIngredient.sucres/100*poids+" </span>");
+            $("#vitamineB1").append("<span class='nutri vitamineB1'>"+proprietesIngredient.vitamineB1/100*poids+" </span>");
+            $("#vitamineB12").append("<span class='nutri vitamineB12'>"+proprietesIngredient.vitamineB12/100*poids+" </span>");
+            $("#vitamineC").append("<span class='nutri vitamineC'>"+proprietesIngredient.vitamineC/100*poids+" </span>");
+            $("#vitamineD").append("<span class='nutri vitamineD'>"+proprietesIngredient.vitamineD/100*poids+" </span>");
+            $("#vitamineE").append("<span class='nutri vitamineE'>"+proprietesIngredient.vitamineE/100*poids+" </span>");
         }
         
 
@@ -473,6 +515,7 @@
                 
 
             }
+<<<<<<< Updated upstream
            
             console.log(totalAmidon,totalBetaCarotene,totalCalcium,totalCholesterol,totalEau,totalEnergie,totalFer,totalFibresAlimentaires,totalGlucides,totalIode,totalLipides,totalProteines,totalSel,totalSucres,totalVitamineB1,totalVitamineB12,totalVitamineC,totalVitamineD,totalVitamineE);
             
@@ -496,10 +539,10 @@
             $("#vitamineD").append("<div class='total'>"+totalVitamineD+"</div>");
             $("#vitamineE").append("<div class='total'>"+totalVitamineE+"</div>");
             $(".nutri").remove();
+=======
+>>>>>>> Stashed changes
         }
-	
-	    
-	
+
 	</script>
   </body>
 </html>
