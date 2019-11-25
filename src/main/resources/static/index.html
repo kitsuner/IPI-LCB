@@ -10,6 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
             crossorigin="anonymous"></script>
+            <script src="javascriptLCB.js"></script> 
     <title>Les Cordons Bleus</title>
 </head>
 
@@ -25,7 +26,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ml-auto" id="open_menu_nav">
-                    <img src="./images/nav_user.png" height="35" alt="login">
+                    <img src="./images/nav_user.png" height="35" alt="login" onclick="displayMenu()">
                 </div>
             </div>
         </nav>
@@ -91,8 +92,8 @@
                             </a>
                         </div>
                     </div>
-                    -->
-<!--  
+                    
+
                     <div class="card" id="card2">
                         <img class="card-img-top" id="image2"
                             src="https://cdn.pixabay.com/photo/2017/03/19/18/22/italian-food-2157246_960_720.jpg"
@@ -114,7 +115,7 @@
                     </div>
                 </div>
 
--->
+
             	
             </div>
         </div>
@@ -153,88 +154,7 @@
 
     <script>
     	image();
-        $("#menu_navigation").hide();
-        $("#open_menu_nav").click(function(){
-            $("#menu_navigation").toggle();
-            $("#bouton_connexion").show();
-            let user = sessionStorage.getItem('Mail')
-            if ( user == null){
-                $("#bouton_deconnexion").hide();               
-            }
-            else {
-            	$("#bouton_connexion").hide();
-            	getPseudo();
-            }
-        })
-        
-       function update(url){
-        let pseudo = sessionStorage.getItem('Mail');
-        connection(pseudo, url);
-        }
-        function connection(pseudo, url){
-            if (pseudo == null){
-                document.location.href="connexion.html";
-            }
-            else{
-                document.location.href=""+url+".html";
-            }
-        }
-        function deconnexion(){
-            sessionStorage.clear();
-            $("#menu_navigation").hide();
-            $("#pseudo").remove();
-            }
-
-    function search() {
-        let recherche = $("#search").val();
-        $.ajax({
-            url: "http://localhost:8080/recette/search",
-            headers: { "lib": recherche },
-            type: 'GET',
-            dataType: "json",
-            timeout: 15000
-        }).done(
-            function (data) {              
-            	$("#card-deck").empty();
-                for (let i=0; i < data.length;i++){
-                	console.log(data[i].image);
-                	$("#card-deck").append('<div class="card" style="width: 20rem;"><img class="card-img-top" id="image'+i+'" alt="Card image cap"><div class="card-body"><h5 class="card-title text-center">'+data[i].lib+'</h5><p class="card-text text-justify">'+data[i].instruction+'</p></div><div class="card-body"><a href="#" class="card-link text-center">Voir la recette</a></div></div>');
-                	$("#image"+i).attr("src", "data:image/png;base64,"+data[i].image+"");
-                }
-            });                    
-            }
-    function image() {
-         $.ajax({
-            url: "http://localhost:8080/recette/homePageRecette",
-            type: 'GET',
-            dataType: "json",
-            timeout: 15000
-        }).done(
-            function (data) {
-                for (let i = 0; i < data.length; i++) {
-                    document.getElementById("image"+i+"").src="data:image/png;base64,"+data[i].image+"";
-                    document.getElementById("title"+i+"").textContent=""+data[i].lib+"";
-                    document.getElementById("text"+i+"").textContent=""+data[i].instruction+"";
-                }
-            });     
-            
-        }
-        function getPseudo() {
-        	let tempMail = sessionStorage.getItem('Mail');
-        	let tempPassword = sessionStorage.getItem('Password');
-        	console.log(tempMail, tempPassword);
-            $.ajax({ 
-                    url: "http://localhost:8080/utilisateur/connexion", 
-                    headers: { "mail" : tempMail , "password" : tempPassword},
-                    type: 'GET',
-                    dataType:"json",
-                    timeout: 15000
-                }).done(
-                    function(data) { 
-                    	console.log(data.pseudo);
-                        $("#menu_navigation").prepend("<p id='pseudo'>Bienvenue "+data.pseudo+"");
-                    });
-        }
+        $("#menu_navigation").hide();   
     </script>
 
 
