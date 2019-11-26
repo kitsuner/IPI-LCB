@@ -70,19 +70,25 @@ public class RecetteController {
 		return recetteRepository.findByUrlRecetteEquals(adresse);
 	}
 	
-	@RequestMapping(value = "", method = RequestMethod.POST)
+	@RequestMapping(value = "/nouv_recette", method = RequestMethod.POST)
 	@ResponseBody
 	public void nouvelleRecette (
 			@RequestHeader ("lib_recette") String lib_recette, 
 			@RequestHeader ("instruction_recette") String instruction_recette, 
 			@RequestHeader ("nbr_personne") Integer nbr_personne, 
-			@RequestHeader ("liste_ingredient") String liste_ingredient) { 
-		
+			@RequestHeader ("liste_ingredient") String liste_ingredient,
+			@RequestHeader ("mail") String mail) { 
+		System.out.println(lib_recette);
+		System.out.println(instruction_recette);
+		System.out.println(nbr_personne);
+		System.out.println(liste_ingredient);
+		System.out.println(mail);
 		//CREER UN URL
 		//CREER LA LISTE D'INGREDIENTS
+		/*
     	Recette nouvelleRecette = new Recette(null, lib_recette,null, instruction_recette, nbr_personne,null,null,null);
     	recetteRepository.save(nouvelleRecette);
-		
+		*/
 	}
 	
 	
