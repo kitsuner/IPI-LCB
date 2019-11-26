@@ -86,4 +86,15 @@ public class RecetteController {
 	}
 	
 	
+	
+	// 	Fonction prennant en paramètre le lib d'une recette et générant une bonne url avec un chiffre de 0 à 999999 pour saler 
+	public String concatUrl(String lib){
+		String url="http://localhost:8080/recette?id=";
+		String salt=Integer.toString((int)Math.ceil(Math.random()*1000000));
+		lib= lib.replaceAll(" ", "");
+		url= url.concat(lib);
+		url= url.concat(salt);
+		return url;
+	}
+	
 }
