@@ -2,8 +2,11 @@ package App.LCB.Controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -72,25 +75,19 @@ public class RecetteController {
 	
 	@RequestMapping(value = "/nouv_recette", method = RequestMethod.POST)
 	@ResponseBody
-	public void nouvelleRecette (
-			@RequestHeader ("lib_recette") String lib_recette, 
-			@RequestHeader ("instruction_recette") String instruction_recette, 
-			@RequestHeader ("nbr_personne") Integer nbr_personne, 
-			@RequestHeader ("liste_ingredient") String liste_ingredient,
-			@RequestHeader ("mail") String mail) { 
-		System.out.println(lib_recette);
-		System.out.println(instruction_recette);
-		System.out.println(nbr_personne);
-		System.out.println(liste_ingredient);
-		System.out.println(mail);
+	public void nouvelleRecette (@RequestHeader("mail") String mail, @RequestHeader("lib") String lib, 
+			@RequestHeader("nbrPer") Integer nbr, @RequestHeader("description") String description, @RequestBody String send)
+			 { 	
+			
+		System.out.println(mail+lib+nbr+description+send);
+		
+		
 		//CREER UN URL
 		//CREER LA LISTE D'INGREDIENTS
-		/*
-    	Recette nouvelleRecette = new Recette(null, lib_recette,null, instruction_recette, nbr_personne,null,null,null);
-    	recetteRepository.save(nouvelleRecette);
-		*/
+    	//Recette nouvelleRecette = new Recette(null, lib_recette,null, instruction_recette, nbr_personne,null,null,null);
+    	// recetteRepository.save(nouvelleRecette);
+		
 	}
-	
 	
 	
 	// 	Fonction prennant en paramètre le lib d'une recette et générant une bonne url avec un chiffre de 0 à 999999 pour saler 
