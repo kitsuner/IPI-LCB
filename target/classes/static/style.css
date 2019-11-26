@@ -264,7 +264,11 @@ input:focus {
   padding-top: 60px;
 }
 
+<<<<<<< HEAD
+.sidenav a {
+=======
 .sidenav a , .sidenav p{
+>>>>>>> 2c2b8373e1b08dd9aef3a3f4c1b21d929ec0da33
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
