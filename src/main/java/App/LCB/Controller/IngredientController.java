@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -23,6 +24,11 @@ public class IngredientController {
 	@ResponseBody
 	private List<Ingredient> SearchAll() {
 		return (List<Ingredient>) ingredientRepository.findAll();
+	}
+	@RequestMapping("/unique")
+	@ResponseBody
+	private Ingredient SearchOne(@RequestHeader("nomIngredient") String nomIngredient) {
+		return ingredientRepository.findByAlimNom(nomIngredient);
 	}
 }
 

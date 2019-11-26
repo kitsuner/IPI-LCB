@@ -1,10 +1,13 @@
 package App.LCB.Controller;
 
+import java.sql.Statement;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-
+import java.sql.* ;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -12,10 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import App.LCB.model.Ingredient;
 import App.LCB.model.Recette;
 import App.LCB.model.Utilisateur;
+import App.LCB.repository.IngredientRepository;
 import App.LCB.repository.RecetteRepository;
 import App.LCB.repository.UtilisateurRepository;
+import App.LCB.model.Ingredient;
 
 @Controller
 @RequestMapping("/recette")
@@ -26,6 +33,7 @@ public class RecetteController {
 	
 	@Autowired
 	private UtilisateurRepository utilisateurRepository;
+	
 	
 	
 	@RequestMapping("/all")
@@ -74,20 +82,24 @@ public class RecetteController {
 	}
 	
 	@RequestMapping(value = "/nouv_recette", method = RequestMethod.POST)
-	@ResponseBody
-	public void nouvelleRecette (@RequestHeader("mail") String mail, @RequestHeader("lib") String lib, 
-			@RequestHeader("nbrPer") Integer nbr, @RequestHeader("description") String description, @RequestBody String send)
-			 { 	
-			
-		System.out.println(mail+lib+nbr+description+send);
-		
-		
-		//CREER UN URL
-		//CREER LA LISTE D'INGREDIENTS
-    	//Recette nouvelleRecette = new Recette(null, lib_recette,null, instruction_recette, nbr_personne,null,null,null);
-    	// recetteRepository.save(nouvelleRecette);
-		
-	}
+    @ResponseBody
+    public void nouvelleRecette(
+    		@RequestHeader("mail") String mail, 
+    		@RequestHeader("lib") String lib, 
+            @RequestHeader("nbrPer") Integer nbr, 
+            @RequestHeader("description") String description, 
+            @RequestHeader("listIngr") Ingredient[] listIngr,
+            @RequestHeader("listQuant") Integer[] listQuant){
+
+        Utilisateur u = utilisateurRepository.findByMail(mail);
+        Long id = u.getIdUtilisateur();
+        
+        //CREER ET ENREGISTRER L'OBJET LISTE INGREDIENT ASSOCIE A LA RECETTE 
+        
+        Recette nouvelleRecette = new Recette(null, lib, id, description, nbr,concatUrl(lib),null,null);
+        recetteRepository.save(nouvelleRecette);
+        
+    }
 	
 	
 	// 	Fonction prennant en paramètre le lib d'une recette et générant une bonne url avec un chiffre de 0 à 999999 pour saler 
@@ -100,4 +112,6 @@ public class RecetteController {
 		return url;
 	}
 	
+	
+
 }
