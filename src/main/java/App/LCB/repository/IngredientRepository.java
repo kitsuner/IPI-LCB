@@ -10,5 +10,5 @@ import App.LCB.model.Ingredient;
 @Repository
 public interface IngredientRepository extends CrudRepository<Ingredient, Long>{
 	
-	
+	Ingredient findByAlimNom(String nom);
 }
