@@ -269,7 +269,7 @@
                 <!-- Validation Recette -->
                 <div class="row mt-5">
                     <div class="col validAjouR text-right">
-                        <button type="button" id="validRecette" class="btn btn-success btn-lg btn-block">Valider votre recette</button>
+                        <button type="button" id="validRecette" class="btn btn-success btn-lg btn-block" onclick="valideRecette()">Valider votre recette</button>
                     </div>
                 </div>
                 
@@ -330,13 +330,13 @@
         
 		// Validation Recette
         // Validation Titre et nombre de personnes / Récupération des valeurs
-        $("#validRecette").on('click', function() {
+       // $("#validRecette").on('click', function() {
         	
         	//$("#formulaire")[0].reset();
         	//$(".conteneurListeIngredients").children().remove();
         	
-        	recupListes();
-        })
+        	//recupListes();
+       // })
 
      	// Annulation 
         //$(".resetPrepa").on('click', function() {
@@ -354,7 +354,7 @@
          	
          // tableaux recupération ingredients
 
-	        $.ajax({
+	       	$.ajax({
 	            type: 'get',
 	            contentType: "application/json",
 	            url: "http://localhost:8080/groupe/all/",
@@ -434,30 +434,27 @@
         }
         
 		// VALIDATION DE LA RECETTE : RECUPERATION DES DONNEES ET ENVOIE DE LA REQUETE AJAX
-        $("#validRecette").click(function(event){  
-        	event.preventDefault();
-             
-            regroupeAttributs();
-			console.log(titreRecette, prepaRecette, nbPersonnes, listIngredients);
-            var ingredientsAEnvoyer = "";
+        //$("#validRecette").click // 
+        
+        
+        function valideRecette(){  
+        	event.preventDefault();             
+            regroupeAttributs();		
+            console.log("duh");
+            var send = {ingredients};
+            console.log(send);
             $.ajax({
                 type: 'POST',
                 url: "http://localhost:8080/recette/nouv_recette",
-                headers: { 
-                    "lib_recette" : titreRecette,
-                    "mail": null,
-                    "instruction_recette" : prepaRecette, 
-                    "nbr_personne" : nbPersonnes, 
-                    "liste_ingredient" : null }
+                headers: {"mail" : sessionStorage.getItem('Mail'), "lib": titreRecette, "nbrPer": nbPersonnes, "description": prepaRecette
+                },
+                data: JSON.stringify(send)
                 }).done(function(data) {  
-                	console.log(data);
                 	alert("Votre recette a été enregistrée avec succès !");
             	}).fail(function(jqXHR, textStatus, errorThrown){
                     alert("Nous n'avons pas pu enregistrer votre recette. Réessayez ultérieurement");
-                });
-            
-             
-         })
+                });         
+         }
 		
 		
 
