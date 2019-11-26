@@ -112,6 +112,7 @@
   	height: auto;
 }
 .cardTitreRecette{
+	height:90px;
 	letter-spacing: .1.5rem;
 	text-align:center;
 	padding:10px 20px;
@@ -132,6 +133,8 @@
 	-webkit-box-orient: vertical;
 }
 .cardLinkRecette{
+    vertical-align: bottom;
+	color: orange;
 	margin:30px 20px;
 	text-align: center;
 	font-style: italic;
