@@ -447,8 +447,8 @@
         function valideRecette(){  
         	event.preventDefault();             
             regroupeAttributs();		
-            console.log("duh");
-            var send = {ingredients};
+            console.log(listIngredients);
+            var send = {listIngredients};
             console.log(send);
             $.ajax({
                 type: 'POST',
