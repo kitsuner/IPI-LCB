@@ -134,8 +134,8 @@
 	                </ul>
                 </div>
 	
-				<div>
-                    <h2>Tableau nutritionnel</h2>
+				<div class="tableauNutri">
+                    <h2 class="titreTableau">Tableau nutritionnel</h2>
                     <div class="ctnr">
                         <div class="titrePpl">Nutriments par ingredients</div>
                         <div class="titre">Total des nutriments</div>
@@ -269,7 +269,7 @@
                 <!-- Validation Recette -->
                 <div class="row mt-5">
                     <div class="col validAjouR text-right">
-                        <button type="submit" id="validRecette" class="btn btn-success btn-lg btn-block">Valider votre recette</button>
+                        <button type="button" id="validRecette" class="btn btn-success btn-lg btn-block">Valider votre recette</button>
                     </div>
                 </div>
                 
@@ -420,17 +420,10 @@
                                 ingredientValue = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[value3].ingredients[value4].alimNom;
                                 proprietesIngredient = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[value3].ingredients[value4];
 
-					            
-					           
-								
-						         
-							        $(".validIngredient").click(function(event) {
-                                        
-							        	
-                                        
+
+							        $(".validIngredient").click(function(event) {         
                                         event.preventDefault();
-                                        
-									
+
                                  })
 				            })
 	            		})
@@ -516,9 +509,9 @@
 		// AFFICHAGE DE LA LISTE DES INGREDIENTS 
         function afficheIngredient(){
             if (unite == ""){
-            	$(".conteneurListeIngredients").append('<li class="list-group-item"><div class="ingredients">'+ingredientValue+'</di></li>');
+            	$(".conteneurListeIngredients").append('<li class="list-group-item listeIngredient"><div class="ingredients">'+ingredientValue+'</di></li>');
             } else {
-            	$(".conteneurListeIngredients").append('<li class="list-group-item">'+poids+" "+unite+" de <div class='ingredients'>"+ingredientValue+'</div></li>');
+            	$(".conteneurListeIngredients").append('<li class="list-group-item listeIngredient">'+poids+" "+unite+" de <div class='ingredients'>"+ingredientValue+'</div></li>');
             }
         }
 
