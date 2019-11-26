@@ -324,24 +324,12 @@
 		var prepaRecette;
         var ingredients;
         var listIngredients = [];
+        var listQuantites = [];
         
         
         recupListes();
         
-		// Validation Recette
-        // Validation Titre et nombre de personnes / Récupération des valeurs
-       // $("#validRecette").on('click', function() {
-        	
-        	//$("#formulaire")[0].reset();
-        	//$(".conteneurListeIngredients").children().remove();
-        	
-        	//recupListes();
-       // })
-
-     	// Annulation 
-        //$(".resetPrepa").on('click', function() {
-        	//prepaRecette = $("#prepaRecette").val(""); 
-		//})
+		
 
         
 	    function recupListes(){
@@ -439,16 +427,22 @@
         
         function valideRecette(){  
         	event.preventDefault();             
-            regroupeAttributs();		
-            console.log("duh");
-            var send = {ingredients};
-            console.log(send);
+            regroupeAttributs();
+            
+            console.log(listIngredients);
+            console.log(listQuantites);
             $.ajax({
                 type: 'POST',
                 url: "http://localhost:8080/recette/nouv_recette",
-                headers: {"mail" : sessionStorage.getItem('Mail'), "lib": titreRecette, "nbrPer": nbPersonnes, "description": prepaRecette
+                headers: {
+                    "mail" : sessionStorage.getItem('Mail'),
+                    "lib": titreRecette, 
+                    "nbrPer": nbPersonnes, 
+                    "description": prepaRecette, 
+                    "listIngr": listIngredients,
+                    "listQuant": listQuantites
                 },
-                data: JSON.stringify(send)
+                
                 }).done(function(data) {  
                 	alert("Votre recette a été enregistrée avec succès !");
             	}).fail(function(jqXHR, textStatus, errorThrown){
@@ -464,11 +458,26 @@
             nbPersonnes = parseInt($("#nbPers").val());
             prepaRecette = $("#prepaRecette").val();
             ingredients = $(".ingredients");
+            quantites = $(".quantites");
             
             for (var i = 0 ; i < ingredients.length ; i++){
-                listIngredients[i] = ingredients[i].childNodes[0].data;
+                var nomIngredient = ingredients[i].childNodes[0].data;
+                $.ajax({
+                    url: "http://localhost:8080/ingredient/unique",
+                    headers: {"nomIngredient" : nomIngredient},
+                    type: 'GET',
+                    dataType:"json",
+                    timeout: 15000
+                }).done(function(data){
+                    
+                    listIngredients.push(data);
+                    
+                }).fail(function(){
+                    console.log("erreur dans la recherche de l'ingredient");
+                })
+                listQuantites.push(parseInt(quantites[i].childNodes[0].data));
             }
-            
+             
         }
 
 
@@ -508,7 +517,7 @@
             if (unite == ""){
             	$(".conteneurListeIngredients").append('<li class="list-group-item listeIngredient"><div class="ingredients">'+ingredientValue+'</di></li>');
             } else {
-            	$(".conteneurListeIngredients").append('<li class="list-group-item listeIngredient">'+poids+" "+unite+" de <div class='ingredients'>"+ingredientValue+'</div></li>');
+            	$(".conteneurListeIngredients").append('<li class="list-group-item listeIngredient"><div class="quantites">'+poids+"</div> "+unite+" de <div class='ingredients'>"+ingredientValue+'</div></li>');
             }
         }
 
