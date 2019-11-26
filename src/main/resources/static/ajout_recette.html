@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
    	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   	<script src="javascriptLCB.js"></script>
     <title>Les Cordons Bleus</title>
 </head>
 
@@ -425,10 +426,10 @@
 						         
 							        $(".validIngredient").click(function(event) {
                                         
-                                        
+							        	
                                         
                                         event.preventDefault();
-										
+                                        
 									
                                  })
 				            })
@@ -445,11 +446,16 @@
              
             regroupeAttributs();
 			console.log(titreRecette, prepaRecette, nbPersonnes, listIngredients);
-            
+            var ingredientsAEnvoyer = "";
             $.ajax({
                 type: 'POST',
-                url: "http://localhost:8080/recette",
-                headers: { "lib_recette" : titreRecette , "instruction_recette" : prepaRecette , "nbr_personne" : nbPersonnes , "liste_ingredient" : listIngredients }
+                url: "http://localhost:8080/recette/nouv_recette",
+                headers: { 
+                    "lib_recette" : titreRecette,
+                    "mail": null,
+                    "instruction_recette" : prepaRecette, 
+                    "nbr_personne" : nbPersonnes, 
+                    "liste_ingredient" : null }
                 }).done(function(data) {  
                 	console.log(data);
                 	alert("Votre recette a été enregistrée avec succès !");
