@@ -60,7 +60,7 @@ function deconnexion(){
     location.href = 'index.html';
     }
 
-    // Fonction barre de recherche //
+// Fonction barre de recherche //
 function search() {
     let recherche = $("#search").val();
         $.ajax({
