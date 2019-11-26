@@ -80,7 +80,7 @@ public class RecetteController {
 		
 		//CREER UN URL
 		//CREER LA LISTE D'INGREDIENTS
-    	Recette nouvelleRecette = new Recette(null, lib_recette, instruction_recette, nbr_personne,null,null,null);
+    	Recette nouvelleRecette = new Recette(null, lib_recette,null, instruction_recette, nbr_personne,null,null,null);
     	recetteRepository.save(nouvelleRecette);
 		
 	}

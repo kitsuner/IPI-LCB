@@ -30,6 +30,11 @@ public class Recette {
 	@Column(name="lib_recette")
 	private String lib;
 	
+	@Column(name="id_utilisateur")
+	private Long idUtilisateur;
+	
+	
+
 	@Column(name="instruction_recette")
 	private String instruction;		
 		
@@ -62,6 +67,14 @@ public class Recette {
 		this.lib = lib;
 	}
 
+	public Long getIdUtilisateur() {
+		return idUtilisateur;
+	}
+
+	public void setIdUtilisateur(Long idUtilisateur) {
+		this.idUtilisateur = idUtilisateur;
+	}
+	
 	public String getInstruction() {
 		return instruction;
 	}
@@ -107,17 +120,20 @@ public class Recette {
 		
 	}
 
-	public Recette(Long id, String lib, String instruction, Integer nbrPersonne, String urlRecette,
+	public Recette(Long id, String lib, Long idUtilisateur, String instruction, Integer nbrPersonne, String urlRecette,
 			List<listeIngredients> listeIngredient, byte[] image) {
 		super();
 		this.id = id;
 		this.lib = lib;
+		this.idUtilisateur = idUtilisateur;
 		this.instruction = instruction;
 		this.nbrPersonne = nbrPersonne;
 		this.urlRecette = urlRecette;
 		this.listeIngredient = listeIngredient;
 		this.image = image;
 	}
+
+	
 
 }
 
