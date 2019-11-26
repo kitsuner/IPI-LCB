@@ -12,6 +12,44 @@
         visibility: hidden;
     }
 }
+/* MENU */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a , .sidenav p{
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
 /* Footer Desktop */
 .footertext1{
     margin-top: 50px;
@@ -30,24 +68,6 @@
 }
 
 /* PAGE ACCUEIL */
-
-/* Menu de navigation */
-/*
-#menu_navigation{
-    display : flex;
-    flex-direction : column;
-    align-items : center;
-    width : 100px;
-    padding-bottom: 5px;
-    border-radius : 4%;
-    box-shadow: lightgrey 3px 3px 3px;
-    background-color: rgb(247, 247, 247);
-    position : absolute;
-    right : 0px;
-    top : 50px
-    z-index = 10;
-}
-*/
 /* Barre de recherche */
 .search_bar{
     border-radius: 25px 0px 0px 25px;
@@ -70,13 +90,71 @@
 }
 
 /* Card */
+
+.cardRecette{
+	padding: 0px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  	transition: 0.3s;
+  	border-radius: 10px;
+	margin: 10px;
+}
+.cardRecette:hover {
+  	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.cardImageRecette{
+	border-radius: 10px 10px 0 0;
+	width: 100%;
+  	height: auto;
+}
+.cardTitreRecette{
+	padding:10px 20px;
+	-webkit-line-clamp: 2;
+	overflow : hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+}
+.cardTextRecette{
+	text-justify: distribute;
+	padding:10px 20px;
+	-webkit-line-clamp: 4;
+	height: 6.5rem;
+	overflow : hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+}
+.cardLinkRecette{
+	color:blue;
+}
+
+
+
+/*
 .cardRecette{
 	padding: 0px;
 	margin: 10px;
 }
+.block-ellipsis{
+  	display: block;
+	display: -webkit-box;
+	max-width: 100%;
+	height: 43px;
+	margin: 0 auto;
+	font-size: 14px;
+	line-height: 1;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.carTitreRecette{
+	color:red;
+}
 .card-link{
 	
 }
+*/
 
 /* PAGE CONNEXION */
 /* Connexion */
@@ -246,41 +324,4 @@ input:focus {
     justify-content: flex-start;
 }
 
-/* MENU */
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
 
-.sidenav a , .sidenav p{
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
