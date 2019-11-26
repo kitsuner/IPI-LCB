@@ -20,6 +20,7 @@ import App.LCB.model.Ingredient;
 import App.LCB.model.Recette;
 import App.LCB.model.Utilisateur;
 import App.LCB.repository.IngredientRepository;
+import App.LCB.repository.ListeIngredientsRepository;
 import App.LCB.repository.RecetteRepository;
 import App.LCB.repository.UtilisateurRepository;
 import App.LCB.model.Ingredient;
@@ -34,6 +35,8 @@ public class RecetteController {
 	@Autowired
 	private UtilisateurRepository utilisateurRepository;
 	
+	@Autowired
+	private ListeIngredientsRepository listeIngredientsRepository;
 	
 	
 	@RequestMapping("/all")
