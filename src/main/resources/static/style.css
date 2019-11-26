@@ -319,6 +319,9 @@ input:focus {
 .ingredients{
 	display : inline-block;
 }
+.quantites{
+	display : inline-block;
+}
 
 /* MES FAVORIS */
 #conteneur_favoris{
