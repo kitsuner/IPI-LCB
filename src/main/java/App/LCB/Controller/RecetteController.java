@@ -81,7 +81,7 @@ public class RecetteController {
 		return recetteRepository.findByUrlRecetteEquals(adresse);
 	}
 	
-	@RequestMapping(value = "/nouv_recette", method = RequestMethod.POST)
+@RequestMapping(value = "/nouv_recette", method = RequestMethod.POST)
     @ResponseBody
     public void nouvelleRecette(
     		@RequestHeader("mail") String mail, 
@@ -94,10 +94,25 @@ public class RecetteController {
         Utilisateur u = utilisateurRepository.findByMail(mail);
         Long id = u.getIdUtilisateur();
         
-        //CREER ET ENREGISTRER L'OBJET LISTE INGREDIENT ASSOCIE A LA RECETTE 
+        String url = concatUrl(lib);
         
-        Recette nouvelleRecette = new Recette(null, lib, id, description, nbr,concatUrl(lib),null,null);
+        Recette nouvelleRecette = new Recette(null, lib, id, description, nbr,url,null,null);
         recetteRepository.save(nouvelleRecette);
+        
+        
+        //CREER ET ENREGISTRER L'OBJET LISTE INGREDIENT ASSOCIE A LA RECETTE 
+        Recette r = recetteRepository.findByUrlRecetteEquals(url);
+        
+        Integer i = 0;
+        for(Ingredient ingredient : listIngr) {
+        	
+        	ListeIngredients l = new ListeIngredients(null, ingredient, r, listQuant[i]);
+        	System.out.println(l);
+        	listeIngredientsRepository.save(l);
+        	i++;
+        }
+        
+        
         
     }
 	
