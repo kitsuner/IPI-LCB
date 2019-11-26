@@ -24,6 +24,11 @@ public class IngredientController {
 	private List<Ingredient> SearchAll() {
 		return (List<Ingredient>) ingredientRepository.findAll();
 	}
+	@RequestMapping("/unique")
+	@ResponseBody
+	private Ingredient SearchOne(@RequestHeader("nomIngredient") String nomIngredient) {
+		return ingredientRepository.findByAlimNom(nomIngredient);
+	}
 }
 
 
