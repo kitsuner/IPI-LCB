@@ -59,7 +59,7 @@ public class RecetteController {
 	
 	
 	
-	@RequestMapping("", method = RequestMethod.GET)
+	@RequestMapping(value="", method = RequestMethod.GET)
 	private String DisplayRecette(@RequestParam(value= "id", required=true)String id) {
 		return "recette.html";
 	}
