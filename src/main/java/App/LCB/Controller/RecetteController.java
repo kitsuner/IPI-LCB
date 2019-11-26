@@ -16,6 +16,7 @@ import App.LCB.model.Recette;
 import App.LCB.model.Utilisateur;
 import App.LCB.repository.RecetteRepository;
 import App.LCB.repository.UtilisateurRepository;
+import App.LCB.model.Ingredient;
 
 @Controller
 @RequestMapping("/recette")
@@ -74,20 +75,24 @@ public class RecetteController {
 	}
 	
 	@RequestMapping(value = "/nouv_recette", method = RequestMethod.POST)
-	@ResponseBody
-	public void nouvelleRecette (@RequestHeader("mail") String mail, @RequestHeader("lib") String lib, 
-			@RequestHeader("nbrPer") Integer nbr, @RequestHeader("description") String description, @RequestBody String send)
-			 { 	
-			
-		System.out.println(mail+lib+nbr+description+send);
-		
-		
-		//CREER UN URL
-		//CREER LA LISTE D'INGREDIENTS
-    	//Recette nouvelleRecette = new Recette(null, lib_recette,null, instruction_recette, nbr_personne,null,null,null);
-    	// recetteRepository.save(nouvelleRecette);
-		
-	}
+    @ResponseBody
+    public void nouvelleRecette(
+    		@RequestHeader("mail") String mail, 
+    		@RequestHeader("lib") String lib, 
+            @RequestHeader("nbrPer") Integer nbr, 
+            @RequestHeader("description") String description, 
+            @RequestHeader("listIngr") Ingredient[] listIngr,
+            @RequestHeader("listQuant") Integer[] listQuant){
+
+        Utilisateur u = utilisateurRepository.findByMail(mail);
+        Long id = u.getIdUtilisateur();
+        
+        //CREER ET ENREGISTRER L'OBJET LISTE INGREDIENT ASSOCIE A LA RECETTE 
+        
+        Recette nouvelleRecette = new Recette(null, lib, id, description, nbr,concatUrl(lib),null,null);
+        recetteRepository.save(nouvelleRecette);
+        
+    }
 	
 	
 	// 	Fonction prennant en paramètre le lib d'une recette et générant une bonne url avec un chiffre de 0 à 999999 pour saler 
