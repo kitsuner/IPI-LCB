@@ -21,7 +21,6 @@ public interface RecetteRepository extends CrudRepository<Recette, Long>{
 	List<Recette> findByIdBefore(Long id);
 	
 	
-	
 	Recette findByUrlRecetteEquals(String url);
 	
 }

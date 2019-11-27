@@ -74,11 +74,25 @@
 		    	</div>
            	</div>
 
-			<!-- Ajout d'une image -->
+			<!-- Ajout d'une image -->			
 		  <div class="form-group ajoutImage">
 		  		<label for="urlImage">L'adresse URL de votre image : </label>
 		  		<input type="text" class="form-control" id="formControlFile" placeholder="URL de la photo">
 		  </div>
+
+
+			<!--  
+				 image si Blob : 
+				<form id="formulaire" method="POST" action="./data" enctype="multipart/form-data" onsubmit="envoyer(event)">
+					<input type="file" name="fileData" id="fileData"/>
+					<input  type="submit" />
+				</form>
+				<div class="container">
+					<div id="resultat" class="row">
+					</div>
+				</div>
+			-->
+
 
             <p class="card-text titreinfo1R">Selectionnez vos ingrédients et la quantité :</p>
                 <div class="row">              
@@ -430,6 +444,49 @@
         
 		// VALIDATION DE LA RECETTE : RECUPERATION DES DONNEES ET ENVOIE DE LA REQUETE AJAX
        
+       /*
+       // image si Blob :
+		function envoyer(e){
+		e.preventDefault();
+		var form = $('#formulaire')[0];
+	    var data = new FormData(form);
+		$.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: "/data",
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+				console.log(data);
+				$("body").append("<img src='./data/"+data+"' />");
+            },
+            error: function (e) {
+				alert("Oups !");
+            }
+        });
+	}
+	$.ajax({
+		url: "./recette/all",
+	}).done(function(data) {
+		data.forEach(function(d){
+			$("#resultat").append("<div class='recette col-sm-3'>"+d.nom+"</div>");
+		});
+	})
+	*/
+	
+	
+	
+		
+		
+		
+		
+		
+		
+		
+		
         function valideRecette(){  
         	event.preventDefault();             
             regroupeAttributs();

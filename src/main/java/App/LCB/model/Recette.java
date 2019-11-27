@@ -45,10 +45,9 @@ public class Recette {
 	
 	@OneToMany(mappedBy = "recette")
 	private List<ListeIngredients> listeIngredients;
-	
-	@Lob
+
 	@Column(name="image")
-	private byte[] image;
+	private String image;
 	
 	public Long getId() {
 		return id;
@@ -105,11 +104,11 @@ public class Recette {
 		this.listeIngredients = listeIngredients;
 	}
 
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
@@ -118,7 +117,7 @@ public class Recette {
 	}
 
 	public Recette(Long id, String lib, Long idUtilisateur, String instruction, Integer nbrPersonne, String urlRecette,
-			List<ListeIngredients> listeIngredients, byte[] image) {
+			List<ListeIngredients> listeIngredients, String image) {
 		super();
 		this.id = id;
 		this.lib = lib;
@@ -134,12 +133,8 @@ public class Recette {
 	public String toString() {
 		return "Recette [id=" + id + ", lib=" + lib + ", idUtilisateur=" + idUtilisateur + ", instruction="
 				+ instruction + ", nbrPersonne=" + nbrPersonne + ", urlRecette=" + urlRecette + ", listeIngredients="
-				+ listeIngredients + ", image=" + Arrays.toString(image) + "]";
+				+ listeIngredients + ", image=" + image + "]";
 	}
-
-	
-
-	
 
 }
 
