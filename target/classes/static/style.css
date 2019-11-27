@@ -251,9 +251,6 @@ input:focus {
     margin-top:60px;
     font-size: 1.5em;
 }
-.card-img_cuisiner{
-    opacity:0.2;
-}
 .poidsR{
     margin-top:40px;
 }
@@ -295,7 +292,6 @@ input:focus {
     display: inline-block;
 	flex-direction: row;
     justify-content: flex-start;
-    
 }
 .nut2{
     width:20%;
@@ -318,6 +314,11 @@ input:focus {
 }
 .quantites{
 	display : inline-block;
+}
+/* ajout photo */
+.dlphoto{
+	margin-top: 40px;
+	width:60%;
 }
 
 /* MES FAVORIS */

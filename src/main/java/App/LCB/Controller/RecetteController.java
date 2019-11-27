@@ -3,6 +3,7 @@ package App.LCB.Controller;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpServletRequest;
@@ -102,8 +103,9 @@ public class RecetteController {
             @RequestHeader("nbrPer") Integer nbr, 
             @RequestHeader("description") String description, 
             @RequestHeader("listIngr") String[] listIngr,
-            @RequestHeader("listQuant") Integer[] listQuant){
-
+            @RequestHeader("listQuant") Integer[] listQuant,
+            @RequestHeader("image") Byte[] image){
+	
         Utilisateur u = utilisateurRepository.findByMail(mail);
         Long id = u.getIdUtilisateur();
         

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
    	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   	<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
    	<script src="javascriptLCB.js"></script>
 	<title>Ajout d'une recette</title>
 </head>
@@ -38,10 +39,12 @@
             
             <!-- partie Titre et nombre de personnes de la recette -->
 			<!-- Titre de la recette -->
-               <div class="form-group recetteTitre mt-5">
+            <div class="form-group recetteTitre mt-5">
 			    <label for="recetteTitre">Titre de la recette :</label>
 			    <input type="text" class="form-control" id="recetteTitre" placeholder="titre">
 			</div>
+			
+			<!-- Nombre de personnes -->
 			<div class="row">
 				<div class="form-group col-md-8">
 				      <label for="inputState">Nombre de personnes : </label>
@@ -70,7 +73,30 @@
 				      </select>
 		    	</div>
            	</div>
-                
+
+			<!-- Ajout d'une image -->
+			<div class="row d-flex justify-content-end">
+				<div class="custom-file dlphoto">
+					  <input type="file" class="custom-file-input" id="image">
+					  <label class="custom-file-label" for="image">Choisir une image...</label>
+				</div>
+			</div>
+			<!-- 
+			<div class="row d-flex justify-content-end">
+				<form enctype="multipart/form-data" id="file-form" action="/upload/image" method="post">
+				    <input id="image-file" id="upload-button" type="file" />
+				</form>
+			</div>
+			 -->
+			<form id="file-form" action="handler.php" method="POST">
+			  <input type="file" id="file-select" name="photos[]" multiple/>
+			  <button type="submit" id="upload-button">Upload</button>
+			</form>
+
+              
+              
+              
+              
                 
             <p class="card-text titreinfo1R">Selectionnez vos ingrédients et la quantité :</p>
                 <div class="row">              
@@ -256,7 +282,8 @@
                         <div class="nut2" id="pPVitB12"></div>
                     </div>
                 </div>
-
+                
+				<!-- Partie préparation -->
                 <div class="recettePreparation">
                     <div class="form-group">
                         <label class="titreinfo1R" for="exampleFormControlTextarea1">Préparation :</label>
@@ -439,7 +466,8 @@
                     "nbrPer": nbPersonnes, 
                     "description": prepaRecette, 
                     "listIngr": ingredientListe,
-                    "listQuant": listQuantites
+                    "listQuant": listQuantites,
+                    "image": image
                 },
                 
                 }).done(function(data) {  
@@ -448,8 +476,7 @@
                     alert("Nous n'avons pas pu enregistrer votre recette. Réessayez ultérieurement");
                 });         
          }
-		
-		
+        
 
         // REGROUPE LES ATTRIBUTS NECESSAIRES POUR LA REQUETE AJAX
         function regroupeAttributs(){
@@ -458,6 +485,7 @@
             prepaRecette = $("#prepaRecette").val();
             ingredients = $(".ingredients");
             quantites = $(".quantites");
+            image = $("inputGroupFile01");
             
             for (var i = 0 ; i < ingredients.length ; i++){
             	
