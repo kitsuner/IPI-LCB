@@ -94,7 +94,7 @@ public class RecetteController {
 		return recetteRepository.findByUrlRecetteEquals(adresse);
 	}
 	
-	@RequestMapping(value = "/nouv_recette", method = RequestMethod.POST)
+@RequestMapping(value = "/nouv_recette", method = RequestMethod.POST)
     @ResponseBody
     public void nouvelleRecette(
     		@RequestHeader("mail") String mail, 
