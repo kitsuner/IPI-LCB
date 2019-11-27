@@ -121,6 +121,7 @@ public class RecetteController {
         Recette nouvelleRecette = new Recette(null, lib, id, description, nbr,url,null,null);
         recetteRepository.save(nouvelleRecette);
         System.out.println(listIngr);
+        
         String[] splitlistIngr = listIngr.split("(?=\\p{Upper})");
         System.out.println(splitlistIngr.length);
         Recette r = recetteRepository.findByUrlRecetteEquals(url);
@@ -136,10 +137,7 @@ public class RecetteController {
         	if (listQuant.length != 1) {
         		listeIngredientsRepository.insertWithQuery(ingredientRepository.findByAlimNom(splitlistIngr[i+1].substring(0, splitlistIngr[i+1].length()-1)).getIdIngredient(), idNewRecette, listQuant[i]);
         	}
-        	
-}
-        	
-        
+		}    
     }
 	
 	
