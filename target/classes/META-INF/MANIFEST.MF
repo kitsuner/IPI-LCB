@@ -1,6 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Build-Jdk-Spec: 13
+=======
+>>>>>>> 7c0d8ccac1b4c5094f116d9be32b34b8ab0e86f9
 Implementation-Title: LCB
 Implementation-Version: 0.0.1-SNAPSHOT
+Build-Jdk-Spec: 1.8
 Created-By: Maven Integration for Eclipse
 
