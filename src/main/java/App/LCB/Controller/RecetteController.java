@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
+import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpServletRequest;
@@ -105,8 +106,11 @@ public class RecetteController {
     		@RequestHeader("lib") String lib, 
             @RequestHeader("nbrPer") Integer nbr, 
             @RequestHeader("description") String description, 
-            @RequestHeader("listIngr") String listIngr,
-            @RequestHeader("listQuant") Integer[] listQuant){
+            @RequestHeader("listIngr") String[] listIngr,
+            @RequestHeader("listQuant") Integer[] listQuant,
+            @RequestHeader("image") String image){
+
+
 
         Utilisateur u = utilisateurRepository.findByMail(mail);
         Long id = u.getIdUtilisateur();

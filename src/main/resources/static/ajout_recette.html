@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
    	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   	<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
    	<script src="javascriptLCB.js"></script>
 	<title>Ajout d'une recette</title>
 </head>
@@ -38,10 +39,12 @@
             
             <!-- partie Titre et nombre de personnes de la recette -->
 			<!-- Titre de la recette -->
-               <div class="form-group recetteTitre mt-5">
+            <div class="form-group recetteTitre mt-5">
 			    <label for="recetteTitre">Titre de la recette :</label>
 			    <input type="text" class="form-control" id="recetteTitre" placeholder="titre">
 			</div>
+			
+			<!-- Nombre de personnes -->
 			<div class="row">
 				<div class="form-group col-md-8">
 				      <label for="inputState">Nombre de personnes : </label>
@@ -70,8 +73,13 @@
 				      </select>
 		    	</div>
            	</div>
-                
-                
+
+			<!-- Ajout d'une image -->
+		  <div class="form-group ajoutImage">
+		  		<label for="urlImage">L'adresse URL de votre image : </label>
+		  		<input type="text" class="form-control" id="formControlFile" placeholder="URL de la photo">
+		  </div>
+
             <p class="card-text titreinfo1R">Selectionnez vos ingrédients et la quantité :</p>
                 <div class="row">              
                 	<!-- liste groupe ingrédient -->
@@ -256,7 +264,8 @@
                         <div class="nut2" id="pPVitB12"></div>
                     </div>
                 </div>
-
+                
+				<!-- Partie préparation -->
                 <div class="recettePreparation">
                     <div class="form-group">
                         <label class="titreinfo1R" for="exampleFormControlTextarea1">Préparation :</label>
@@ -315,7 +324,7 @@
 
 
 	<script>
-
+	
         var poids;
         var ingredientValue;
         var unite;
@@ -325,13 +334,11 @@
         var ingredients;
         
         var listQuantites = [];
-        
+        var image;
         
         recupListes();
         
-		
 
-        
 	    function recupListes(){
 	    	var liste;
 	    	var numListe;
@@ -445,13 +452,13 @@
                 dataType : "json",
                 timeout: 15000
                 }).done(function(data) {  
+                	console.log(data);
                 	alert("Votre recette a été enregistrée avec succès !");
             	}).fail(function(jqXHR, textStatus, errorThrown){
                     alert("Nous n'avons pas pu enregistrer votre recette. Réessayez ultérieurement");
                 });         
          }
-		
-		
+        
 
         // REGROUPE LES ATTRIBUTS NECESSAIRES POUR LA REQUETE AJAX
         function regroupeAttributs(){
@@ -460,6 +467,7 @@
             prepaRecette = $("#prepaRecette").val();
             ingredients = $(".ingredients");
             quantites = $(".quantites");
+            image = $("#formControlFile").val();
             
             for (var i = 0 ; i < ingredients.length ; i++){
                 var nomIngredient = ingredients[i].childNodes[0].data;
@@ -484,7 +492,7 @@
             }
              
         }
-
+		
 
         // AFFICHAGE DE LA LISTE DES INGREDIENTS
 	    $(".validIngredient").click(function(event) {

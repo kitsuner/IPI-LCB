@@ -74,7 +74,7 @@ function search() {
                     $("#card-deck").empty();
                     for (let i=0; i < data.length;i++){                     
                  	   $("#card-deck").append('<div class="col-lg-4 cardRecette"><div class="thumbnail"><img class="cardImageRecette" id="image'+i+'" alt="Image'+i+'"><div class="caption"><h3 class="cardTitreRecette card-title" id="title'+i+'">'+data[i].lib+'</h3><p class="cardTextRecette card-text" id="text'+i+'">'+data[i].instruction+'</p></div><div class="cardLinkRecette"><a class="LinkRecette'+i+'">Voir la recette ...</a></div></div></div>');
-                       $("#image"+i).attr("src", "data:image/png;base64,"+data[i].image+"");
+                       $("#image"+i).attr("src", data[i].image);
                        $(".LinkRecette"+i).attr("href",data[i].urlRecette);
                     }
                 });                    
@@ -92,7 +92,7 @@ function image() {
                        function (data) {
                            for (let i = 0; i < data.length; i++) {
                         	   $("#card-deck").append('<div class="col-lg-4 cardRecette"><div class="thumbnail"><img class="cardImageRecette" id="image'+i+'" alt="Image'+i+'"><div class="caption"><h3 class="cardTitreRecette card-title" id="title'+i+'">'+data[i].lib+'</h3><p class="cardTextRecette card-text" id="text'+i+'">'+data[i].instruction+'</p></div><div class="cardLinkRecette"><a class="LinkRecette'+i+'">Voir la recette ...</a></div></div></div>');
-                               $("#image"+i).attr("src", "data:image/png;base64,"+data[i].image+"");
+                        	   $("#image"+i).attr("src", data[i].image);
                                $(".LinkRecette"+i).attr("href",data[i].urlRecette);
                            }
                        });                           
@@ -127,7 +127,7 @@ function onloadUserRecette() {
             $("#card-deck").empty();
             for (let i=0; i < data.length;i++){
          	   $("#card-deck").append('<div class="col-lg-4 cardRecette"><div class="thumbnail"><img class="cardImageRecette" id="image'+i+'" alt="Image'+i+'"><div class="caption"><h3 class="cardTitreRecette card-title" id="title'+i+'">'+data[i].lib+'</h3><p class="cardTextRecette card-text" id="text'+i+'">'+data[i].instruction+'</p></div><div class="cardLinkRecette"><a class="LinkRecette'+i+'">Voir la recette ...</a></div></div></div>');
-               $("#image"+i).attr("src", "data:image/png;base64,"+data[i].image+"");
+         	  $("#image"+i).attr("src", data[i].image);
                $(".LinkRecette"+i).attr("href",data[i].urlRecette);
             }
             }
@@ -149,8 +149,9 @@ function onloadUserFavoris() {
               $("#card-deck").empty();
                   for (let i=0; i < data.length;i++){
                	   $("#card-deck").append('<div class="col-lg-4 cardRecette"><div class="thumbnail"><img class="cardImageRecette" id="image'+i+'" alt="Image'+i+'"><div class="caption"><h3 class="cardTitreRecette card-title" id="title'+i+'">'+data[i].lib+'</h3><p class="cardTextRecette card-text" id="text'+i+'">'+data[i].instruction+'</p></div><div class="cardLinkRecette"><a class="LinkRecette'+i+'">Voir la recette ...</a></div></div></div>');
-                   $("#image"+i).attr("src", "data:image/png;base64,"+data[i].image+"");
+               	   $("#image"+i).attr("src", data[i].image);
                    $(".LinkRecette"+i).attr("href",data[i].urlRecette);
                   }
             });
           }
+
