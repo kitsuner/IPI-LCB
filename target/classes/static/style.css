@@ -12,6 +12,23 @@
         visibility: hidden;
     }
 }
+/* Footer Desktop */
+.footertext1{
+    margin-top: 50px;
+    font-size: 0.8em;
+    text-align: center;
+}
+.footertext-links{
+    margin-top: 10px;
+    font-size: 0.8em;
+    text-align: center;
+    color:black;
+}
+.footertext-links a:link, a:visited, a:focus {
+    text-decoration:none;
+    color:black;
+}
+
 /* MENU */
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
@@ -51,21 +68,7 @@
   font-size: 36px;
   margin-left: 50px;
 }
-/* Footer Desktop */
-.footertext1{
-    margin-top: 50px;
-    font-size: 0.8em;
-    text-align: center;
-}
-.footertext-links{
-    margin-top: 10px;
-    font-size: 0.8em;
-    text-align: center;
-    
-}
-.footertext-links a:link, a:visited, a:focus {
-    text-decoration:none;
-}
+
 
 
 /* PAGE ACCUEIL */
@@ -107,10 +110,13 @@
 	opacity: 0.5;
   	filter: alpha(opacity=50);
 }
+.thumbnail{
+	width: 100%;
+}
 .cardImageRecette{
 	border-radius: 10px 10px 0 0;
 	width: 100%;
-  	height: auto;
+	max-width:300px;
 }
 .cardTitreRecette{
 	height:90px;
