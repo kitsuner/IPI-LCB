@@ -57,14 +57,21 @@ public class ListeIngredients {
 	public ListeIngredients() {
 		
 	}
-	
-	public ListeIngredients(ListeIngredientsRecette id, Ingredient ingredient, Recette recette, Integer quantite) {
+
+	public ListeIngredients(Ingredient ingredient, Recette recette, Integer quantite) {
 		super();
-		this.id = id;
 		this.ingredient = ingredient;
 		this.recette = recette;
 		this.quantite = quantite;
 	}
+
+	@Override
+	public String toString() {
+		return "ListeIngredients [id=" + id + ", ingredient=" + ingredient + ", recette=" + recette + ", quantite="
+				+ quantite + "]";
+	}
+	
+	
 
 	
 	

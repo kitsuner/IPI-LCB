@@ -1,21 +1,130 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<script src="https://code.jquery.com/jquery-3.4.1.js"
-            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-            crossorigin="anonymous"></script>
-            <script src="javascriptLCB.js"></script> 
-<title></title>
-</head>
+    <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Les Cordons Bleus</title>
+    <style>
+        .title_recette > *{
+            display: inline-block;
+            margin-left: 15px;
+        }
+    
+    </style>
+    </head>
 <body>
     
+        <!-- Navbar Top -->
+        <nav class="navbar navbartop navbar-expand-sm navbar-light bg-light">
+                <a href="accueil.html" class="navbar-brand">
+                    <img src="./images/chef.png" height="30" alt="Les Cordons Bleus"><span cursor-animate cursor-loop class="mt-2" >  Les Cordons <span style="color:rgba(20, 102, 233, 0.918)">Bleus</span></span>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto" id="open_menu_nav">
+                        <img src="./images/nav_user.png" height="35" alt="login">
+                    </div>
+                </div>
+            </nav>
+            
+          
+
+        <div class="container-fluid">
+                <div class="row px-0 py-2 ml-3 d-flex flex-wrap" >
+                        <div class="recette col-md-7 col-sm-12 px-0">
+                            <div class="title_recette col-12 bg-light mt-3 p-0 border border-secondary rounded">
+                                <h1 class="titre_recette col-9 mx-0"></h1>
+                                <img id="aimer" src="https://img.icons8.com/pastel-glyph/35/000000/like--v1.png" onclick="unlike()"></span>
+                                <img src="https://img.icons8.com/color/35/000000/paste.png" onclick='copyurl(event)'>
+                            </div>
+                            <div class="col-12 border border-secondary rounded bg-light mt-2 p-3">
+                                <p class="instruction col-12" style=" height:auto;min-height: 223px;"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-sm-12 mt-3" style="height:360px"  >
+                            <img id="image" class="rounded " style="width:100%; height:100%;" />
+                        </div> 
+                </div>
+                <div class=" row col-md-10  offset-md-1 col-sm-12 ml-2 border border-secondary p-0 mt-4 rounded">
+                        <table class="table table-hover table-responsive-md m-0 p-0"> <!--table-striped -->
+                            <thead class="thead thead-dark">
+                                <tr id="title_row" >
+                                <th scope="col" class="align-middle">#</th>
+                                </tr>
+                            </thead>
+                            <tbody id="body_table">
+                            </tbody>
+                        </table>
+                </div>
+        </div>
+        <!-- Footer en mode Desktop-->
+        <div class="footerDesktop">
+            <div class="footertext1">made with ♥ by LCB
+            </div>
+            <div class="footertext-links">
+                <p>Tous droits réservés Les Cordons Bleus - 2019</br>
+                    Vous avez une question ? <a href="">nous contacter</a> ∗
+                    <a href="">Mentions légales</a> ∗
+                    <a href="">Conditions Générales d'Utilisation</a> ∗
+                    <a href="">Contact</a> ∗
+                    <a href="">Politique de protection des données personnelles</a> ∗
+                    <a href="">Politique de confidentialité</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Navbar bottom format mobile xs -->
+        <nav class="navbar navbarbottom fixed-bottom navbar-light bg-light">
+            <a href="index.html" class="nav-item nav-link"><img src="./images/nav_home.png" height="40" alt="login"></a>
+            <a href="#" class="nav-item nav-link"><img src="./images/nav_heart.png" height="40" alt="login"></a>
+            <a href="connexion.html" class="nav-item nav-link"><img src="./images/nav_user.png" height="40" alt="login"></a>
+            <a href="#" class="nav-item nav-link"><img src="./images/nav_engrenage.png" height="45" alt="login"></a>
+        </nav>
+
+
+
+        <script src="./cursor-v.2.0.2.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous"></script>
 </body>
 <script>
+                        
 var pathname = window.location.href; 
-console.log(pathname);
-onloadRecetteByUrl();
 
+//copier l'URL dans clipboard
+function copyurl(){
+        var element=event.target;
+        element.setAttribute("src","https://img.icons8.com/offices/40/000000/spinner-frame-1.png");
+        var text = pathname;
+        navigator.clipboard.writeText(text).then(function() {
+        //console.log('Async: Copying to clipboard was successful!');
+        }, function(err) {
+        //console.error('Async: Could not copy text: ', err);
+        });
+        setTimeout(function(){element.setAttribute("src","https://img.icons8.com/color/35/000000/paste.png");}, 100); 
+     }
+
+// liker ou disliker la recette 
+
+     //1er teste pour voir est ce que l'utilisateur a déja cette recette dans sa liste
+     var userId,recetteID;
+     var arraycookie=document.cookie; 
+        var newarray=arraycookie.split(";");
+        for(var i=0; i<newarray.length; i++){
+            var thevaues= newarray[i].split("=");
+            if(thevaues[0].trim()=="userId"){
+            userId= thevaues[1];
+            };
+        };
+    
+    var existe= true;
+
+    onloadRecetteByUrl();
     function onloadRecetteByUrl() {
         $.ajax({
             url: "http://localhost:8080/recette/geturl",
@@ -26,11 +135,81 @@ onloadRecetteByUrl();
         }).done(
             function (data) {             
                 console.log(data);
+                recetteID=data.id;
+                console.log(recetteID);
+                var ingredients=data.listeIngredient;
+                var values=ingredients[0].ingredient;
+                var keys=Object.keys(values);
+                // console.log(values);
+                // console.log(keys);
+                $("h1.titre_recette").text(data.lib);
+                $(".instruction").text(data.instruction);
+                    for(var k=2 ; k<keys.length;k++){
+                        $("#body_table").append(`<tr style='width:10%' id="row${k}"><th scope="row">${keys[k]}</th><tr>`);
+                    }
+                    $(".thead").append(`<tr class='quantity'><th class="pour bg-info"> Pour <th><tr>`);
+                    var array_values=[];
+                    for(var i=0; i<ingredients.length; ++i){
+                        values=ingredients[i].ingredient;
+                        var val_ingredient=Object.values(values);
+                        console.log(val_ingredient);
+                        var quantity=(ingredients[i].quantite)/100;
+                        // console.log(val_ingredient);
+                        var f=0;
+                        array_values[i]=[];
+                            for(var  j=2 ; j<val_ingredient.length; j++){
+                                var cell_value=(val_ingredient[j]*quantity).toFixed(2);
+                                array_values[i][f]=Number(cell_value);
+                                f++;
+                                $(`#row${j}`).append("<td class='content' style='width:10%'>"+cell_value+"</td>");
+                                };
+                            $(".quantity").append(`<th scope='col' class="bg-info text-center">${ingredients[i].quantite} g</th>`);
+                            $("#title_row").append("<th scope='col' class='align-middle' style='font-size=10px' alt="+values.alimNom+">"+values.alimNom.slice(0,30)+"</th>");
+                            // console.log(array_values[i]);
+                        };     
+                        $("#title_row").append("<th id='total' scope='col' class='text-center'> total</th>");
+                        $("#title_row").append("<th id='total' scope='col' class='text-center'> par personne</th>");
+
+                    var sommes=[];
+                    // console.log(array_values);
+                    // console.log(sommes);
+
+                    // array_values[0].pop();
+                    for( var index=0; index<array_values[0].length; index++){
+                        var x=0;
+                        for(element=0; element<array_values.length; element++){
+                            x+=(Number(array_values[element][index]));
+                        }
+                        $(`#row${index+2}`).append("<td class='content align-middle' style='width:10%'>"+x.toFixed(2)+"</td>");
+                        $(`#row${index+2}`).append("<td class='content align-middle' style='width:10%;'>"+(x/data.nbrPersonne).toFixed(2)+"</td>");
+                        //console.log(index+2);
+                        sommes.push(x.toFixed(2));
+                    }
+                    console.log(sommes);
+
+                    //ajustement of table rows and celles
+                    $("tr[id^='row']").next().remove();
+                    $(".quantity").next().remove();
+                    $(".pour").next().remove();
+                    $(".quantity").append("<th thead-dark></th>");
+                    //  $(".quantity").append("<th thead-dark class='text-center'>"+data.nbrPersonne+"</th>");
+                    $("#urlRecette").text(data.urlRecette);
+                    $("#image").attr("src","data:image/png;base64,"+data.image+"");
                 
-            }).fail(function () {
-                console.log("duh");
-            });
+        }).fail(function() {
+            // alert("l'URL n'est pas bon !")
+        });   
     }
+
+    function unlike(){
+            if(existe==true){
+                existe=false
+                $("#aimer").attr("src","https://img.icons8.com/cotton/35/000000/like--v3.png");  
+            } else{
+                existe=true;
+                $("#aimer").attr("src","https://img.icons8.com/pastel-glyph/35/000000/like.png");
+            }
+        }
 
 </script>
 </html>

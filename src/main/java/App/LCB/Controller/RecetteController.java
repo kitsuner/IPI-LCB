@@ -1,9 +1,13 @@
 package App.LCB.Controller;
 
-import java.sql.Statement;
+
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
+
 import java.sql.* ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
@@ -17,9 +21,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import App.LCB.model.Ingredient;
+import App.LCB.model.ListeIngredients;
 import App.LCB.model.Recette;
 import App.LCB.model.Utilisateur;
 import App.LCB.repository.IngredientRepository;
+import App.LCB.repository.ListeIngredientsRepository;
 import App.LCB.repository.RecetteRepository;
 import App.LCB.repository.UtilisateurRepository;
 import App.LCB.model.Ingredient;
@@ -33,6 +39,13 @@ public class RecetteController {
 	
 	@Autowired
 	private UtilisateurRepository utilisateurRepository;
+	
+	@Autowired
+	private ListeIngredientsRepository listeIngredientsRepository;
+	
+	@Autowired 
+	private IngredientRepository ingredientRepository;
+	
 	
 	
 	
@@ -81,23 +94,34 @@ public class RecetteController {
 		return recetteRepository.findByUrlRecetteEquals(adresse);
 	}
 	
-	@RequestMapping(value = "/nouv_recette", method = RequestMethod.POST)
+@RequestMapping(value = "/nouv_recette", method = RequestMethod.POST)
     @ResponseBody
     public void nouvelleRecette(
     		@RequestHeader("mail") String mail, 
     		@RequestHeader("lib") String lib, 
             @RequestHeader("nbrPer") Integer nbr, 
             @RequestHeader("description") String description, 
-            @RequestHeader("listIngr") Ingredient[] listIngr,
+            @RequestHeader("listIngr") String[] listIngr,
             @RequestHeader("listQuant") Integer[] listQuant){
 
         Utilisateur u = utilisateurRepository.findByMail(mail);
         Long id = u.getIdUtilisateur();
         
+        String url = concatUrl(lib);
         //CREER ET ENREGISTRER L'OBJET LISTE INGREDIENT ASSOCIE A LA RECETTE 
         
-        Recette nouvelleRecette = new Recette(null, lib, id, description, nbr,concatUrl(lib),null,null);
+        Recette nouvelleRecette = new Recette(null, lib, id, description, nbr,url,null,null);
         recetteRepository.save(nouvelleRecette);
+        
+        
+        Recette r = recetteRepository.findByUrlRecetteEquals(url);
+        Long idNewRecette = r.getId();
+        for (int i=0; i < listIngr.length; i++) {
+        	System.out.println(listIngr[i]);
+        	Ingredient ing= ingredientRepository.findByAlimNom(listIngr[i]);
+        	System.out.println(ing);
+        	listeIngredientsRepository.insertWithQuery(ing.getIdIngredient(), idNewRecette, listQuant[i]);
+        }
         
     }
 	
@@ -111,6 +135,7 @@ public class RecetteController {
 		url= url.concat(salt);
 		return url;
 	}
+	
 	
 	
 

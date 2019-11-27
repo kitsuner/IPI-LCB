@@ -424,13 +424,12 @@
 		// VALIDATION DE LA RECETTE : RECUPERATION DES DONNEES ET ENVOIE DE LA REQUETE AJAX
         //$("#validRecette").click // 
         
-        
+        var ingredientListe = [];
         function valideRecette(){  
         	event.preventDefault();             
             regroupeAttributs();
             
-            console.log(listIngredients);
-            console.log(listQuantites);
+            
             $.ajax({
                 type: 'POST',
                 url: "http://localhost:8080/recette/nouv_recette",
@@ -439,7 +438,7 @@
                     "lib": titreRecette, 
                     "nbrPer": nbPersonnes, 
                     "description": prepaRecette, 
-                    "listIngr": listIngredients,
+                    "listIngr": ingredientListe,
                     "listQuant": listQuantites
                 },
                 
@@ -461,21 +460,12 @@
             quantites = $(".quantites");
             
             for (var i = 0 ; i < ingredients.length ; i++){
-                var nomIngredient = ingredients[i].childNodes[0].data;
-                $.ajax({
-                    url: "http://localhost:8080/ingredient/unique",
-                    headers: {"nomIngredient" : nomIngredient},
-                    type: 'GET',
-                    dataType:"json",
-                    timeout: 15000
-                }).done(function(data){
-                    
-                    listIngredients.push(data);
-                    
-                }).fail(function(){
-                    console.log("erreur dans la recherche de l'ingredient");
-                })
+            	
+                ingredientListe.push(ingredients[i].childNodes[0].data);
+                
+                
                 listQuantites.push(parseInt(quantites[i].childNodes[0].data));
+                console.log(listQuantites, ingredientListe);
             }
              
         }

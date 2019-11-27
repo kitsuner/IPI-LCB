@@ -30,6 +30,7 @@ public class IngredientController {
 	private Ingredient SearchOne(@RequestHeader("nomIngredient") String nomIngredient) {
 		return ingredientRepository.findByAlimNom(nomIngredient);
 	}
+	
 }
 
 
