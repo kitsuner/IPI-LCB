@@ -125,7 +125,7 @@ public class RecetteController {
         Long idNewRecette = r.getId();
         for (int i=0; i < listIngr.length; i++) {
         	System.out.println(listIngr[i]);
-        	listeIngredientsRepository.insertWithQuery((long)listIngr[i], idNewRecette, listQuant[i]);
+        	//listeIngredientsRepository.insertWithQuery((long)listIngr[i], idNewRecette, listQuant[i]);
         }
         
     }
