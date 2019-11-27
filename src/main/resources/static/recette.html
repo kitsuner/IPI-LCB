@@ -38,7 +38,8 @@
                         <div class="recette col-md-7 col-sm-12 px-0">
                             <div class="title_recette col-12 bg-light mt-3 p-0 border border-secondary rounded">
                                 <h1 class="titre_recette col-9 mx-0"></h1>
-                                <img id="aimer" src="https://img.icons8.com/pastel-glyph/35/000000/like--v1.png" onclick="unlike()"></span>
+                                <!-- onclick="unlike()" -->
+                                <img id="aimer" src="https://img.icons8.com/pastel-glyph/35/000000/like--v1.png"></span>
                                 <img src="https://img.icons8.com/color/35/000000/paste.png" onclick='copyurl(event)'>
                             </div>
                             <div class="col-12 border border-secondary rounded bg-light mt-2 p-3">
@@ -95,7 +96,10 @@
 <script>
                         
 var pathname = window.location.href; 
-
+var idRecettesDejaLike;
+var utilisateurQuiAjouteAuxFavoris;
+var recettesDejaLike;
+var recetteALike;
 //copier l'URL dans clipboard
 function copyurl(){
         var element=event.target;
@@ -135,6 +139,7 @@ function copyurl(){
         }).done(
             function (data) {             
                 console.log(data);
+                recetteALike = data;
                 recetteID=data.id;
                 console.log(recetteID);
                 var ingredients=data.listeIngredients;
@@ -195,14 +200,81 @@ function copyurl(){
                     //  $(".quantity").append("<th thead-dark class='text-center'>"+data.nbrPersonne+"</th>");
                     $("#urlRecette").text(data.urlRecette);
                     $("#image").attr("src","data:image/png;base64,"+data.image+"");
+
+                    
+                    $("#aimer").click(function(){
+                        $.ajax({ 
+                            url: "http://localhost:8080/utilisateur/verifFavoris", 
+                            headers: {"mail":sessionStorage.getItem('Mail') },
+                            type: 'GET',
+                            dataType:"json",
+                            timeout: 15000
+                        }).done(
+                            function(datata) { 
+                                recettesDejaLike = datata.recetteFavoris;
+                                //idRecette = datata.recetteFavoris[0].id;
+                                utilisateurQuiAjouteAuxFavoris = JSON.stringify(datata);
+                                existe = testRecetteDejaLike();
+                                
+                                enregistreRecette(existe);
+                                
+                        }).fail(function(jqXHR, textStatus, errorThrown){
+                            console.log("Erreur");
+                        });
+                        
+                    })
                 
         }).fail(function() {
             // alert("l'URL n'est pas bon !")
         });   
     }
 
+
+    function enregistreRecette(existeOuPas){
+        if(existeOuPas == true){
+
+        }else{
+            console.log(utilisateurQuiAjouteAuxFavoris);
+            recetteALike = JSON.stringify(recetteALike);
+            console.log(recetteALike);
+
+            
+            /*
+            $.ajax({
+                type: 'POST',
+                url: "http://localhost:8080/utilisateur/enregFavoris",
+                //data:
+            }).done(function(data) {  
+                alert("Votre recette a été enregistrée avec succès !");
+            }).fail(function(jqXHR, textStatus, errorThrown){
+                alert("Nous n'avons pas pu enregistrer votre recette. Réessayez ultérieurement");
+            }); */ 
+        }       
+    }
+
+    //CETTE FONCTION PARCOURS LES RECETTES DEJA EN FAVORIS ET COMPARE L'ID AVEC CELUI DE LA RECETTE 
+    function testRecetteDejaLike(){
+        for (var i = 0 ; i < recettesDejaLike.length ; i++){
+            console.log(recetteID,recettesDejaLike[i].id);
+            if(recetteID == recettesDejaLike[i].id){
+                console.log("Tu aimes déjà cette recette");
+                $("#aimer").attr("src","https://img.icons8.com/pastel-glyph/35/000000/like.png");
+                return true;
+            } else {
+                console.log("Tu ne l'aimes pas déjà")
+                $("#aimer").attr("src","https://img.icons8.com/cotton/35/000000/like--v3.png");
+            
+            }
+            return false;
+        }
+        
+    }
+
+
+    /*
     function unlike(){
             if(existe==true){
+                
                 existe=false
                 $("#aimer").attr("src","https://img.icons8.com/cotton/35/000000/like--v3.png");  
             } else{
@@ -210,6 +282,6 @@ function copyurl(){
                 $("#aimer").attr("src","https://img.icons8.com/pastel-glyph/35/000000/like.png");
             }
         }
-
+*/
 </script>
 </html>

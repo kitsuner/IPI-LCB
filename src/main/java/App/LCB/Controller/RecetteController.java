@@ -1,6 +1,7 @@
 package App.LCB.Controller;
 
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -103,7 +104,7 @@ public class RecetteController {
     public void nouvelleRecette(
     		@RequestHeader("mail") String mail, 
     		@RequestHeader("lib") String lib, 
-            @RequestHeader("nbrPer") Integer nbr,
+            @RequestHeader("nbrPer") Integer nbr, 
             @RequestHeader("description") String description, 
             @RequestHeader("listIngr") String[] listIngr,
             @RequestHeader("listQuant") Integer[] listQuant,
@@ -119,14 +120,25 @@ public class RecetteController {
         
         Recette nouvelleRecette = new Recette(null, lib, id, description, nbr,url,null,null);
         recetteRepository.save(nouvelleRecette);
-        
-        
+        System.out.println(listIngr);
+        String[] splitlistIngr = listIngr.split("(?=\\p{Upper})");
+        System.out.println(splitlistIngr.length);
         Recette r = recetteRepository.findByUrlRecetteEquals(url);
         Long idNewRecette = r.getId();
-        for (int i=0; i < listIngr.length; i++) {
-        	System.out.println(listIngr[i]);
-        	//listeIngredientsRepository.insertWithQuery((long)listIngr[i], idNewRecette, listQuant[i]);
-        }
+        for (int i=0; i < listQuant.length; i++) {
+        	
+        	System.out.println(listQuant[i]);
+        	System.out.println(splitlistIngr[i+1].substring(0, splitlistIngr[i+1].length()-2));
+        	System.out.println(splitlistIngr[i+1].substring(0, splitlistIngr[i+1].length()-1));
+        	System.out.println(ingredientRepository.findByAlimNom(splitlistIngr[i+1].substring(0, splitlistIngr[i+1].length()-2)).getIdIngredient());
+        	System.out.println(idNewRecette);
+        	
+        	if (listQuant.length != 1) {
+        		listeIngredientsRepository.insertWithQuery(ingredientRepository.findByAlimNom(splitlistIngr[i+1].substring(0, splitlistIngr[i+1].length()-1)).getIdIngredient(), idNewRecette, listQuant[i]);
+        	}
+        	
+}
+        	
         
     }
 	
@@ -142,8 +154,7 @@ public class RecetteController {
 	public static String generateString() {
         String uuid = UUID.randomUUID().toString();
         uuid.replace("-", "");
-        return uuid;
-        
+        return uuid;    
     }
 	
 
