@@ -30,19 +30,17 @@
             </div>
         </nav>
     
-       <!-- Menu caché -->
-            <div id="mySidenav" class="sidenav">
-			  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			  	<a href="index.html" id="accueil">Accueil</a>
-	            <a href="javascript:update('mes_recettes');">Mes recettes</a>
-	            <a href="javascript:update('mes_favoris');">Mes favoris</a>
-	            <a href="">Paramètres</a>
-	            <a href="connexion.html" id="bouton_connexion">Connexion</a>            
-	            <a href="javascript:deconnexion()" id="bouton_deconnexion">Deconnexion</a>
-			</div>
+     <!-- Menu caché -->
+     <div id="mySidenav" class="sidenav">
+	  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	  	<a href="index.html" id="accueil">Accueil</a>
+           <a href="javascript:update('mes_recettes');">Mes recettes</a>
+           <a href="javascript:update('mes_favoris');">Mes favoris</a>
+           <a href="">Paramètres</a>
+           <a href="connexion.html" id="bouton_connexion">Connexion</a>            
+           <a href="javascript:deconnexion()" id="bouton_deconnexion">Deconnexion</a>
+	</div>
         
-    
-    
     <!-- Recherche -->
     <div class="input-group col-8 row border border-secondary rounded-pill mx-auto my-3 p-0" style="height: 8vh">
         <input type="search" placeholder="nom de recette ou ...."   aria-describedby="button-addon1" class="search_bar form-control border-0 m-0 bg-light">
@@ -53,11 +51,19 @@
 
 		
 	<!-- LISTE DES RECETTES -->
-       <div class="container conteneur_recettes_perso">
-       		<h1>Mes recettes</h1>
-           	<div class="row recettes recettesRow" id="card-deck">
-			</div>
-        <button id="creer_recette" onclick="window.location.href= 'ajout_recette.html';">+</button>
+    <div class="container conteneur_recettes_perso">
+       	<h1>Mes recettes</h1>
+           <div class="row recettes recettesRow" id="card-deck">
+           </div>
+           
+           <!-- Bouton add : vers ajout recette -->
+           <!-- Validation Recette -->
+            <div class="row mt-5">
+                <div class="col allerAjouR text-right">
+                    <button type="button" class="btn btn-success btn-lg btn-block" onclick="window.location.href= 'ajout_recette.html';">Ajouter une recette</button>
+                </div>
+            </div>
+           
     </div>
 
 

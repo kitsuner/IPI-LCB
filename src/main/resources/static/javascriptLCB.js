@@ -111,7 +111,7 @@ function getPseudo() {
         timeout: 15000
             }).done(
                     function(data) { 
-                        $("#mySidenav").prepend("<p id='pseudo'>Bienvenue "+data.pseudo+"");
+                        $("#mySidenav").prepend("<p id='pseudo'>Bienvenue <br/>"+data.pseudo+"");
                     });
 }
 
