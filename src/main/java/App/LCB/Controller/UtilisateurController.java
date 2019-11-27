@@ -27,14 +27,22 @@ public class UtilisateurController {
 	}
 	
 	@RequestMapping("/connexion")
-    	@ResponseBody
-    	public Utilisateur connexion(@RequestHeader("mail") String mail, @RequestHeader("password") String password){
+    @ResponseBody
+    public Utilisateur connexion(@RequestHeader("mail") String mail, @RequestHeader("password") String password){
         Utilisateur u = utilisateurRepository.findByMail(mail);
         if(u.getMotDePasse().equals(password)){
             return u;
         }
         return null;
     }
+	
+	
+	@RequestMapping("/verifFavoris")
+	@ResponseBody
+	public Utilisateur verificationFavoris(@RequestHeader("mail")String mail) {
+		Utilisateur u = utilisateurRepository.findByMail(mail);
+		return u;
+	}
 	
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
@@ -49,5 +57,12 @@ public class UtilisateurController {
     	utilisateurRepository.save(nouvelUtilisateur);
 		
 	}
-	
+	/*
+	@RequestMapping(value = "/enregFavoris", method = RequestMethod.POST)
+	@ResponseBody
+	public void nouvelUtilisateur (@RequestBody String utilisateurAvecUnNewFavoris){
+    	System.out.println(utilisateurAvecUnNewFavoris);
+		
+	}
+	*/
 }
