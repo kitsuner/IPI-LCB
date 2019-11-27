@@ -2,12 +2,15 @@ package App.LCB.Controller;
 
 
 import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 
+import java.nio.charset.Charset;
 import java.sql.* ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
@@ -118,8 +121,8 @@ public class RecetteController {
         Long idNewRecette = r.getId();
         for (int i=0; i < listIngr.length; i++) {
         	System.out.println(listIngr[i]);
-        	Ingredient ing= ingredientRepository.findByAlimNom(listIngr[i]);
-        	System.out.println(ing);
+        	 Ingredient ing= ingredientRepository.findByAlimNom(listIngr[i]);
+        	
         	listeIngredientsRepository.insertWithQuery(ing.getIdIngredient(), idNewRecette, listQuant[i]);
         }
         
@@ -129,14 +132,17 @@ public class RecetteController {
 	// 	Fonction prennant en paramètre le lib d'une recette et générant une bonne url avec un chiffre de 0 à 999999 pour saler 
 	public String concatUrl(String lib){
 		String url="http://localhost:8080/recette?id=";
-		String salt=Integer.toString((int)Math.ceil(Math.random()*1000000));
-		lib= lib.replaceAll(" ", "");
-		url= url.concat(lib);
+		String salt= generateString();
 		url= url.concat(salt);
 		return url;
 	}
 	
-	
+	public static String generateString() {
+        String uuid = UUID.randomUUID().toString();
+        uuid.replace("-", "");
+        return uuid;
+        
+    }
 	
 
 }
