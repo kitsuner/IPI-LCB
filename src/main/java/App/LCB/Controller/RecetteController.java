@@ -107,7 +107,7 @@ public class RecetteController {
             @RequestHeader("description") String description, 
             @RequestHeader("listIngr") String[] listIngr,
             @RequestHeader("listQuant") Integer[] listQuant,
-            @RequestHeader("image") Byte[] image){
+            @RequestHeader("image") String image){
 
 
 

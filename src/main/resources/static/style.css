@@ -316,9 +316,8 @@ input:focus {
 	display : inline-block;
 }
 /* ajout photo */
-.dlphoto{
-	margin-top: 40px;
-	width:60%;
+.ajoutImage{
+	margin-top:40px;
 }
 
 /* MES FAVORIS */
