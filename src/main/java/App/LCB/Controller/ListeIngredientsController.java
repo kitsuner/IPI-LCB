@@ -20,11 +20,7 @@ public class ListeIngredientsController {
 	private ListeIngredientsRepository listeIngredientRepository;
 	
 	
-	@RequestMapping("/all")
-	@ResponseBody
-	private List<ListeIngredients> SearchAll() {
-		return (List<ListeIngredients>) listeIngredientRepository.findAll();
-	}
+	
 	
 	
 	

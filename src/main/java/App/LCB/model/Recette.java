@@ -1,6 +1,7 @@
 package App.LCB.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -127,6 +128,13 @@ public class Recette {
 		this.urlRecette = urlRecette;
 		this.listeIngredients = listeIngredients;
 		this.image = image;
+	}
+
+	@Override
+	public String toString() {
+		return "Recette [id=" + id + ", lib=" + lib + ", idUtilisateur=" + idUtilisateur + ", instruction="
+				+ instruction + ", nbrPersonne=" + nbrPersonne + ", urlRecette=" + urlRecette + ", listeIngredients="
+				+ listeIngredients + ", image=" + Arrays.toString(image) + "]";
 	}
 
 	
