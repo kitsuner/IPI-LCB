@@ -99,9 +99,9 @@ public class RecetteController {
     public void nouvelleRecette(
     		@RequestHeader("mail") String mail, 
     		@RequestHeader("lib") String lib, 
-            @RequestHeader("nbrPer") Integer nbr, 
+            @RequestHeader("nbrPer") Integer nbr,
             @RequestHeader("description") String description, 
-            @RequestHeader("listIngr") String[] listIngr,
+            @RequestHeader("listIngr") int[] listIngr,
             @RequestHeader("listQuant") Integer[] listQuant){
 
         Utilisateur u = utilisateurRepository.findByMail(mail);
@@ -118,9 +118,9 @@ public class RecetteController {
         Long idNewRecette = r.getId();
         for (int i=0; i < listIngr.length; i++) {
         	System.out.println(listIngr[i]);
-        	Ingredient ing= ingredientRepository.findByAlimNom(listIngr[i]);
-        	System.out.println(ing);
-        	listeIngredientsRepository.insertWithQuery(ing.getIdIngredient(), idNewRecette, listQuant[i]);
+        	
+        	
+        	listeIngredientsRepository.insertWithQuery((long)listIngr[i], idNewRecette, listQuant[i]);
         }
         
     }
