@@ -19,9 +19,9 @@ public class ListeIngredientsRepository {
 	private EntityManager entityManager;
 	
 	@Transactional
-	public void insertWithQuery(Long idIng,  Long idRec, int quantite) {
+	public void insertWithQuery(Long listIngr,  Long idRec, int quantite) {
 		entityManager.createNativeQuery("Insert into liste_ingredients (id_ingredient, id_recette, quantite) values (?,?,?)")
-		.setParameter(1, idIng)
+		.setParameter(1, listIngr)
 		.setParameter(2, idRec)
 		.setParameter(3, quantite)
 		.executeUpdate();

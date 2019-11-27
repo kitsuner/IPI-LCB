@@ -323,7 +323,7 @@
         var titreRecette;
 		var prepaRecette;
         var ingredients;
-        var listIdIngredients = [];
+        
         var listQuantites = [];
         
         
@@ -424,12 +424,12 @@
 		// VALIDATION DE LA RECETTE : RECUPERATION DES DONNEES ET ENVOIE DE LA REQUETE AJAX
         //$("#validRecette").click // 
         
-       
+       var ArrayIdIngredient= "";
         function valideRecette(){  
         	event.preventDefault();             
             regroupeAttributs();
             console.log(listQuantites);
-            console.log(listIdIngredients);
+            console.log(ArrayIdIngredient);
             
             $.ajax({
                 type: 'POST',
@@ -439,10 +439,11 @@
                     "lib": titreRecette, 
                     "nbrPer": nbPersonnes, 
                     "description": prepaRecette, 
-                    "listIngr": listIdIngredients,
+                    "listIngr": JSON.stringify(ArrayIdIngredient),
                     "listQuant": listQuantites
                 },
-                
+                dataType : "json",
+                timeout: 15000
                 }).done(function(data) {  
                 	alert("Votre recette a été enregistrée avec succès !");
             	}).fail(function(jqXHR, textStatus, errorThrown){
@@ -469,16 +470,15 @@
                     dataType:"json",
                     timeout: 15000
                 }).done(function(data){
+                    console.log(data);
                     
                     
-                    listIdIngredients.push(data.idIngredient);
 
                 }).fail(function(){
                     console.log("erreur dans la recherche de l'ingredient");
                 })
-                
-                
-                
+                ArrayIdIngredient= ArrayIdIngredient+nomIngredient+" ";
+                console.log(typeof(parseInt(quantites[i].childNodes[0].data)));
                 listQuantites.push(parseInt(quantites[i].childNodes[0].data));
                 
             }

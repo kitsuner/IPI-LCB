@@ -323,7 +323,7 @@
         var titreRecette;
 		var prepaRecette;
         var ingredients;
-        var listIngredients = [];
+        
         var listQuantites = [];
         
         
@@ -424,11 +424,12 @@
 		// VALIDATION DE LA RECETTE : RECUPERATION DES DONNEES ET ENVOIE DE LA REQUETE AJAX
         //$("#validRecette").click // 
         
-        var ingredientListe = [];
+       var ArrayIdIngredient= "";
         function valideRecette(){  
         	event.preventDefault();             
             regroupeAttributs();
-            
+            console.log(listQuantites);
+            console.log(ArrayIdIngredient);
             
             $.ajax({
                 type: 'POST',
@@ -438,10 +439,11 @@
                     "lib": titreRecette, 
                     "nbrPer": nbPersonnes, 
                     "description": prepaRecette, 
-                    "listIngr": ingredientListe,
+                    "listIngr": JSON.stringify(ArrayIdIngredient),
                     "listQuant": listQuantites
                 },
-                
+                dataType : "json",
+                timeout: 15000
                 }).done(function(data) {  
                 	alert("Votre recette a été enregistrée avec succès !");
             	}).fail(function(jqXHR, textStatus, errorThrown){
@@ -460,12 +462,25 @@
             quantites = $(".quantites");
             
             for (var i = 0 ; i < ingredients.length ; i++){
-            	
-                ingredientListe.push(ingredients[i].childNodes[0].data);
-                
-                
+                var nomIngredient = ingredients[i].childNodes[0].data;
+                $.ajax({
+                    url: "http://localhost:8080/ingredient/unique",
+                    headers: {"nomIngredient" : nomIngredient},
+                    type: 'GET',
+                    dataType:"json",
+                    timeout: 15000
+                }).done(function(data){
+                    console.log(data);
+                    
+                    
+
+                }).fail(function(){
+                    console.log("erreur dans la recherche de l'ingredient");
+                })
+                ArrayIdIngredient= ArrayIdIngredient+nomIngredient+" ";
+                console.log(typeof(parseInt(quantites[i].childNodes[0].data)));
                 listQuantites.push(parseInt(quantites[i].childNodes[0].data));
-                console.log(listQuantites, ingredientListe);
+                
             }
              
         }
