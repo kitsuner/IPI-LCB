@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="utf-8">
@@ -346,9 +346,10 @@
         var titreRecette;
 		var prepaRecette;
         var ingredients;
-        
+        var idIng;
         var listQuantites = [];
         var image;
+        var ArrayIdIngredient= [];
         
         recupListes();
         
@@ -428,8 +429,8 @@
 				            	value4 = $(this).val();
                                 ingredientValue = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[value3].ingredients[value4].alimNom;
                                 proprietesIngredient = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[value3].ingredients[value4];
-
-
+                                idIng = datas[value1].sousGroupeIngredient[value2].sousSousGroupeIngredient[value3].ingredients[value4].idIngredient;
+								console.log(idIng);
 							        $(".validIngredient").click(function(event) {         
                                         event.preventDefault();
 
@@ -491,7 +492,7 @@
 
         //$("#validRecette").click // 
         
-       var ArrayIdIngredient= "";
+      
 
         function valideRecette(){  
         	event.preventDefault();             
@@ -507,8 +508,9 @@
                     "lib": titreRecette, 
                     "nbrPer": nbPersonnes, 
                     "description": prepaRecette, 
-                    "listIngr": JSON.stringify(ArrayIdIngredient),
-                    "listQuant": listQuantites
+                    "listIngr": ArrayIdIngredient,
+                    "listQuant": listQuantites,
+                    "image": image
                 },
                 dataType : "json",
                 timeout: 15000
@@ -541,15 +543,14 @@
                 }).done(function(data){
                     console.log(data);
                     
-                    
+                   
 
                 }).fail(function(){
                     console.log("erreur dans la recherche de l'ingredient");
-                })
-                ArrayIdIngredient= ArrayIdIngredient+nomIngredient+" ";
-                console.log(typeof(parseInt(quantites[i].childNodes[0].data)));
-                listQuantites.push(parseInt(quantites[i].childNodes[0].data));
+                });
                 
+                listQuantites.push(parseInt(quantites[i].childNodes[0].data));
+                ArrayIdIngredient.push(parseInt($('.hidden')[i].childNodes[0].data));
             }
              
         }
@@ -589,7 +590,8 @@
             if (unite == ""){
             	$(".conteneurListeIngredients").append('<li class="list-group-item listeIngredient"><div class="ingredients">'+ingredientValue+'</di></li>');
             } else {
-            	$(".conteneurListeIngredients").append('<li class="list-group-item listeIngredient"><div class="quantites">'+poids+"</div> "+unite+" de <div class='ingredients'>"+ingredientValue+'</div></li>');
+            	console.log(idIng);
+            	$(".conteneurListeIngredients").append('<li class="list-group-item listeIngredient"><div class="quantites">'+poids+"</div> "+unite+" de <div class='ingredients'>"+ingredientValue+"</div> <div class='hidden'>"+idIng+"</div></li>");
             }
         }
 

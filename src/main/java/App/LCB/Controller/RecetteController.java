@@ -106,7 +106,7 @@ public class RecetteController {
     		@RequestHeader("lib") String lib, 
             @RequestHeader("nbrPer") Integer nbr, 
             @RequestHeader("description") String description, 
-            @RequestHeader("listIngr") String[] listIngr,
+            @RequestHeader("listIngr") Integer[] listIngr,
             @RequestHeader("listQuant") Integer[] listQuant,
             @RequestHeader("image") String image){
 
@@ -118,27 +118,20 @@ public class RecetteController {
         String url = concatUrl(lib);
         //CREER ET ENREGISTRER L'OBJET LISTE INGREDIENT ASSOCIE A LA RECETTE 
         
-        Recette nouvelleRecette = new Recette(null, lib, id, description, nbr,url,null,null);
+         Recette nouvelleRecette = new Recette(null, lib, id, description, nbr,url,null,image);
         recetteRepository.save(nouvelleRecette);
-        System.out.println(listIngr);
         
-        String[] splitlistIngr = listIngr.split("(?=\\p{Upper})");
-        System.out.println(splitlistIngr.length);
-        Recette r = recetteRepository.findByUrlRecetteEquals(url);
-        Long idNewRecette = r.getId();
-        for (int i=0; i < listQuant.length; i++) {
+       Recette thisRecette= recetteRepository.findByUrlRecetteEquals(url);
+       Long idThisRecette = thisRecette.getId();
+       
+        for (int i=0; i < listIngr.length; i++) {
         	
-        	System.out.println(listQuant[i]);
-        	System.out.println(splitlistIngr[i+1].substring(0, splitlistIngr[i+1].length()-2));
-        	System.out.println(splitlistIngr[i+1].substring(0, splitlistIngr[i+1].length()-1));
-        	System.out.println(ingredientRepository.findByAlimNom(splitlistIngr[i+1].substring(0, splitlistIngr[i+1].length()-2)).getIdIngredient());
-        	System.out.println(idNewRecette);
+        	listeIngredientsRepository.insertWithQuerys((long)listIngr[i], idThisRecette, listQuant[i]);
         	
-        	if (listQuant.length != 1) {
-        		listeIngredientsRepository.insertWithQuery(ingredientRepository.findByAlimNom(splitlistIngr[i+1].substring(0, splitlistIngr[i+1].length()-1)).getIdIngredient(), idNewRecette, listQuant[i]);
-        	}
+        }
+        
 		}    
-    }
+    
 	
 	
 	// 	Fonction prennant en paramètre le lib d'une recette et générant une bonne url avec un chiffre de 0 à 999999 pour saler 
