@@ -47,7 +47,6 @@
   transition: 0.5s;
   padding-top: 60px;
 }
-
 .sidenav a , .sidenav p{
   padding: 8px 8px 8px 32px;
   text-decoration: none;
@@ -56,11 +55,9 @@
   display: block;
   transition: 0.3s;
 }
-
 .sidenav a:hover {
   color: #f1f1f1;
 }
-
 .sidenav .closebtn {
   position: absolute;
   top: 0;
@@ -68,8 +65,18 @@
   font-size: 36px;
   margin-left: 50px;
 }
-
-
+#pseudo{
+	color: #f1f1f1;
+	font-size: 2em;
+}
+/*
+.barreMenu{
+	position: relative;
+	color: white;
+	height:2px;
+	z-index: auto;
+}
+*/
 
 /* PAGE ACCUEIL */
 /* Barre de recherche */
