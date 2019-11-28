@@ -1,22 +1,63 @@
 /* NavBars */
 @media (max-width: 575.98px) { 
-    .navbartop{
+    .logoMenu{
         visibility: hidden;
     }
+    .LCB{
+		margin-left:10px;	
+		font-size:1.5em;
+	}
     .footerDesktop{
         visibility: hidden;
-    }
+    }  
 }
 @media (min-width: 576px) { 
     .navbarbottom{
         visibility: hidden;
     }
 }
+@import url('https://fonts.googleapis.com/css?family=Gochi+Hand|Lalezar|Mansalva|Monda|Righteous&display=swap');
+/*
+font-family: 'Righteous', cursive;
+font-family: 'Monda', sans-serif;
+font-family: 'Lalezar', cursive;
+font-family: 'Gochi Hand', cursive;
+font-family: 'Mansalva', cursive;
+font-family: 'Itim', cursive;
+font-family: 'Coustard', serif;
+font-family: 'Delius', cursive;
+font-family: 'Lacquer', sans-serif;
+font-family: 'Freckle Face', cursive;
+*/
+/*
+color:rgb(113, 137, 91);
+color:rgb(239, 101, 55);
+color:rgb(159, 82, 40);
+vert
+color:rgb(78, 131, 38);
+orange
+color:rgb(204, 89, 46);
+*/
+.logoLCB{
+	padding-bottom:10px;
+}
+.LCB{
+	margin-left:30px;	
+	color:rgb(40, 7, 5);
+	font-size:2.3em;
+	font-family: 'Freckle Face', cursive;
+}
+.LCB_letter{
+	color:rgb(204, 89, 46) !important;
+}
+
+
 /* Footer Desktop */
 .footertext1{
     margin-top: 50px;
     font-size: 0.8em;
     text-align: center;
+    color:rgb(78, 131, 38);
 }
 .footertext-links{
     margin-top: 10px;
@@ -27,6 +68,11 @@
 .footertext-links a:link, a:visited, a:focus {
     text-decoration:none;
     color:black;
+}
+.love{
+	color:rgb(204, 89, 46);
+	font-weight:bold;
+	font-size: 1.2em;
 }
 
 /* MENU */
@@ -60,9 +106,11 @@
 }
 .sidenav .closebtn {
   position: absolute;
+  color:rgb(78, 131, 38);
   top: 0;
   right: 25px;
-  font-size: 36px;
+  font-size: 40px;
+  font-weight:bold;
   margin-left: 50px;
 }
 #pseudo{
@@ -171,7 +219,7 @@
 }
 .cardLinkRecette{
     vertical-align: bottom;
-	color: orange;
+	color: rgb(67, 123, 28);
 	margin:30px 20px;
 	text-align: center;
 	font-style: italic;
@@ -179,34 +227,52 @@
 }
 .cardLinkRecette a:hover{
 	font-weight: bold;
-	color: orange;
+	color: rgb(67, 123, 28);
 	text-decoration: none;
 }
 .cardLinkRecette a:link {
-	color: orange;
+	color: rgb(67, 123, 28);
 	text-decoration: none;
 }
 .cardLinkRecette a:visited {
-	color: orange;
+	color: rgb(67, 123, 28);
 	text-decoration: none;
 }
 .cardLinkRecette a:active {
-	color: orange;
+	color: rgb(67, 123, 28);
 	text-decoration: none;
 }
 
 /* PAGE CONNEXION */
 /* Connexion */
-.titreConnexion{
-	
+#have_account{
+	text-decoration: none;
+	color:rgb(67, 123, 28);
+	padding:10px;
 }
+#have_account:hover{
+	text-decoration: none;
+	color:rgb(67, 123, 28);
+	font-weight: bold;
+}
+#create_account{
+	text-decoration: none;
+	color:rgb(67, 123, 28);
+	padding:10px;
+}
+#create_account:hover{
+	text-decoration: none;
+	color:rgb(67, 123, 28);
+	font-weight: bold;
+}
+
 .main_connexion{
     flex-direction: column;
 }
 
 input {
     height: 35px;
-    background-color:rgb(232,240,254);
+    background-color: rgb(232,240,254);
 }
 
 #connexion_form{
