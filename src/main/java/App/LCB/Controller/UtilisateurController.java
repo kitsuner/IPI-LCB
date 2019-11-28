@@ -32,6 +32,8 @@ public class UtilisateurController {
 		return (List<Utilisateur>) utilisateurRepository.findAll();
 	}
 	
+	
+	
 	@RequestMapping("/connexion")
     @ResponseBody
     public Utilisateur connexion(@RequestHeader("mail") String mail, @RequestHeader("password") String password){
@@ -50,7 +52,7 @@ public class UtilisateurController {
 		return u;
 	}
 	
-	
+	// Crée un nouvel utilisateur
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	@ResponseBody
 	public void nouvelUtilisateur (
@@ -64,6 +66,8 @@ public class UtilisateurController {
 		
 	}
 	
+	
+	// enregistre un favori si il n'existe pas déjà/ supprime le favori si il existe 
 	@RequestMapping(value = "/enregFavoris", method = RequestMethod.PUT)
 	@ResponseBody
 	@Transactional
@@ -72,19 +76,19 @@ public class UtilisateurController {
 		Recette r= recetteRepository.findByIdEquals(id);
 		List<Recette> listeFavoris = u.getRecetteFavoris();	
 		if(listeFavoris.contains(r)) {
-			System.out.println("duh");
 			listeFavoris.remove(r);
 			u.setRecetteFavoris(listeFavoris);
 			utilisateurRepository.save(u);
 		}
 		else {
-		System.out.println("bruh");
 		listeFavoris.add(r);
 		u.setRecetteFavoris(listeFavoris);
 		utilisateurRepository.save(u);
 		}
 	}
 	
+	
+	// Vérifie si la recette en question est un favori et retour vrai /faux
 	@RequestMapping(value= "/checkFavoris", method = RequestMethod.GET)
 	@ResponseBody
 	public String checkSiFavoris (@RequestHeader("mail")String mail, @RequestHeader("idRec")Long id) {
