@@ -368,10 +368,12 @@ input:focus {
 .titrePpl{
     width : 50%;
     display : inline-block;
+    font-weight : bold;
 }
 .titre{
     width : 20%;
     display : inline-block;
+    font-weight : bold;
 }
 .listeIngredient{
 	font-size: 1.2em;
@@ -390,6 +392,7 @@ input:focus {
 .nomNut{
     width : 100px;
     display: inline-block;
+    vertical-align : top;
 }
 .nut1{
     width:40%;
@@ -404,14 +407,18 @@ input:focus {
 }
 
 .nutri{
-	width : 50px;
+	width : 60px;
     margin-left: 30px;
     display : inline-block;
+    vertical-align : top;
 }
 
 .total{
-	
+	vertical-align : top;
 	margin-left: 30px;
+}
+.pP{
+    vertical-align : top;
 }
 .ingredients{
 	display : inline-block;

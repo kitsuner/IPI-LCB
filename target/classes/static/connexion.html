@@ -1,18 +1,18 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="fr">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="javascriptLCB.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    </script>
     <!-- Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Font+Name">
     <style>@import url('https://fonts.googleapis.com/css?family=Coustard|Delius|Freckle+Face|Gochi+Hand|Itim|Lacquer|Lalezar|Mansalva|Monda|Righteous&display=swap');</style>
-            
     <title>Connexion</title>
-  </head>
+</head>
 
   <body>
     <!-- Navbar Top -->
@@ -89,6 +89,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
+
         <script>
         	let tokenMail = null;
         	let tokenPassword = null;
@@ -132,7 +133,7 @@
                     timeout: 15000
                 }).done(
                     function(data) { 
-                        console.log(data);
+                        
                         tokenMail = idUtilisateur;
                         tokenPassword = motDePasse;
                         saveConnexion();
@@ -149,13 +150,12 @@
                 var nomNew = $("#nomNew").val();
                 var mailNew = $("#mailNew").val();
                 var passwordNew = $("#passwordNew").val();
-                console.log(pseudoNew,prenomNew,nomNew,mailNew,passwordNew);
+                
                 $.ajax({
                     url: "http://localhost:8080/utilisateur",
                     type: 'POST',
                     headers: { "pseudo" : pseudoNew , "mail" : mailNew , "motDePasse" : passwordNew , "prenom" : prenomNew , "nom" : nomNew }                    
-                }).done(function(data){
-                    console.log(data);                    
+                }).done(function(data){                                        
                     alert("Votre compte a bien été créé !")
                 }).fail(function(jqXHR, textStatus, errorThrown){
                     alert("Nous n'avons pas pu créer votre compte. Cause probable : le pseudonyme est déjà utilisé");
