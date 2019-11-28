@@ -199,7 +199,7 @@ function copyurl(){
                     $(".quantity").append("<th thead-dark></th>");
                     //  $(".quantity").append("<th thead-dark class='text-center'>"+data.nbrPersonne+"</th>");
                     $("#urlRecette").text(data.urlRecette);
-                    $("#image").attr("src","data:image/png;base64,"+data.image+"");
+                    $("#image").attr("src",data.image);
 
                     
                     $("#aimer").click(function(){

@@ -66,47 +66,10 @@ public class SousSousGroupeIngredient {
 		this.ingredients = ingredients;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((ingredients == null) ? 0 : ingredients.hashCode());
-		result = prime * result + ((lib == null) ? 0 : lib.hashCode());
-		return result;
-	}
+	
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		SousSousGroupeIngredient other = (SousSousGroupeIngredient) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (ingredients == null) {
-			if (other.ingredients != null)
-				return false;
-		} else if (!ingredients.equals(other.ingredients))
-			return false;
-		if (lib == null) {
-			if (other.lib != null)
-				return false;
-		} else if (!lib.equals(other.lib))
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "SousSousGroupeIngredient [id=" + id + ", lib=" + lib + ", ingredients=" + ingredients + "]";
-	}
+	
+	
 	
 	
 	
