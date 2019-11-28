@@ -85,7 +85,6 @@ public class UtilisateurController {
 		}
 	}
 	
-	
 	@RequestMapping(value= "/checkFavoris", method = RequestMethod.GET)
 	@ResponseBody
 	public String checkSiFavoris (@RequestHeader("mail")String mail, @RequestHeader("idRec")Long id) {

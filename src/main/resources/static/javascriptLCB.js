@@ -8,6 +8,7 @@ function openNav() {
 	        $("#bouton_deconnexion").hide();               
 	    }
 	    else {
+	    	console.log(user);
 	        $("#bouton_connexion").hide();
 	        if ($("#pseudo").length == 0){
 	            getPseudo();
