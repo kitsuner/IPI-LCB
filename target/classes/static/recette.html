@@ -205,7 +205,8 @@
                     
                     
             }).fail(function() {
-                // alert("l'URL n'est pas bon !")
+                $(".container-fluid").empty();
+                $(".container-fluid").after("<h1>Pas de recette ici, mauvaise adresse url !</h1>");
             });   
         }
 
