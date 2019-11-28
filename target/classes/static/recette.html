@@ -5,31 +5,37 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="javascriptLCB.js"></script> 
     <title>Les Cordons Bleus</title>
     <style>
         .title_recette > *{
             display: inline-block;
             margin-left: 15px;
         }
+        td{
+            text-align: center;
+        }
     
     </style>
     </head>
-<body>
-    
+    <body>
+        
         <!-- Navbar Top -->
         <nav class="navbar navbartop navbar-expand-sm navbar-light bg-light">
-                <a href="index.html" class="navbar-brand">
-                    <img src="./images/chef.png" height="30" alt="Les Cordons Bleus"><span cursor-animate cursor-loop class="mt-2" >  Les Cordons <span style="color:rgba(20, 102, 233, 0.918)">Bleus</span></span>
-                </a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ml-auto" id="open_menu_nav">
-                        <img src="./images/nav_user.png" height="35" alt="login">
-                    </div>
+            <a href="index.html" class="navbar-brand">
+                <img src="./images/chef.png" height="30" alt="Les Cordons Bleus">Les Cordons Bleus
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ml-auto" id="open_menu_nav">
+                    <img src="./images/nav_user.png" height="35" alt="login" style="font-size:30px;cursor:pointer" onclick="openNav()">
+
+                    <!--  <img src="./images/nav_user.png" height="35" alt="login" onclick="displayMenu()">
+                    -->
                 </div>
-             
+
              <!-- Menu caché -->
             <div id="mySidenav" class="sidenav">
             	<hr class="barreMenu"/>
@@ -43,7 +49,6 @@
 			</div>
             </nav>
             
-          
 
         <div class="container-fluid">
                 <div class="row px-0 py-2 ml-3 d-flex flex-wrap" >
@@ -51,7 +56,7 @@
                             <div class="title_recette col-12 bg-light mt-3 p-0 border border-secondary rounded">
                                 <h1 class="titre_recette col-9 mx-0"></h1>
                                 <!-- onclick="unlike()" -->
-                                <img id="aimer" src="https://img.icons8.com/pastel-glyph/35/000000/like--v1.png"></span>
+                                <img id="aimer" src="https://img.icons8.com/pastel-glyph/35/000000/like--v1.png" onclick="like()">
                                 <img src="https://img.icons8.com/color/35/000000/paste.png" onclick='copyurl(event)'>
                             </div>
                             <div class="col-12 border border-secondary rounded bg-light mt-2 p-3">
@@ -62,8 +67,9 @@
                             <img id="image" class="rounded " style="width:100%; height:100%;" />
                         </div> 
                 </div>
-                <div class=" row col-md-10  offset-md-1 col-sm-12 ml-2 border border-secondary p-0 mt-4 rounded">
-                        <table class="table table-hover table-responsive-md m-0 p-0"> <!--table-striped -->
+                <div class="row mt-4 rounded">
+                    <div class="col-md-10 offset-md-1 col-sm-12 border border-secondary p-0 rounded">
+                        <table class=" table table-hover table-responsive-md m-0 p-0"> <!--table-striped -->
                             <thead class="thead thead-dark">
                                 <tr id="title_row" >
                                 <th scope="col" class="align-middle">#</th>
@@ -72,227 +78,178 @@
                             <tbody id="body_table">
                             </tbody>
                         </table>
+                    </div>
                 </div>
         </div>
-        <!-- Footer en mode Desktop-->
-        <div class="footerDesktop">
-            <div class="footertext1">made with ♥ by LCB
+
+            <!-- Footer en mode Desktop-->
+            <div class="footerDesktop">
+                <div class="footertext1">made with ♥ by LCB
+                </div>
+                <div class="footertext-links">
+                    <p>Tous droits réservés Les Cordons Bleus - 2019</br>
+                        Vous avez une question ? <a href="">nous contacter</a> ∗
+                        <a href="">Mentions légales</a> ∗
+                        <a href="">Conditions Générales d'Utilisation</a> ∗
+                        <a href="">Contact</a> ∗
+                        <a href="">Politique de protection des données personnelles</a> ∗
+                        <a href="">Politique de confidentialité</a>
+                    </p>
+                </div>
             </div>
-            <div class="footertext-links">
-                <p>Tous droits réservés Les Cordons Bleus - 2019</br>
-                    Vous avez une question ? <a href="">nous contacter</a> ∗
-                    <a href="">Mentions légales</a> ∗
-                    <a href="">Conditions Générales d'Utilisation</a> ∗
-                    <a href="">Contact</a> ∗
-                    <a href="">Politique de protection des données personnelles</a> ∗
-                    <a href="">Politique de confidentialité</a>
-                </p>
-            </div>
-        </div>
 
-        <!-- Navbar bottom format mobile xs -->
-        <nav class="navbar navbarbottom fixed-bottom navbar-light bg-light">
-            <a href="index.html" class="nav-item nav-link"><img src="./images/nav_home.png" height="40" alt="login"></a>
-            <a href="#" class="nav-item nav-link"><img src="./images/nav_heart.png" height="40" alt="login"></a>
-            <a href="connexion.html" class="nav-item nav-link"><img src="./images/nav_user.png" height="40" alt="login"></a>
-            <a href="#" class="nav-item nav-link"><img src="./images/nav_engrenage.png" height="45" alt="login"></a>
-        </nav>
+            <!-- Navbar bottom format mobile xs -->
+            <nav class="navbar navbarbottom fixed-bottom navbar-light bg-light">
+                <a href="index.html" class="nav-item nav-link"><img src="./images/nav_home.png" height="40" alt="login"></a>
+                <a href="#" class="nav-item nav-link"><img src="./images/nav_heart.png" height="40" alt="login"></a>
+                <a href="connexion.html" class="nav-item nav-link"><img src="./images/nav_user.png" height="40" alt="login"></a>
+                <a href="#" class="nav-item nav-link"><img src="./images/nav_engrenage.png" height="45" alt="login"></a>
+            </nav>
 
+            <script src="./cursor-v.2.0.2.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    </body>
 
+    <script>
+                            
+    var pathname = window.location.href; 
+    var userId,recetteID;
+        var existe= false;
+    //copier l'URL dans clipboard
+    function copyurl(){
+            var element=event.target;
+            element.setAttribute("src","https://img.icons8.com/offices/40/000000/spinner-frame-1.png");
+            var text = pathname;
+            navigator.clipboard.writeText(text).then(function() {
+            // console.log('Async: Copying to clipboard was successful!');
+            }, function(err) {
+            // console.error('Async: Could not copy text: ', err);
+            });
+            setTimeout(function(){element.setAttribute("src","https://img.icons8.com/color/35/000000/paste.png");}, 100); 
+        }
 
-        <script src="./cursor-v.2.0.2.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-                crossorigin="anonymous"></script>
-</body>
-<script>
-                        
-var pathname = window.location.href; 
-var idRecettesDejaLike;
-var utilisateurQuiAjouteAuxFavoris;
-var recettesDejaLike;
-var recetteALike;
-//copier l'URL dans clipboard
-function copyurl(){
-        var element=event.target;
-        element.setAttribute("src","https://img.icons8.com/offices/40/000000/spinner-frame-1.png");
-        var text = pathname;
-        navigator.clipboard.writeText(text).then(function() {
-        //console.log('Async: Copying to clipboard was successful!');
-        }, function(err) {
-        //console.error('Async: Could not copy text: ', err);
-        });
-        setTimeout(function(){element.setAttribute("src","https://img.icons8.com/color/35/000000/paste.png");}, 100); 
-     }
-
-// liker ou disliker la recette 
-
-     //1er teste pour voir est ce que l'utilisateur a déja cette recette dans sa liste
-     var userId,recetteID;
-     var arraycookie=document.cookie; 
-        var newarray=arraycookie.split(";");
-        for(var i=0; i<newarray.length; i++){
-            var thevaues= newarray[i].split("=");
-            if(thevaues[0].trim()=="userId"){
-            userId= thevaues[1];
-            };
-        };
-    
-    var existe= true;
-
-    onloadRecetteByUrl();
-    function onloadRecetteByUrl() {
-        $.ajax({
-            url: "http://localhost:8080/recette/geturl",
-            headers: { "adresse": pathname },
-            type: 'GET',
-            dataType: "json",
-            timeout: 15000
-        }).done(
-            function (data) {             
-                console.log(data);
-                recetteALike = data;
-                recetteID=data.id;
-                console.log(recetteID);
-                var ingredients=data.listeIngredients;
-                var values=ingredients[0].ingredient;
-                var keys=Object.keys(values);
-                // console.log(values);
-                // console.log(keys);
-                $("h1.titre_recette").text(data.lib);
-                $(".instruction").text(data.instruction);
-                    for(var k=2 ; k<keys.length;k++){
-                        $("#body_table").append(`<tr style='width:10%' id="row${k}"><th scope="row">${keys[k]}</th><tr>`);
-                    }
-                    $(".thead").append(`<tr class='quantity'><th class="pour bg-info"> Pour <th><tr>`);
-                    var array_values=[];
-                    for(var i=0; i<ingredients.length; ++i){
-                        values=ingredients[i].ingredient;
-                        var val_ingredient=Object.values(values);
-                        console.log(val_ingredient);
-                        var quantity=(ingredients[i].quantite)/100;
-                        // console.log(val_ingredient);
-                        var f=0;
-                        array_values[i]=[];
-                            for(var  j=2 ; j<val_ingredient.length; j++){
-                                var cell_value=(val_ingredient[j]*quantity).toFixed(2);
-                                array_values[i][f]=Number(cell_value);
-                                f++;
-                                $(`#row${j}`).append("<td class='content' style='width:10%'>"+cell_value+"</td>");
-                                };
-                            $(".quantity").append(`<th scope='col' class="bg-info text-center">${ingredients[i].quantite} g</th>`);
-                            $("#title_row").append("<th scope='col' class='align-middle' style='font-size=10px' alt="+values.alimNom+">"+values.alimNom.slice(0,30)+"</th>");
-                            // console.log(array_values[i]);
-                        };     
-                        $("#title_row").append("<th id='total' scope='col' class='text-center'> total</th>");
-                        $("#title_row").append("<th id='total' scope='col' class='text-center'> par personne</th>");
-
-                    var sommes=[];
-                    // console.log(array_values);
-                    // console.log(sommes);
-
-                    // array_values[0].pop();
-                    for( var index=0; index<array_values[0].length; index++){
-                        var x=0;
-                        for(element=0; element<array_values.length; element++){
-                            x+=(Number(array_values[element][index]));
-                        }
-                        $(`#row${index+2}`).append("<td class='content align-middle' style='width:10%'>"+x.toFixed(2)+"</td>");
-                        $(`#row${index+2}`).append("<td class='content align-middle' style='width:10%;'>"+(x/data.nbrPersonne).toFixed(2)+"</td>");
-                        //console.log(index+2);
-                        sommes.push(x.toFixed(2));
-                    }
-                    console.log(sommes);
-
-                    //ajustement of table rows and celles
-                    $("tr[id^='row']").next().remove();
-                    $(".quantity").next().remove();
-                    $(".pour").next().remove();
-                    $(".quantity").append("<th thead-dark></th>");
-                    //  $(".quantity").append("<th thead-dark class='text-center'>"+data.nbrPersonne+"</th>");
-                    $("#urlRecette").text(data.urlRecette);
-                    $("#image").attr("src",data.image);
-                 
-                    $("#aimer").click(function(){
-                        $.ajax({ 
-                            url: "http://localhost:8080/utilisateur/verifFavoris", 
-                            headers: {"mail":sessionStorage.getItem('Mail') },
-                            type: 'GET',
-                            dataType:"json",
-                            timeout: 15000
-                        }).done(
-                            function(datata) { 
-                                recettesDejaLike = datata.recetteFavoris;
-                                //idRecette = datata.recetteFavoris[0].id;
-                                utilisateurQuiAjouteAuxFavoris = JSON.stringify(datata);
-                                existe = testRecetteDejaLike();
-                                
-                                enregistreRecette(existe);
-                                
-                        }).fail(function(jqXHR, textStatus, errorThrown){
-                            console.log("Erreur");
-                        });
-                        
-                    })
-                
-        }).fail(function() {
-            // alert("l'URL n'est pas bon !")
-        });   
-    }
+        //execution des fonctions menue et requette get ajax 
+        onloadRecetteByUrl();
+        image();
+        $("#menu_navigation").hide();
 
 
-    function enregistreRecette(existeOuPas){
-        if(existeOuPas == true){
-
-        }else{
-            console.log(utilisateurQuiAjouteAuxFavoris);
-            recetteALike = JSON.stringify(recetteALike);
-            console.log(recetteALike);
-
-            
-            /*
+        // fonction requette ajax get pour récoupérer la recette 
+        function onloadRecetteByUrl() {
             $.ajax({
-                type: 'POST',
-                url: "http://localhost:8080/utilisateur/enregFavoris",
-                //data:
-            }).done(function(data) {  
-                alert("Votre recette a été enregistrée avec succès !");
-            }).fail(function(jqXHR, textStatus, errorThrown){
-                alert("Nous n'avons pas pu enregistrer votre recette. Réessayez ultérieurement");
-            }); */ 
-        }       
-    }
+                url: "http://localhost:8080/recette/geturl",
+                headers: { "adresse": pathname },
+                type: 'GET',
+                dataType: "json",
+                timeout: 15000
+            }).done(
+                function (data) {             
+                    console.log(data);
+                    recetteALike = data;
+                    recetteID=data.id;
+                    console.log(recetteID);
+                    var ingredients=data.listeIngredients;
+                    var values=ingredients[0].ingredient;
+                    var keys=Object.keys(values);
+                    // console.log(values);
+                    // console.log(keys);
+                    $("h1.titre_recette").text(data.lib);
+                    $(".instruction").text(data.instruction);
+                        for(var k=2 ; k<keys.length;k++){
+                            $("#body_table").append(`<tr style='width:10%' id="row${k}"><th scope="row">${keys[k]} (${ ajoutSigne(k)})</th><tr>`);
+                        }
 
-    //CETTE FONCTION PARCOURS LES RECETTES DEJA EN FAVORIS ET COMPARE L'ID AVEC CELUI DE LA RECETTE 
-    function testRecetteDejaLike(){
-        for (var i = 0 ; i < recettesDejaLike.length ; i++){
-            console.log(recetteID,recettesDejaLike[i].id);
-            if(recetteID == recettesDejaLike[i].id){
-                console.log("Tu aimes déjà cette recette");
-                $("#aimer").attr("src","https://img.icons8.com/pastel-glyph/35/000000/like.png");
-                return true;
-            } else {
-                console.log("Tu ne l'aimes pas déjà")
-                $("#aimer").attr("src","https://img.icons8.com/cotton/35/000000/like--v3.png");
+                        $(".thead").append(`<tr class='quantity'><th class="pour bg-info"> Pour <th><tr>`);
+                        var array_values=[];
+                        for(var i=0; i<ingredients.length; ++i){
+                            values=ingredients[i].ingredient;
+                            var val_ingredient=Object.values(values);
+                            // console.log(val_ingredient);
+                            var quantity=(ingredients[i].quantite)/100;
+                            var f=0;
+                            array_values[i]=[];
+                                for(var  j=2 ; j<val_ingredient.length; j++){
+                                    var cell_value=(val_ingredient[j]*quantity).toFixed(2);
+                                    array_values[i][f]=Number(cell_value);
+                                    f++;
+                                    $(`#row${j}`).append("<td class='content' style='width:10%'>"+cell_value+"</td>");
+                                    };
+                                $(".quantity").append(`<th scope='col' class="bg-info text-center">${ingredients[i].quantite} g</th>`);
+                                $("#title_row").append("<th scope='col' class='align-middle' style='font-size=10px' alt="+values.alimNom+">"+values.alimNom.slice(0,30)+"</th>");
+                            };     
+                            $("#title_row").append("<th id='total' scope='col' class='text-center'> total</th>");
+                            $("#title_row").append("<th id='total' scope='col' class='text-center'> par personne</th>");
+
+                        var sommes=[];
+                        for( var index=0; index<array_values[0].length; index++){
+                            var x=0;
+                            for(element=0; element<array_values.length; element++){
+                                x+=(Number(array_values[element][index]));
+                            }
+                            var defined=index+2;
+                            $(`#row${defined}`).append("<td class='content align-middle' style='width:12%'>"+x.toFixed(2)+"</td>");
+                            $(`#row${defined}`).append("<td class='content align-middle' style='width:12%;'>"+(x/data.nbrPersonne).toFixed(2)+"</td>");
+                            sommes.push(x.toFixed(2));
+                        }
+                        // console.log(sommes);
+
+                        //ajustement of table rows and celles
+                        $("tr[id^='row']").next().remove();
+                        $(".quantity").next().remove();
+                        $(".pour").next().remove();
+                        $(".quantity").append("<th thead-dark></th>");
+                        //  $(".quantity").append("<th thead-dark class='text-center'>"+data.nbrPersonne+"</th>");
+                        $("#urlRecette").text(data.urlRecette);
+                        $("#image").attr("src","data:image/png;base64,"+data.image+"");
+
+                        
+            }).fail(function() {
+                // alert("l'URL n'est pas bon !")
+            });   
+        }
+
+        function like(){
+             var mail=sessionStorage.getItem('Mail');
+                    $.ajax({ 
+                    url: "http://localhost:8080/utilisateur/enregFavoris", 
+                    type: 'PUT',
+                    headers: {"mail":mail, "idRec":recetteID},
+                    timeout: 15000
+                }).done(
+                    function() { 
+                        console.log("donne");    
+                        $("#aimer").attr("src","https://img.icons8.com/cotton/35/000000/like--v3.png");
+                }).fail(function(jqXHR, textStatus, errorThrown){
+                        console.log("Erreur");
+                        console.log(recetteID);
+                        console.log(typeof(recetteID));
+                        console.log(mail);
+                });
+                    
+                }
             
+ 
+    function ajoutSigne(element){
+            switch(element){
+                case 2: 
+            return "Kcl";
+            case 10:
+            case 12:
+            case 13:
+            case 17:
+            case 18:
+            case 19:
+            return "mg";
+            case 14:
+            case 15:
+            case 16:
+            case 20:
+            return "&#181;g";
+            default:
+            return "g";
             }
-            return false;
         }
-        
-    }
 
-
-    /*
-    function unlike(){
-            if(existe==true){
-                
-                existe=false
-                $("#aimer").attr("src","https://img.icons8.com/cotton/35/000000/like--v3.png");  
-            } else{
-                existe=true;
-                $("#aimer").attr("src","https://img.icons8.com/pastel-glyph/35/000000/like.png");
-            }
-        }
-*/
-</script>
+    </script>
 </html>

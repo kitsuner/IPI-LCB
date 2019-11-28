@@ -85,4 +85,21 @@ public class UtilisateurController {
 		}
 	}
 	
+	
+	@RequestMapping(value= "/checkFavoris", method = RequestMethod.GET)
+	@ResponseBody
+	public String checkSiFavoris (@RequestHeader("mail")String mail, @RequestHeader("idRec")Long id) {
+		
+		Utilisateur u=utilisateurRepository.findByMail(mail);
+		Recette r =recetteRepository.findByIdEquals(id);
+		List<Recette> listeFavoris = u.getRecetteFavoris();	
+		if(listeFavoris.contains(r)) {
+			return "Vrai";			
+		}
+		else {
+		System.out.println("bruh");
+			return "Faux";
+		}
+	}
 }
+

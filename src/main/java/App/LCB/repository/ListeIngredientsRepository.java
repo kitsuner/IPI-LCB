@@ -18,7 +18,7 @@ public class ListeIngredientsRepository {
 	@PersistenceContext
 	private EntityManager entityManager;
 	
-	
+	// Insert en JPQL un element dans la table liste_ingredient //
 	@Transactional
 	public void insertWithQuerys(Long listIngr,  Long idRec, int quantite) {
 		entityManager.createNativeQuery("Insert into liste_ingredients (id_ingredient, id_recette, quantite) values (?,?,?)")

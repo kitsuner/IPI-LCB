@@ -25,6 +25,8 @@ public class IngredientController {
 	private List<Ingredient> SearchAll() {
 		return (List<Ingredient>) ingredientRepository.findAll();
 	}
+	
+	// retourne un ingredient correspondant au nom inputé en header
 	@RequestMapping("/unique")
 	@ResponseBody
 	private Ingredient SearchOne(@RequestHeader("nomIngredient") String nomIngredient) {

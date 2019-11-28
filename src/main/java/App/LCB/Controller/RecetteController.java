@@ -48,8 +48,7 @@ public class RecetteController {
 	@Autowired
 	private ListeIngredientsRepository listeIngredientsRepository;
 	
-	@Autowired 
-	private IngredientRepository ingredientRepository;
+	
 	
 	
 	
@@ -60,12 +59,14 @@ public class RecetteController {
 		return (List<Recette>) recetteRepository.findAll();
 	}
 	
+	// Retourne les recettes crée par un user donné. Prend en header les sessions storage token
 	@RequestMapping("/userRecette")
 	@ResponseBody
 	private List<Recette> SearchByUser(@RequestHeader("mail") String mail, @RequestHeader("password") String password){		
 		Utilisateur u = utilisateurRepository.findByMail(mail);
 		return u.getRecette();
 	}
+	// Retourne les favoris likés par un user donné. Prend en header les sessions storage token
 	@RequestMapping("/userFavoris")
 	@ResponseBody
 	private List<Recette> SearchByUserFavoris(@RequestHeader("mail") String mail, @RequestHeader("password") String password){		
@@ -74,12 +75,14 @@ public class RecetteController {
 		return u.getRecetteFavoris();
 	}
 	
+	// Recherche une recette par libellé
 	@RequestMapping("/search")
 	@ResponseBody
 	private List<Recette> SearchRecette(@RequestHeader("lib") String lib){		
 		return recetteRepository.findByLibContaining(lib);	
 	}
 	
+	// Va chercher les 3 recettes les plus anciennes en base de donnée et les affiches sur la page d'acceuil
 	@RequestMapping("/homePageRecette")
 	@ResponseBody
 	private List<Recette> homePageRecette(){
@@ -87,18 +90,25 @@ public class RecetteController {
 	}
 	
 	
-	
+	// retourne la page recette.html sur une requete url de type localhost/recette?id={id}
 	@RequestMapping(value="", method = RequestMethod.GET)
 	private String DisplayRecette(@RequestParam(value= "id", required=true)String id) {
 		return "recette.html";
 	}
 	
+	// retourne la recette correspondant à l'url mise en header
 	@RequestMapping("/geturl")
 	@ResponseBody
 	private Recette SearchRecetteByUrl(@RequestHeader("adresse")String adresse) {
 		return recetteRepository.findByUrlRecetteEquals(adresse);
 	}
 	
+	
+	// Fonction usine à gaz :
+	// 1/ Récupère en header le session storage de l'user, le nom de recette, le nbr de personne, le champ description, 
+	// une array d'id ingredient, une array de quantité, une url d'image.
+	// 2/ Crée une nouvelle recette et l'insère en base de donnée via JPA
+	// 3/ Insére un par un les ingredients correspondant dans la table liste_ingredient via JPQL
 @RequestMapping(value = "/nouv_recette", method = RequestMethod.POST)
     @ResponseBody
     public void nouvelleRecette(
@@ -142,6 +152,7 @@ public class RecetteController {
 		return url;
 	}
 	
+	// Crée une string aléatoire d'Hexa decimal pour "saler" l'url
 	public static String generateString() {
         String uuid = UUID.randomUUID().toString();
         uuid.replace("-", "");
