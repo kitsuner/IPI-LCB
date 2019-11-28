@@ -26,6 +26,18 @@
                 <a href="connexion.html" class="nav-item nav-link" title="Connexion"><img src="./images/nav_user.png" height="35" alt="login"></a>
             </div>
         </div>
+        
+            <!-- Menu caché -->
+            <div id="mySidenav" class="sidenav">
+            	<hr class="barreMenu"/>
+			  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			  	<a href="index.html" id="accueil">Accueil</a>
+	            <a href="javascript:update('mes_recettes');">Mes recettes</a>
+	            <a href="javascript:update('mes_favoris');">Mes favoris</a>
+	            <a href="">Paramètres</a>
+	            <a href="connexion.html" id="bouton_connexion">Connexion</a>            
+	            <a href="javascript:deconnexion()" id="bouton_deconnexion">Deconnexion</a>
+			</div>
     </nav>
 
     <!-- Liste mes recettes -->
@@ -531,7 +543,8 @@
             ingredients = $(".ingredients");
             quantites = $(".quantites");
             image = $("#formControlFile").val();
-            
+
+			console.log(image);
             for (var i = 0 ; i < ingredients.length ; i++){
                 var nomIngredient = ingredients[i].childNodes[0].data;
                 $.ajax({
