@@ -274,15 +274,6 @@ public class Ingredient {
 		this.vitamineB12 = vitamineB12;
 	}
 
-	@Override
-	public String toString() {
-		return "Ingredient [idIngredient=" + idIngredient + ", alimNom=" + alimNom + ", energie=" + energie + ", eau="
-				+ eau + ", proteines=" + proteines + ", glucides=" + glucides + ", lipides=" + lipides + ", sucres="
-				+ sucres + ", amidon=" + amidon + ", fibresAlimentaires=" + fibresAlimentaires + ", cholosterol="
-				+ cholosterol + ", sel=" + sel + ", calcium=" + calcium + ", fer=" + fer + ", iode=" + iode
-				+ ", betaCarotene=" + betaCarotene + ", vitamineD=" + vitamineD + ", vitamineE=" + vitamineE
-				+ ", vitamineC=" + vitamineC + ", vitamineB1=" + vitamineB1 + ", vitamineB12=" + vitamineB12 + "]";
-	}
 	
 	
 

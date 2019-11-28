@@ -20,6 +20,7 @@ public class ErrorAdvice extends ResponseEntityExceptionHandler {
 		ApiError api = new ApiError();
 		api.setCode("E01");
 		api.setMessage(e.getMessage());
+		e.printStackTrace();
 		return ResponseEntity.status(403).body(api);		
 	}	
 }

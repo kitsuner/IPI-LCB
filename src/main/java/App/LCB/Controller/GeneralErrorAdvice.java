@@ -21,6 +21,7 @@ public class GeneralErrorAdvice extends ResponseEntityExceptionHandler {
 	{
 		ApiError api = new ApiError();
 		api.setCode("E42");
+		e.printStackTrace();
 		api.setMessage("Erreur de serveur : "+e.getClass().toString());
 		return ResponseEntity.status(500).body(api);
 	}

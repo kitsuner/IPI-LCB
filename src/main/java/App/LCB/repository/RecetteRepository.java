@@ -23,4 +23,6 @@ public interface RecetteRepository extends CrudRepository<Recette, Long>{
 	
 	Recette findByUrlRecetteEquals(String url);
 	
+	Recette findByIdEquals(Long id);
+	
 }

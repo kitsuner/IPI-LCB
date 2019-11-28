@@ -2,6 +2,8 @@ package App.LCB.Controller;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import App.LCB.model.Recette;
 import App.LCB.model.Utilisateur;
+import App.LCB.repository.RecetteRepository;
 import App.LCB.repository.UtilisateurRepository;
 
 @Controller
@@ -19,6 +23,9 @@ public class UtilisateurController {
 
 	@Autowired
 	private UtilisateurRepository utilisateurRepository;
+	
+	@Autowired
+	private RecetteRepository recetteRepository;
 	
 	@RequestMapping("/all")
 	@ResponseBody
@@ -57,12 +64,23 @@ public class UtilisateurController {
     	utilisateurRepository.save(nouvelUtilisateur);
 		
 	}
-	/*
-	@RequestMapping(value = "/enregFavoris", method = RequestMethod.POST)
+	
+	@RequestMapping(value = "/enregFavoris", method = RequestMethod.PUT)
 	@ResponseBody
-	public void nouvelUtilisateur (@RequestBody String utilisateurAvecUnNewFavoris){
-    	System.out.println(utilisateurAvecUnNewFavoris);
-		
+	@Transactional
+	public void addFavoris (@RequestHeader("mail")String mail, @RequestHeader("idRec")Long id){
+		System.out.println("YOP1");
+		Utilisateur u =utilisateurRepository.findByMail(mail);
+		System.out.println("YOP2");
+		Recette r= recetteRepository.findByIdEquals(id);
+		System.out.println("YOP3");
+		List<Recette> listeFavoris = u.getRecetteFavoris();
+		System.out.println("YOP4");
+		listeFavoris.add(r);
+		System.out.println("YOP5");
+		u.setRecetteFavoris(listeFavoris);
+		System.out.println("YOP6");
+		 utilisateurRepository.save(u);
 	}
-	*/
+	
 }

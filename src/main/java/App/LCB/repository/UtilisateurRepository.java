@@ -16,4 +16,5 @@ public interface UtilisateurRepository extends CrudRepository<Utilisateur, Long>
 	
 	Utilisateur findByMail(String emailAdress);
 
+	
 }
