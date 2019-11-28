@@ -197,6 +197,9 @@
 
 /* PAGE CONNEXION */
 /* Connexion */
+.titreConnexion{
+	
+}
 .main_connexion{
     flex-direction: column;
 }
