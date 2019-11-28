@@ -8,7 +8,6 @@ function openNav() {
 	        $("#bouton_deconnexion").hide();               
 	    }
 	    else {
-	    	console.log(user);
 	        $("#bouton_connexion").hide();
 	        if ($("#pseudo").length == 0){
 	            getPseudo();
@@ -72,7 +71,7 @@ function search() {
             timeout: 15000
             }).done(
                 function (data) {              
-                    $("#card-deck").empty();
+                    $("#card-deck").empty();                    
                     for (let i=0; i < data.length;i++){                     
                  	   $("#card-deck").append('<div class="col-lg-4 cardRecette"><div class="thumbnail"><div class="card-image-container"><img class="cardImageRecette" id="image'+i+'" alt="Image'+i+'"></div><div class="caption"><h3 class="cardTitreRecette card-title" id="title'+i+'">'+data[i].lib+'</h3><p class="cardTextRecette card-text" id="text'+i+'">'+data[i].instruction+'</p></div><div class="cardLinkRecette"><a class="LinkRecette'+i+'">Voir la recette ...</a></div></div></div>');
                        $("#image"+i).attr("src", data[i].image);
@@ -116,6 +115,7 @@ function getPseudo() {
                     });
 }
 
+// va chercher les recettes crées par l'utilisateur et les affiche 
 function onloadUserRecette() {
     $.ajax({
         url: "http://localhost:8080/recette/userRecette",
@@ -125,7 +125,11 @@ function onloadUserRecette() {
         timeout: 15000
     }).done(
         function (data) {
+        	
             $("#card-deck").empty();
+            if (data.length == 0){
+            	$("#card-deck").html("<h1>Il n'y a pas encore de recette ici ! N'hésitez pas à en créer.</h1>");
+            }
             for (let i=0; i < data.length;i++){
           	   $("#card-deck").append('<div class="col-lg-4 cardRecette"><div class="thumbnail"><div class="card-image-container"><img class="cardImageRecette" id="image'+i+'" alt="Image'+i+'"></div><div class="caption"><h3 class="cardTitreRecette card-title" id="title'+i+'">'+data[i].lib+'</h3><p class="cardTextRecette card-text" id="text'+i+'">'+data[i].instruction+'</p></div><div class="cardLinkRecette"><a class="LinkRecette'+i+'">Voir la recette ...</a></div></div></div>');
          	   $("#image"+i).attr("src", data[i].image);
@@ -137,7 +141,7 @@ function onloadUserRecette() {
 
 
 
-
+// retourne les recettes favorites de l'utilisateur 
 function onloadUserFavoris() {
     $.ajax({
         url: "http://localhost:8080/recette/userFavoris",
@@ -148,6 +152,9 @@ function onloadUserFavoris() {
         }).done(
             function (data) {
               $("#card-deck").empty();
+              if (data.length == 0){
+              	$("#card-deck").html("<h1>Vous n'avez pas encore de recettes favorites.</h1>");
+              }
                   for (let i=0; i < data.length;i++){
                    $("#card-deck").append('<div class="col-lg-4 cardRecette"><div class="thumbnail"><div class="card-image-container"><img class="cardImageRecette" id="image'+i+'" alt="Image'+i+'"></div><div class="caption"><h3 class="cardTitreRecette card-title" id="title'+i+'">'+data[i].lib+'</h3><p class="cardTextRecette card-text" id="text'+i+'">'+data[i].instruction+'</p></div><div class="cardLinkRecette"><a class="LinkRecette'+i+'">Voir la recette ...</a></div></div></div>');
                	   $("#image"+i).attr("src", data[i].image);
