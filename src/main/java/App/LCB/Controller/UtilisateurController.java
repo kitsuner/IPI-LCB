@@ -6,7 +6,6 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -69,18 +68,21 @@ public class UtilisateurController {
 	@ResponseBody
 	@Transactional
 	public void addFavoris (@RequestHeader("mail")String mail, @RequestHeader("idRec")Long id){
-		System.out.println("YOP1");
 		Utilisateur u =utilisateurRepository.findByMail(mail);
-		System.out.println("YOP2");
 		Recette r= recetteRepository.findByIdEquals(id);
-		System.out.println("YOP3");
-		List<Recette> listeFavoris = u.getRecetteFavoris();
-		System.out.println("YOP4");
+		List<Recette> listeFavoris = u.getRecetteFavoris();	
+		if(listeFavoris.contains(r)) {
+			System.out.println("duh");
+			listeFavoris.remove(r);
+			u.setRecetteFavoris(listeFavoris);
+			utilisateurRepository.save(u);
+		}
+		else {
+		System.out.println("bruh");
 		listeFavoris.add(r);
-		System.out.println("YOP5");
 		u.setRecetteFavoris(listeFavoris);
-		System.out.println("YOP6");
-		 utilisateurRepository.save(u);
+		utilisateurRepository.save(u);
+		}
 	}
 	
 }
