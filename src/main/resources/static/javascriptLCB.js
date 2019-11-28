@@ -73,7 +73,7 @@ function search() {
                 function (data) {              
                     $("#card-deck").empty();
                     for (let i=0; i < data.length;i++){                     
-                 	   $("#card-deck").append('<div class="col-lg-4 cardRecette"><div class="thumbnail"><img class="cardImageRecette" id="image'+i+'" alt="Image'+i+'"><div class="caption"><h3 class="cardTitreRecette card-title" id="title'+i+'">'+data[i].lib+'</h3><p class="cardTextRecette card-text" id="text'+i+'">'+data[i].instruction+'</p></div><div class="cardLinkRecette"><a class="LinkRecette'+i+'">Voir la recette ...</a></div></div></div>');
+                 	   $("#card-deck").append('<div class="col-lg-4 cardRecette"><div class="thumbnail"><div class="card-image-container"><img class="cardImageRecette" id="image'+i+'" alt="Image'+i+'"></div><div class="caption"><h3 class="cardTitreRecette card-title" id="title'+i+'">'+data[i].lib+'</h3><p class="cardTextRecette card-text" id="text'+i+'">'+data[i].instruction+'</p></div><div class="cardLinkRecette"><a class="LinkRecette'+i+'">Voir la recette ...</a></div></div></div>');
                        $("#image"+i).attr("src", data[i].image);
                        $(".LinkRecette"+i).attr("href",data[i].urlRecette);
                     }
@@ -91,7 +91,7 @@ function image() {
                    }).done(
                        function (data) {
                            for (let i = 0; i < data.length; i++) {
-                        	   $("#card-deck").append('<div class="col-lg-4 cardRecette"><div class="thumbnail"><img class="cardImageRecette" id="image'+i+'" alt="Image'+i+'"><div class="caption"><h3 class="cardTitreRecette card-title" id="title'+i+'">'+data[i].lib+'</h3><p class="cardTextRecette card-text" id="text'+i+'">'+data[i].instruction+'</p></div><div class="cardLinkRecette"><a class="LinkRecette'+i+'">Voir la recette ...</a></div></div></div>');
+                         	   $("#card-deck").append('<div class="col-lg-4 cardRecette"><div class="thumbnail"><div class="card-image-container"><img class="cardImageRecette" id="image'+i+'" alt="Image'+i+'"></div><div class="caption"><h3 class="cardTitreRecette card-title" id="title'+i+'">'+data[i].lib+'</h3><p class="cardTextRecette card-text" id="text'+i+'">'+data[i].instruction+'</p></div><div class="cardLinkRecette"><a class="LinkRecette'+i+'">Voir la recette ...</a></div></div></div>');
                         	   $("#image"+i).attr("src", data[i].image);
                                $(".LinkRecette"+i).attr("href",data[i].urlRecette);
                            }
@@ -126,7 +126,7 @@ function onloadUserRecette() {
         function (data) {
             $("#card-deck").empty();
             for (let i=0; i < data.length;i++){
-         	   $("#card-deck").append('<div class="col-lg-4 cardRecette"><div class="thumbnail"><img class="cardImageRecette" id="image'+i+'" alt="Image'+i+'"><div class="caption"><h3 class="cardTitreRecette card-title" id="title'+i+'">'+data[i].lib+'</h3><p class="cardTextRecette card-text" id="text'+i+'">'+data[i].instruction+'</p></div><div class="cardLinkRecette"><a class="LinkRecette'+i+'">Voir la recette ...</a></div></div></div>');
+          	   $("#card-deck").append('<div class="col-lg-4 cardRecette"><div class="thumbnail"><div class="card-image-container"><img class="cardImageRecette" id="image'+i+'" alt="Image'+i+'"></div><div class="caption"><h3 class="cardTitreRecette card-title" id="title'+i+'">'+data[i].lib+'</h3><p class="cardTextRecette card-text" id="text'+i+'">'+data[i].instruction+'</p></div><div class="cardLinkRecette"><a class="LinkRecette'+i+'">Voir la recette ...</a></div></div></div>');
          	   $("#image"+i).attr("src", data[i].image);
                $(".LinkRecette"+i).attr("href",data[i].urlRecette);
             }
@@ -148,7 +148,7 @@ function onloadUserFavoris() {
             function (data) {
               $("#card-deck").empty();
                   for (let i=0; i < data.length;i++){
-               	   $("#card-deck").append('<div class="col-lg-4 cardRecette"><div class="thumbnail"><img class="cardImageRecette" id="image'+i+'" alt="Image'+i+'"><div class="caption"><h3 class="cardTitreRecette card-title" id="title'+i+'">'+data[i].lib+'</h3><p class="cardTextRecette card-text" id="text'+i+'">'+data[i].instruction+'</p></div><div class="cardLinkRecette"><a class="LinkRecette'+i+'">Voir la recette ...</a></div></div></div>');
+                   $("#card-deck").append('<div class="col-lg-4 cardRecette"><div class="thumbnail"><div class="card-image-container"><img class="cardImageRecette" id="image'+i+'" alt="Image'+i+'"></div><div class="caption"><h3 class="cardTitreRecette card-title" id="title'+i+'">'+data[i].lib+'</h3><p class="cardTextRecette card-text" id="text'+i+'">'+data[i].instruction+'</p></div><div class="cardLinkRecette"><a class="LinkRecette'+i+'">Voir la recette ...</a></div></div></div>');
                	   $("#image"+i).attr("src", data[i].image);
                    $(".LinkRecette"+i).attr("href",data[i].urlRecette);
                   }
