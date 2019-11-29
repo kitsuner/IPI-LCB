@@ -19,20 +19,18 @@
 @import url('https://fonts.googleapis.com/css?family=Gochi+Hand|Lalezar|Mansalva|Monda|Righteous&display=swap');
 /*
 font-family: 'Righteous', cursive;
-font-family: 'Monda', sans-serif;
-font-family: 'Lalezar', cursive;
-font-family: 'Gochi Hand', cursive;
-font-family: 'Mansalva', cursive;
-font-family: 'Itim', cursive;
-font-family: 'Coustard', serif;
-font-family: 'Delius', cursive;
-font-family: 'Lacquer', sans-serif;
 font-family: 'Freckle Face', cursive;
+font-family: 'Itim', cursive;
+font-family: 'Cairo', sans-serif;
+font-family: 'Amaranth', sans-serif;
+font-family: 'Baloo', cursive;
 */
 /*
 color:rgb(113, 137, 91);
 color:rgb(239, 101, 55);
 color:rgb(159, 82, 40);
+marron
+color:rgb(40, 7, 5);
 vert
 color:rgb(78, 131, 38);
 orange
@@ -55,7 +53,17 @@ color:rgb(204, 89, 46);
 	height:62px;
 
 }
-
+h1{
+	font-family: "Gill Sans", sans-serif;
+	color:rgb(204, 89, 46);
+    text-align: center;
+    font-size: 3em;
+    margin: 1em;
+}
+h2{
+	color:rgb(40, 7, 5) !important;
+	font-size: 1.5em;
+}
 /* Footer Desktop */
 .footertext1{
     margin-top: 50px;
@@ -143,8 +151,15 @@ color:rgb(204, 89, 46);
     height:100%;
 }
 .search_icon{
-    height: 100%;
-    width: auto;
+    height: 2rem;
+    width: 2rem;
+    margin: 0px;
+    padding: 0px;
+}
+
+#button-addon1{
+    margin:0px;
+    padding: 3px 1rem 0px 0px;
 }
 
 
@@ -276,13 +291,11 @@ color:rgb(204, 89, 46);
 
 input {
     height: 35px;
-    background-color: rgb(232,240,254);
 }
 
 #connexion_form{
     border: 1px solid rgb(199, 199, 199);
     border-radius: 3%;
-
 }
 #cree_compte_form {
     border: 1px solid rgb(199, 199, 199);
@@ -291,13 +304,6 @@ input {
 
 .statique{
     text-align: center;
-}
-h1{
-    text-align: center;
-    font-size: 35px;
-    font-family: Arial, Helvetica, sans-serif;
-    padding:1rem;
-    margin: 1rem;
 }
 button{
     padding:0.5rem;
@@ -433,6 +439,18 @@ input:focus {
 /* ajout photo */
 .ajoutImage{
 	margin-top:40px;
+}
+
+/* DETAIL RECETTE */
+.table>thead>tr {
+	background-color:rgb(204, 89, 46);
+	color:white;
+	border-color: rgb(204, 89, 46);
+}
+.quantity {
+	background-color:rgb(78, 131, 38) !important;
+	color:white;
+
 }
 
 /* MES FAVORIS */
