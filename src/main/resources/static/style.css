@@ -30,7 +30,7 @@ color:rgb(113, 137, 91);
 color:rgb(239, 101, 55);
 color:rgb(159, 82, 40);
 marron
-color:rgb(40, 7, 5)
+color:rgb(40, 7, 5);
 vert
 color:rgb(78, 131, 38);
 orange
@@ -55,15 +55,15 @@ color:rgb(204, 89, 46);
 }
 
 h1{
-	font-family: Calibri,Arial, arcursive;
-	color:rgb(40, 7, 5);
+	font-family: "Gill Sans", sans-serif;
+	color:rgb(204, 89, 46);
     text-align: center;
-    font-size: 35px;
-    padding:1rem;
-    margin: 1rem;
+    font-size: 3em;
+    margin: 1em;
 }
 h2{
-	color:rgb(78, 131, 38);
+	color:rgb(40, 7, 5) !important;
+	font-size: 1em;
 }
 /* Footer Desktop */
 .footertext1{
