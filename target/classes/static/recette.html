@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
     <meta charset="utf-8">
@@ -202,32 +202,66 @@
                         $("#urlRecette").text(data.urlRecette);
                         $("#image").attr("src",data.image);
 
-                        
+                    testlike();
+                    
+                    
             }).fail(function() {
-                // alert("l'URL n'est pas bon !")
+                $(".container-fluid").empty();
+                $(".container-fluid").after("<h1>Pas de recette ici, mauvaise adresse url !</h1>");
             });   
         }
 
         function like(){
-             var mail=sessionStorage.getItem('Mail');
+            var mail = sessionStorage.getItem('Mail');
+            if (mail == null) {
+                window.location = "connexion.html";
+            }
+            		if ($("#aimer").attr("src") =="https://img.icons8.com/cotton/35/000000/like--v3.png"){
+            			likeDislike("https://img.icons8.com/pastel-glyph/35/000000/like--v1.png");
+            		}
+            		else {
+            			likeDislike("https://img.icons8.com/cotton/35/000000/like--v3.png");
+            		}
+                    
+        }
+
+    function testlike() {
+        var mail=sessionStorage.getItem('Mail');
                     $.ajax({ 
-                    url: "http://localhost:8080/utilisateur/enregFavoris", 
-                    type: 'PUT',
+                    url: "http://localhost:8080/utilisateur/checkFavoris", 
+                    type: 'GET',
                     headers: {"mail":mail, "idRec":recetteID},
                     timeout: 15000
                 }).done(
-                    function() { 
-                        console.log("donne");    
-                        $("#aimer").attr("src","https://img.icons8.com/cotton/35/000000/like--v3.png");
+                    function(data) { 
+                    	if (data == "Vrai") {                           
+                            $("#aimer").attr("src","https://img.icons8.com/cotton/35/000000/like--v3.png");
+                        }      
+                        
                 }).fail(function(jqXHR, textStatus, errorThrown){
                         console.log("Erreur");
                         console.log(recetteID);
                         console.log(typeof(recetteID));
                         console.log(mail);
                 });
-                    
-                }
-            
+    }   
+    
+    function likeDislike(img){
+    	$.ajax({ 
+            url: "http://localhost:8080/utilisateur/enregFavoris", 
+            type: 'PUT',
+            headers: {"mail":sessionStorage.getItem('Mail'), "idRec":recetteID},
+            timeout: 15000
+        }).done(
+            function() {                
+                $("#aimer").attr("src",img);
+        }).fail(function(jqXHR, textStatus, errorThrown){
+                console.log("Erreur");
+                console.log(recetteID);
+                console.log(typeof(recetteID));
+                console.log(mail);
+        });
+    }
  
     function ajoutSigne(element){
             switch(element){
@@ -249,6 +283,6 @@
             return "g";
             }
         }
-
+        
     </script>
 </html>
