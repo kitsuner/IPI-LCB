@@ -8,7 +8,7 @@
     <script src="javascriptLCB.js"></script> 
     <!-- Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Font+Name">
-    <style>@import url('https://fonts.googleapis.com/css?family=Coustard|Delius|Freckle+Face|Gochi+Hand|Itim|Lacquer|Lalezar|Mansalva|Monda|Righteous&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css?family=Amaranth|Baloo|Cairo|Freckle+Face|Itim&display=swap');</style>
             
     <title>Les Cordons Bleus</title>
     <style>
@@ -107,8 +107,7 @@
         
 
             <script src="./cursor-v.2.0.2.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
 
     <script>
@@ -198,8 +197,8 @@
                         $("tr[id^='row']").next().remove();
                         $(".quantity").next().remove();
                         $(".pour").next().remove();
-                        $(".quantity").append("<th></th>");
-                        //  $(".quantity").append("<th thead-dark class='text-center'>"+data.nbrPersonne+"</th>");
+                        //$(".quantity").append("<th></th>");
+                        $(".quantity").append("<th class='text-center'>""</th>");
                         $("#urlRecette").text(data.urlRecette);
                         $("#image").attr("src",data.image);
 

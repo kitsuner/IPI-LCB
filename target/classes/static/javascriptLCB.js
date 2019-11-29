@@ -128,7 +128,7 @@ function onloadUserRecette() {
         	
             $("#card-deck").empty();
             if (data.length == 0){
-            	$("#card-deck").html("<h1>Il n'y a pas encore de recette ici ! N'hésitez pas à en créer.</h1>");
+            	$("#card-deck").html("<h2>Il n'y a pas encore de recette ici ! N'hésitez pas à en créer.</h2>");
             }
             for (let i=0; i < data.length;i++){
           	   $("#card-deck").append('<div class="col-lg-4 cardRecette"><div class="thumbnail"><div class="card-image-container"><img class="cardImageRecette" id="image'+i+'" alt="Image'+i+'"></div><div class="caption"><h3 class="cardTitreRecette card-title" id="title'+i+'">'+data[i].lib+'</h3><p class="cardTextRecette card-text" id="text'+i+'">'+data[i].instruction+'</p></div><div class="cardLinkRecette"><a class="LinkRecette'+i+'">Voir la recette ...</a></div></div></div>');
@@ -153,7 +153,7 @@ function onloadUserFavoris() {
             function (data) {
               $("#card-deck").empty();
               if (data.length == 0){
-              	$("#card-deck").html("<h1>Vous n'avez pas encore de recettes favorites.</h1>");
+              	$("#card-deck").html("<h2>Vous n'avez pas encore de recettes favorites.</h2>");
               }
                   for (let i=0; i < data.length;i++){
                    $("#card-deck").append('<div class="col-lg-4 cardRecette"><div class="thumbnail"><div class="card-image-container"><img class="cardImageRecette" id="image'+i+'" alt="Image'+i+'"></div><div class="caption"><h3 class="cardTitreRecette card-title" id="title'+i+'">'+data[i].lib+'</h3><p class="cardTextRecette card-text" id="text'+i+'">'+data[i].instruction+'</p></div><div class="cardLinkRecette"><a class="LinkRecette'+i+'">Voir la recette ...</a></div></div></div>');
