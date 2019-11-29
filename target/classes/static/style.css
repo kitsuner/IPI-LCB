@@ -33,6 +33,8 @@ font-family: 'Freckle Face', cursive;
 color:rgb(113, 137, 91);
 color:rgb(239, 101, 55);
 color:rgb(159, 82, 40);
+marron
+color:rgb(40, 7, 5)
 vert
 color:rgb(78, 131, 38);
 orange
@@ -45,7 +47,7 @@ color:rgb(204, 89, 46);
 	margin-left:30px;	
 	color:rgb(40, 7, 5);
 	font-size:2.3em;
-	font-family: 'Freckle Face', cursive;
+	font-family: 'Itim', cursive;
 }
 .LCB_letter{
 	color:rgb(204, 89, 46) !important;
@@ -56,6 +58,13 @@ color:rgb(204, 89, 46);
 
 }
 
+h1{
+    text-align: center;
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding:1rem;
+    margin: 1rem;
+}
 /* Footer Desktop */
 .footertext1{
     margin-top: 50px;
@@ -291,13 +300,6 @@ input {
 
 .statique{
     text-align: center;
-}
-h1{
-    text-align: center;
-    font-size: 35px;
-    font-family: Arial, Helvetica, sans-serif;
-    padding:1rem;
-    margin: 1rem;
 }
 button{
     padding:0.5rem;
