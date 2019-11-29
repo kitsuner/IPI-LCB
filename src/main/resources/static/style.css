@@ -50,7 +50,11 @@ color:rgb(204, 89, 46);
 .LCB_letter{
 	color:rgb(204, 89, 46) !important;
 }
+.logoMenu:hover{
+	width:62px;
+	height:62px;
 
+}
 
 /* Footer Desktop */
 .footertext1{

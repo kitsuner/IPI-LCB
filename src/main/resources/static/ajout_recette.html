@@ -8,25 +8,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
     <script src="javascriptLCB.js"></script>
+    <!-- Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Font+Name">
+    <style>@import url('https://fonts.googleapis.com/css?family=Coustard|Delius|Freckle+Face|Gochi+Hand|Itim|Lacquer|Lalezar|Mansalva|Monda|Righteous&display=swap');</style>
+            
     <title>Ajout d'une recette</title>
 </head>
 
 <body>
 
-    <!-- Navbar Top -->
-    <nav class="navbar navbartop navbar-expand-sm navbar-light bg-light">
-        <a href="index.html" class="navbar-brand">
-            <img src="./images/chef.png" height="30" alt="Les Cordons Bleus">Les Cordons Bleus
-        </a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ml-auto">
-                <a href="connexion.html" class="nav-item nav-link" title="Connexion"><img src="./images/nav_user.png" height="35" alt="login"></a>
-            </div>
-        </div>
-    </nav>
+     <!-- NAVBAR top -->
+     <nav class="navbar navbartop navbar-expand-sm navbar-light">
+         <a href="index.html" class="navbar-brand">
+             <img src="./images/logo.png" height="70" class="logoLCB" alt="Les Cordons Bleus">
+             <span class="LCB align-middle""><span class="LCB_letter">L</span>es <span class="LCB_letter">C</span>ordons <span class="LCB_letter">B</span>leus</span>
+         </a>
+         <div class="collapse navbar-collapse" id="navbarCollapse">
+             <div class="navbar-nav ml-auto" id="open_menu_nav">
+                 <img src="./images/menu1.png" class="logoMenu" height="60" alt="login" style="font-size:30px;cursor:pointer" onclick="openNav()">
+             </div>
+         </div>
+	     <!-- MENU caché -->
+	     <div id="mySidenav" class="sidenav">
+	        <hr class="barreMenu"/>
+	  		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	  		<a href="index.html" id="accueil">Accueil</a>
+	        <a href="javascript:update('mes_recettes');">Mes recettes</a>
+	        <a href="javascript:update('mes_favoris');">Mes favoris</a>
+	        <a href="">Paramètres</a>
+	        <a href="connexion.html" id="bouton_connexion">Connexion</a>            
+	        <a href="javascript:deconnexion()" id="bouton_deconnexion">Deconnexion</a>
+		</div>
+	 </nav>
 
     <!-- Liste mes recettes -->
     <div class="maCreationR">
@@ -310,32 +323,28 @@
 
 
 
-    <!-- Footer en mode Desktop-->
-    <div class="footerDesktop">
-        <div class="footertext1">
-            made with ♥ by LCB
+		<!-- Footer en mode Desktop-->
+        <div class="footerDesktop">
+            <div class="footertext1">made with <span class="love">♥</span> by LCB
+            </div>
+            <div class="footertext-links">
+                <p>Tous droits réservés Les Cordons Bleus - 2019</br>
+                    Vous avez une question ? <a href="">nous contacter</a> ∗
+                    <a href="">Mentions légales</a> ∗
+                    <a href="">Conditions Générales d'Utilisation</a> ∗
+                    <a href="">Contact</a> ∗
+                    <a href="">Politique de protection des données personnelles</a> ∗
+                    <a href="">Politique de confidentialité</a>
+                </p>
+            </div>
         </div>
-        <div class="footertext-links">
-            <p>
-                Tous droits réservés Les Cordons Bleus - 2019</br>
-                Vous avez une question ? <a href="">nous contacter</a> ∗
-                <a href="">Mentions légales</a> ∗
-                <a href="">Conditions Générales d'Utilisation</a> ∗
-                <a href="">Contact</a> ∗
-                <a href="">Politique de protection des données personnelles</a> ∗
-                <a href="">Politique de confidentialité</a>
-            </p>
-        </div>
-    </div>
-
-
-    <!-- Navbar bottom format mobile xs -->
-    <nav class="navbar navbarbottom fixed-bottom navbar-light bg-light">
-        <a href="index.html" class="nav-item nav-link"><img src="./images/nav_home.png" height="40" alt="login"></a>
-        <a href="#" class="nav-item nav-link"><img src="./images/nav_heart.png" height="40" alt="login"></a>
-        <a href="connexion.html" class="nav-item nav-link"><img src="./images/nav_user.png" height="40" alt="login"></a>
-        <a href="#" class="nav-item nav-link"><img src="./images/nav_engrenage.png" height="45" alt="login"></a>
-    </nav>
+        <!-- Navbar bottom format mobile xs -->
+        <nav class="navbar navbarbottom fixed-bottom navbar-light bg-light">
+            <a href="index.html" class="nav-item nav-link"><img src="./images/nav_home.png" height="40" alt="login"></a>
+            <a href="#" class="nav-item nav-link"><img src="./images/nav_heart.png" height="40" alt="login"></a>
+            <a href="connexion.html" class="nav-item nav-link"><img src="./images/nav_user.png" height="40" alt="login"></a>
+            <a href="#" class="nav-item nav-link"><img src="./images/nav_engrenage.png" height="45" alt="login"></a>
+        </nav>
 
 
     <script>
