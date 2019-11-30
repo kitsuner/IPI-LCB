@@ -991,5 +991,11 @@ update ingredient set alim_nom_fr="Crème aux oeufs (petit pot de crème chocola
 
 update ingredient set alim_nom_fr="Gâteau au chocolat, coeur fondant, rayon frais" where alim_nom_fr="Gâteau au chocolat, c?ur fondant, rayon frais";
 
+alter table recette add column nbr_personne SMALLINT(4);
+
+alter table recette add column url_recette VARCHAR(512);
+
+alter table recette add column image varchar(512);
+
 COMMIT;
 
