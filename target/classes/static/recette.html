@@ -127,13 +127,10 @@
             });
             setTimeout(function(){element.setAttribute("src","https://img.icons8.com/color/35/000000/paste.png");}, 100); 
         }
-
         //execution des fonctions menue et requette get ajax 
         onloadRecetteByUrl();
         image();
         $("#menu_navigation").hide();
-
-
         // fonction requette ajax get pour récoupérer la recette 
         function onloadRecetteByUrl() {
             $.ajax({
@@ -158,7 +155,6 @@
                         for(var k=2 ; k<keys.length;k++){
                             $("#body_table").append(`<tr style='width:10%' id="row${k}"><th scope="row">${keys[k]} (${ ajoutSigne(k)})</th><tr>`);
                         }
-
                         $(".thead").append(`<tr class='quantity'><th class="pour "> Pour <th><tr>`);
                         var array_values=[];
                         for(var i=0; i<ingredients.length; ++i){
@@ -179,7 +175,6 @@
                             };     
                             $("#title_row").append("<th id='total' scope='col' class='text-center'> total</th>");
                             $("#title_row").append("<th id='total' scope='col' class='text-center'> par personne</th>");
-
                         var sommes=[];
                         for( var index=0; index<array_values[0].length; index++){
                             var x=0;
@@ -192,16 +187,14 @@
                             sommes.push(x.toFixed(2));
                         }
                         // console.log(sommes);
-
                         //ajustement of table rows and celles
                         $("tr[id^='row']").next().remove();
                         $(".quantity").next().remove();
                         $(".pour").next().remove();
                         //$(".quantity").append("<th></th>");
-                        $(".quantity").append("<th class='text-center'>""</th>");
+                        $(".quantity").append("<th class='text-center'></th>");
                         $("#urlRecette").text(data.urlRecette);
                         $("#image").attr("src",data.image);
-
                     testlike();
                     
                     
@@ -210,7 +203,6 @@
                 $(".container-fluid").after("<h2>Pas de recette ici, mauvaise adresse url !</h2>");
             });   
         }
-
         function like(){
             var mail = sessionStorage.getItem('Mail');
             if (mail == null) {
@@ -224,7 +216,6 @@
             		}
                     
         }
-
     function testlike() {
         var mail=sessionStorage.getItem('Mail');
                     $.ajax({ 

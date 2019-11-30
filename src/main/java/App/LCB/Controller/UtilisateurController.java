@@ -100,7 +100,7 @@ public class UtilisateurController {
 			return "Vrai";			
 		}
 		else {
-		System.out.println("bruh");
+		
 			return "Faux";
 		}
 	}
